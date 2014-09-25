@@ -72,7 +72,7 @@ var obj = APPLINK(100,url,"");
 // Request #:
 // ----------------------------------------------------------------------------
 
-function Run[+Component mPage Name+]Component()
+function Run[+Component mPage Folder+]Component()
 {
 	var COMPONENT = new Component("[+Component mPage Name+]", "[+Component mPage Name+]", "CCL Program Template");
 	COMPONENT.HandleSuccess = function(recordData)
