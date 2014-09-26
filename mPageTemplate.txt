@@ -72,28 +72,29 @@ var obj = APPLINK(100,url,"");
 // Request #:
 // ----------------------------------------------------------------------------
 
+
 function Run[+Component mPage Folder+]Component()
 {
-	var COMPONENT = new Component("[+Component mPage Name+]", "[+Component mPage Name+]", "CCL Program Template");
+	var COMPONENT = new Component("[+Component mPage Folder+]", "[+Component mPage Name+]", "CCL Program Template");
 	COMPONENT.HandleSuccess = function(recordData)
 	{ //The [+Component mPage Folder+]_STRUCTURE_CNT and [+Component mPage Folder+]_STRUCTURE_ARRAY must be uppercase.
 		var tempStr = ["<h3 class='header'>",this.headerName," count(",recordData.[+Component mPage Folder+]_STRUCTURE_CNT,")<span class='ce' id='",this.id,"_ce'></span></h3><div class='component-content'><table>"];
 	if(recordData.[+Component mPage Folder+]_STRUCTURE_CNT>0)
-	{	tempStr.push("<tr><td class='bold'>Full Name</td><td class='bold'>Person ID</td><td class='bold'>Encounter ID</td><td class='bold'>MRN</td><td class='bold'>FIN</td><td class='bold'>Encounter Type</td></tr>");
-	//{	tempStr.push("<tr><td class='bold'>Full Name</td><td class='bold'>Encounter ID</td><td>Encounter Type</td></tr>");
+	{
+//alert(recordData.[+Component mPage Folder+]_STRUCTURE_CNT);
 
+//BEGIN TABLE DATA
 		for(var i=0,all_cnt=recordData.[+Component mPage Folder+]_STRUCTURE_CNT;i<all_cnt;i++)
 		{
-		tempStr.push("<tr><td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_NAME_FULL_FORMATTED,"</td>");
-		tempStr.push("<td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID,"</td>");
-		tempStr.push("<td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_ENCOUNTER_ID,"</td>");
-		tempStr.push("<td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_MRN,"</td>");
-		tempStr.push("<td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_FIN,"</td>");
-		tempStr.push("<td>",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_ENCOUNTER_TYPE,"</td></tr>");
-		tempStr.push("<td><b>;Answerfile:<br /></b>free record request go<br />record request<br />(<br />  1 per_id = i4<br />  1 enc_id = i4<br />) go<br /><br />" +
-		"  set request->per_id = ",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID," go<br />" +
-		"  set request->enc_id = ",recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_ENCOUNTER_ID," go<br /><br />" +
-		"execute cclname \"MINE\", request->per_id, request->enc_id go<br /></td></tr>");
+var xxyy=recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID;
+//alert(xxyy);
+		tempStr.push("<tr><th>Bold Column Header</th></tr>");
+		tempStr.push("<tr><td>Normal Column data</td></tr>");
+		tempStr.push("<tr><td class='bold'>Bold Column data</td></tr>");
+		tempStr.push("<tr><td>",xxyy,"</td></tr>");
+
+			alert(recordData.[+Component mPage Folder+]_STRUCTURE_CNT);
+			alert(recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID);
 		}
 
 	}
@@ -130,15 +131,15 @@ function Run[+Component mPage Folder+]Component()
 ###JAVASCRIPT SECTION END:
 
 ###CCL PROGRAM SECTION BEGIN:
-;Script Author: Robert Holland
-;Program Name: 1bh_mpage_testtemplate.prg
-;Related Files: 1bh_mpage_testtemplate.html, 1bh_mpage_testtemplate.prg
-;Creation Date: Thursday, September 18, 2014 17:50:58
+;Script Author: [+Author+]
+;Program Name: [+Component mPage Name+].js
+;Related Files: [+Component mPage Name+].html, [+Component mPage Name+].prg
+;Creation Date: [DATE_TEXT] [TIME]
 ;Last Modified:
-;Copyright: (c)2014
+;Copyright: (c)[DATE_USER]yyyy[DATE_USER_END]
 ;Purpose:
 ;Request #:
-;Foldername on PHX00027: testtemplate
+;Foldername on PHX00027: [+Component mPage Folder+]
 ;----------------------------------------------------------------------------
 ;free record request go
 ;/*Add any fields and data type in your "record request" that your CCL will need to run.*/
@@ -158,12 +159,12 @@ function Run[+Component mPage Folder+]Component()
 ;
 ;/*The CCL that you want to execute to produce the data. */
 ;
-;	execute 1bh_mpage_testtemplate "MINE", request->per_id, request->enc_id go
+;	execute [+Component mPage Name+] "MINE", request->per_id, request->enc_id go
 
 ;----------------------------------------------------------------------------
 
-drop program 1bh_mpage_testtemplate:dba go
-create program 1bh_mpage_testtemplate:dba
+drop program [+Component mPage Name+]:dba go
+create program [+Component mPage Name+]:dba
 
 prompt
 	"Output to File/Printer/MINE" = "MINE"   ;* Enter or select the printer or file name to send this report to.
@@ -300,4 +301,3 @@ tempStr.push("<p><a href='javascript:[+Component mPage Folder+]();'>[+Component 
 ###WINDOWS COMMAND PROMPT BEGIN:
 md [+Component mPage Folder+]\js [+Component mPage Folder+]\css [+Component mPage Folder+]\prg [+Component mPage Folder+]\img
 ###WINDOWS COMMAND PROMPT END:
-
