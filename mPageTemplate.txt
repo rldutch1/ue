@@ -1,6 +1,7 @@
 Script Author: [+Author+]
 Program Name: [+Component mPage Name+].prg
 Foldername on PHX00027: [+Component mPage Folder+]
+CAPITALIZED FOLDERNAME [+Component mPage Folder Capitalized+]
 ;----------------------------------------------------------------------------
 
 ###MPAGE TEMPLATE [DATE_TEXT] [TIME]
@@ -77,24 +78,24 @@ function Run[+Component mPage Folder+]Component()
 {
 	var COMPONENT = new Component("[+Component mPage Folder+]", "[+Component mPage Name+]", "CCL Program Template");
 	COMPONENT.HandleSuccess = function(recordData)
-	{ //The [+Component mPage Folder+]_STRUCTURE_CNT and [+Component mPage Folder+]_STRUCTURE_ARRAY must be uppercase.
-		var tempStr = ["<h3 class='header'>",this.headerName," count(",recordData.[+Component mPage Folder+]_STRUCTURE_CNT,")<span class='ce' id='",this.id,"_ce'></span></h3><div class='component-content'><table>"];
-	if(recordData.[+Component mPage Folder+]_STRUCTURE_CNT>0)
+	{ //The [+Component mPage Folder Capitalized+]_STRUCTURE_CNT and [+Component mPage Folder Capitalized+]_STRUCTURE_ARRAY must be uppercase.
+		var tempStr = ["<h3 class='header'>",this.headerName," count(",recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_CNT,")<span class='ce' id='",this.id,"_ce'></span></h3><div class='component-content'><table>"];
+	if(recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_CNT>0)
 	{
-//alert(recordData.[+Component mPage Folder+]_STRUCTURE_CNT);
+//alert(recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_CNT);
 
 //BEGIN TABLE DATA
-		for(var i=0,all_cnt=recordData.[+Component mPage Folder+]_STRUCTURE_CNT;i<all_cnt;i++)
+		for(var i=0,all_cnt=recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_CNT;i<all_cnt;i++)
 		{
-var xxyy=recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID;
+var xxyy=recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID;
 //alert(xxyy);
 		tempStr.push("<tr><th>Bold Column Header</th></tr>");
 		tempStr.push("<tr><td>Normal Column data</td></tr>");
 		tempStr.push("<tr><td class='bold'>Bold Column data</td></tr>");
 		tempStr.push("<tr><td>",xxyy,"</td></tr>");
 
-			alert(recordData.[+Component mPage Folder+]_STRUCTURE_CNT);
-			alert(recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID);
+			alert(recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_CNT);
+			alert(recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_ARRAY[i].RETURNED_PERSON_ID);
 		}
 
 	}
@@ -132,7 +133,7 @@ var xxyy=recordData.[+Component mPage Folder+]_STRUCTURE_ARRAY[i].RETURNED_PERSO
 
 ###CCL PROGRAM SECTION BEGIN:
 ;Script Author: [+Author+]
-;Program Name: [+Component mPage Name+].js
+;Program Name: [+Component mPage Name+].prg
 ;Related Files: [+Component mPage Name+].html, [+Component mPage Name+].prg
 ;Creation Date: [DATE_TEXT] [TIME]
 ;Last Modified:
