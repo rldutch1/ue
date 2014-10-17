@@ -1,4 +1,4 @@
-create table iview_update (id int(11) unsigned auto_increment primarey key
+create table iview_update (id int(11) unsigned auto_increment primary key
 , CODE_SET int(11) not null
 , CODE_VALUE int(11) not null
 , DEFINITION varchar(100) not null
