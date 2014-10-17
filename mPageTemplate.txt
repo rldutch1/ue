@@ -134,7 +134,7 @@ var xxyy=recordData.[+Component mPage Folder Capitalized+]_STRUCTURE_ARRAY[i].RE
 ###CCL PROGRAM SECTION BEGIN:
 ;Script Author: [+Author+]
 ;Program Name: [+Component mPage Name+].prg
-;Related Files: [+Component mPage Name+].html, [+Component mPage Name+].prg
+;Related Files: [+Component mPage Name+].html, [+Component mPage Name+].js
 ;Creation Date: [DATE_TEXT] [TIME]
 ;Last Modified:
 ;Copyright: (c)[DATE_USER]yyyy[DATE_USER_END]
