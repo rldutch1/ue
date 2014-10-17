@@ -7,6 +7,7 @@ create table iview_update (id int(11) unsigned auto_increment primarey key
 , DISPLAY_KEY varchar(100) not null
 ) engine=innodb;
 
+insert into iview_update (CODE_SET, CODE_VALUE, DEFINITION, DESCRIPTION, DISPLAY, DISPLAY_KEY) values
 (93,17476881.00,CVO2','CVO2','CVO2','CVO2')','
 (72,3145187.00,CVP','CVP','CVP','CVP')','
 (93,17476861.00,CVP','CVP','CVP','CVP')','
