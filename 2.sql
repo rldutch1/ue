@@ -5,7 +5,7 @@ create table iview_programs (id int(11) unsigned auto_increment primary key
 
 insert into iview_programs (iv_id, program) values
 
-(1bh_eks_nick_test_queries.prg'),
+(2,'1bh_eks_nick_test_queries.prg'),
 (2,'1bh_eks_nick_test_queries.prg'),
 (2,'1bh_eks_nick_test_queries.prg'),
 (2,'1bh_eks_nick_test_queries.prg'),
