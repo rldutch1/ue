@@ -20,14 +20,18 @@ $query="select * from iview_update where checked = 'N';";
 
 			</form></body></html>";
 */
+$color1 = "#CCD7E3";
+$color2 = "#F4F9FF";
 
-echo "<style>table {border-collapse:collapse;}</style>";
+echo "<style>table {border-collapse:collapse;} th {background-color:#00FFFF;}</style>";
 echo "<form name='p_list' action='iview.php' method='post'>";
 
-	$query="select * from iview_update1 where checked = 'Y' and ff = 'Y';";
+	$query="select * from iview_update1 where checked = 'Y' and ff in ('N','Y');";
+//	$query="select * from iview_update1 where checked = 'Y' and ff = 'Y';";
 		$result=mysqli_query($con, $query);
 			confirm_queryi($result);
 		$arraydata = array();
+
 			echo "<table border='1'>
 			<tr>
 			<th>ID</th>
@@ -37,14 +41,18 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<th>Display</th>
 			<th>Display Key</th>
 			<th>Checked</th>
-			<th>Filename</th>
+			<th>File Found</th>
+<!--			<th>Filename</th> -->
 			</tr>
 			";
 
 			while($row = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
+						$row_color = ($row_count % 2) ? $color1 : $color2;
+//						echo "<tr bgcolor='" . $row_color . "'><th>" . ($row_count + 1) . "</th><td>" . $firstnumber . "-" . $middlenumber . "-" . $lastnumber . "</td></tr>";
+
 			echo "
-			<tr>
+			<tr bgcolor='" . $row_color . "'>
 			<th>" . $row[0] . "</th>
 			<td>" . $row[2] . ".00</td>
 			<td>" . $row[3] . "</td>
@@ -52,8 +60,10 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<td>" . $row[5] . "</td>
 			<td>" . $row[6] . "</td>
 			<td>" . $row[7] . "</td>
-			<td><a href='http://www.robholland.net/php/play/test/" . $row[0] . ".txt'>" . $row[0] . ".txt</td>
+			<td>" . $row[8] . "</td>
+<!--			<td><a href='http://www.robholland.net/php/play/test/" . $row[0] . ".txt'>" . $row[0] . ".txt</td> -->
 			</tr>";
+						$row_count++;
 			}
 
 			echo "</table>";
@@ -62,11 +72,11 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			while($row1 = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
 			echo "
-			grep -i \"" . $row1[2] . "\" *.prg |cut -d : -f1 > RH" . $row1[0] . ".1<br />
-			grep -i \"" . $row1[3] . "\" *.prg |cut -d : -f1 > RH" . $row1[0] . ".2<br />
-			grep -i \"" . $row1[4] . "\" *.prg |cut -d : -f1 > RH" . $row1[0] . ".3<br />
-			grep -i \"" . $row1[5] . "\" *.prg |cut -d : -f1 > RH" . $row1[0] . ".4<br />
-			grep -i \"" . $row1[6] . "\" *.prg |cut -d : -f1 > RH" . $row1[0] . ".5<br />
+			grep -i \"" . $row1[2] . "\" *.prg |cut -d : -f1 > iview" . $row1[0] . ".1<br />
+			grep -i \"" . $row1[3] . "\" *.prg |cut -d : -f1 > iview" . $row1[0] . ".2<br />
+			grep -i \"" . $row1[4] . "\" *.prg |cut -d : -f1 > iview" . $row1[0] . ".3<br />
+			grep -i \"" . $row1[5] . "\" *.prg |cut -d : -f1 > iview" . $row1[0] . ".4<br />
+			grep -i \"" . $row1[6] . "\" *.prg |cut -d : -f1 > iview" . $row1[0] . ".5<br />
 			";
 			}
 */
@@ -74,7 +84,7 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			while($row2 = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
 			echo "
-			cat RH" . $row2[0] . ".* >> RH" . $row2[0] . ".txt<br />
+			cat iview" . $row2[0] . ".* >> iview" . $row2[0] . ".txt<br />
 			";
 			}
 */
