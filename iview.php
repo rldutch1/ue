@@ -46,7 +46,7 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			echo "
 			<tr>
 			<th>" . $row[0] . "</th>
-			<td>" . $row[2] . "</td>
+			<td>" . $row[2] . ".00</td>
 			<td>" . $row[3] . "</td>
 			<td>" . $row[4] . "</td>
 			<td>" . $row[5] . "</td>
@@ -85,7 +85,18 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 //select ivu_id from vw_ivprograms where program = '1bh_mpage_crystalloids_jdm.prg';
 //select * from iview_update1 i1 where checked = 'Y' and ff = 'Y' and i1.id in (select distinct(ivu_id) from iview_programs where program = '1samt_az_pulmonarycomp.prg'); //Dropdown choice will be entered for the program name.
 //select * from vw_ivprograms order by program, ivu_id; //Dropdown choices will be made from this select.
+/*Walkthrough:
+The original CCL query generated 88 DISPLAY_KEY/CODE_SETS/Terms to look for. I added code_set 14003 because it is used on some forms.
+Code_set 14003 generated an additional 50 terms to look for, making a total of a 138 search terms.
+This page shows all 138 terms.
+Running grep on the backend to search for those terms generated a list of 400?? text files that contained the filenames
+where the term could be found. ????????
 
+ 7,323 files. The large number of files was due to
+the term being found multiple times in the same file and the filename being generated for each occurance.
+After removing the duplicate files only 138 files remained. 100 terms remained (meaning I could not find 38 terms).
+
+*/
 			echo "</form></body></html>";
 ?>
 
