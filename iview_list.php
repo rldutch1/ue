@@ -21,9 +21,15 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 //	$query="select * from iview_update1 where checked = 'Y' and ff = 'Y';";
 		$result=mysqli_query($con, $query);
 			confirm_queryi($result);
+//		$num_rows = mysql_num_rows($result);
+		$num_rows = mysqli_num_rows($result);
 		$arraydata2 = array();
-
-			echo "<table border='1'><caption><h3>" . $_POST['optiondown'] . "</h3></caption>
+//		echo $num_rows;
+			echo "<table border='1'>
+			<caption>
+			<h3>" . $_POST['optiondown'] . "</h3><br />
+			" . $num_rows . " rows returned.
+			</caption>
 			<tr>
 			<th>ID</th>
 			<th>Code Value</th>
