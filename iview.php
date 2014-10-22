@@ -1,7 +1,7 @@
 <?php
 //include('../includes/pw5new.php');
 include('mysqli_test1.php');
-include('../includes/functions.php');
+include('../../includes/functions.php');
 
 //echo "\r\n <br /> Holland \r\n <br />";
 echo "<html>
@@ -77,7 +77,7 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 
 			echo "</table>";
 */
-/*
+/* Produce the filenames.
 			while($row1 = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
 			echo "
@@ -89,6 +89,19 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			";
 			}
 */
+/* Produce the filenames with code snippet.
+			while($row1 = mysqli_fetch_array($result)){
+			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
+			echo "
+			grep -i \"" . $row1[2] . "\" *.prg > iview" . $row1[0] . ".1<br />
+			grep -i \"" . $row1[3] . "\" *.prg > iview" . $row1[0] . ".2<br />
+			grep -i \"" . $row1[4] . "\" *.prg > iview" . $row1[0] . ".3<br />
+			grep -i \"" . $row1[5] . "\" *.prg > iview" . $row1[0] . ".4<br />
+			grep -i \"" . $row1[6] . "\" *.prg > iview" . $row1[0] . ".5<br />
+			";
+			}
+*/
+
 /*
 			while($row2 = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";

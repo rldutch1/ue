@@ -27,7 +27,7 @@ function iviewlist(){
 	xmlhttp.open("POST","iview_list.php",true);
 	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("optiondown="+programtosend+"");
-	xmlhttp.send();
+//	xmlhttp.send();
 	xmlhttp.close();
 
 }

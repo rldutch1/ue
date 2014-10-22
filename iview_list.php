@@ -1,7 +1,7 @@
 <?php
 //include('../includes/pw5new.php');
 include('mysqli_test1.php');
-include('../includes/functions.php');
+include('../../includes/functions.php');
 
 echo "<html><head><title></title></head><body>";
 
@@ -39,7 +39,8 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<th>Display Key</th>
 <!--			<th>Checked</th>
 			<th>File Found</th>
-			<th>Filename</th> -->
+			<th>Filename</th>
+			<th>File Snippet</th> -->
 			</tr>
 			";
 
