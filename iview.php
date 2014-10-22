@@ -4,33 +4,42 @@ include('mysqli_test1.php');
 include('../includes/functions.php');
 
 //echo "\r\n <br /> Holland \r\n <br />";
-echo "<html><head><title></title></head><body>";
-/*
-echo "<form name='p_list' action='iview.php' method='post'><select>";
+echo "<html>
+<head>
+<title></title>
+<script type='text/javascript' src='iview_list.js'></script>
+</head><body>";
 
-$query="select * from iview_update where checked = 'N';";
+echo "<form name='p_list' action='iview_list.php' method='post'><select id='optiondown' name='optiondown'>";
+
+$query="select * from vw_ivprograms order by program, ivu_id;";
 		$result=mysqli_query($con, $query);
 			confirm_queryi($result);
-		$arraydata = array();
+		$arraydata1 = array();
 
 			while($row = mysqli_fetch_array($result)){
-			echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
+			echo "<option value='" . $row[1] . "'>" . $row[1] . "</option>";
 			}
 			echo "</select>
+<!--			<INPUT TYPE='submit' name='prg_name' /> -->
+			<button type='button' name='prg_name' onclick='iviewlist()'>Submit</button>
+<br /><hr />
+			</form>";
 
-			</form></body></html>";
-*/
+echo "<div id='iviewdisplay'></div>";
+
+/*
 $color1 = "#CCD7E3";
 $color2 = "#F4F9FF";
 
 echo "<style>table {border-collapse:collapse;} th {background-color:#00FFFF;}</style>";
 echo "<form name='p_list' action='iview.php' method='post'>";
 
-	$query="select * from iview_update1 where checked = 'Y' and ff in ('N','Y');";
-//	$query="select * from iview_update1 where checked = 'Y' and ff = 'Y';";
+//	$query="select * from iview_update1 where checked = 'Y' and ff in ('N','Y');";
+	$query="select * from iview_update1 where checked = 'Y' and ff = 'Y';";
 		$result=mysqli_query($con, $query);
 			confirm_queryi($result);
-		$arraydata = array();
+		$arraydata2 = array();
 
 			echo "<table border='1'>
 			<tr>
@@ -40,9 +49,9 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<th>Description</th>
 			<th>Display</th>
 			<th>Display Key</th>
-			<th>Checked</th>
-			<th>File Found</th>
-<!--			<th>Filename</th> -->
+<!--			<th>Checked</th>
+			<th>File Found</th> -->
+			<th>Filename</th>
 			</tr>
 			";
 
@@ -59,15 +68,15 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<td>" . $row[4] . "</td>
 			<td>" . $row[5] . "</td>
 			<td>" . $row[6] . "</td>
-			<td>" . $row[7] . "</td>
-			<td>" . $row[8] . "</td>
-<!--			<td><a href='http://www.robholland.net/php/play/test/" . $row[0] . ".txt'>" . $row[0] . ".txt</td> -->
+<!--			<td>" . $row[7] . "</td>
+			<td>" . $row[8] . "</td> -->
+			<td><a href='http://www.robholland.net/php/play/test/" . $row[0] . ".txt'>" . $row[0] . ".txt</td>
 			</tr>";
 						$row_count++;
 			}
 
 			echo "</table>";
-
+*/
 /*
 			while($row1 = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
@@ -93,7 +102,7 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 //create view vw_ivprograms as select ivu_id, program from iview_programs group by program;
 //select distinct(ivu_id) from iview_programs where program = '1bh_mpage_crystalloids_jdm.prg';
 //select ivu_id from vw_ivprograms where program = '1bh_mpage_crystalloids_jdm.prg';
-//select * from iview_update1 i1 where checked = 'Y' and ff = 'Y' and i1.id in (select distinct(ivu_id) from iview_programs where program = '1samt_az_pulmonarycomp.prg'); //Dropdown choice will be entered for the program name.
+//select * from iview_update1 i1 where checked = 'Y' and ff = 'Y' and i1.id in (select distinct(ivu_id) from iview_programs where ivu_id in (select distinct(ivu_id) from iview_programs where program = '1samt_az_pulmonarycomp.prg')); //Dropdown choice will be entered for the program name.
 //select * from vw_ivprograms order by program, ivu_id; //Dropdown choices will be made from this select.
 /*Walkthrough:
 The original CCL query generated 88 DISPLAY_KEY/CODE_SETS/Terms to look for. I added code_set 14003 because it is used on some forms.
@@ -105,8 +114,9 @@ where the term could be found. ????????
  7,323 files. The large number of files was due to
 the term being found multiple times in the same file and the filename being generated for each occurance.
 After removing the duplicate files only 138 files remained. 100 terms remained (meaning I could not find 38 terms).
-
+			echo "</form>";
 */
-			echo "</form></body></html>";
+
+			echo "</body></html>";
 ?>
 
