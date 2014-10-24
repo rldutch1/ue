@@ -7249,5 +7249,3 @@ insert into iview_programs1 (program, code_snippet) values ('run_executionplan2.
 insert into iview_programs1 (program, code_snippet) values ('run_executionplan2.prg','"TEMP C",');
 insert into iview_programs1 (program, code_snippet) values ('run_executionplan2.prg','"TEMP C",');
 insert into iview_programs1 (program, code_snippet) values ('run_executionplan2.prg','"TEMP C",');
-insert into iview_programs1 (program, code_snippet) values ('');
-insert into iview_programs1 (program, code_snippet) values ('
