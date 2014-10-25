@@ -8,6 +8,8 @@ echo "<html>
 <head>
 <title></title>
 <script type='text/javascript' src='iview_list.js'></script>
+<script type='text/javascript' src='jquery-2.1.1.min.js'></script>
+<script type='text/javascript' src='jquery.tablesorter.js'></script>
 </head><body>";
 
 echo "<form name='p_list' action='iview_list.php' method='post'><select id='optiondown' name='optiondown'>";
