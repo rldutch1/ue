@@ -3,7 +3,10 @@
 include('mysqli_test1.php');
 include('../../includes/functions.php');
 
-echo "<html><head><title></title></head><body>";
+echo "<html><head><title></title>
+<script type='text/javascript' src='jquery-2.1.1.min.js'></script>
+<script type='text/javascript' src='jquery.tablesorter.js'></script>
+</head><body>";
 
 $color1 = "#CCD7E3";
 $color2 = "#F4F9FF";
@@ -25,11 +28,12 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 		$num_rows = mysqli_num_rows($result);
 		$arraydata2 = array();
 //		echo $num_rows;
-			echo "<table border='1'>
+			echo "<table id='myTable' class='tablesorter' border='1'>
 			<caption>
 			<h3>" . $_POST['optiondown'] . "</h3><br />
 			" . $num_rows . " rows returned.
 			</caption>
+			<thead>
 			<tr>
 			<th>ID</th>
 			<th>Code Value</th>
@@ -42,29 +46,30 @@ echo "<form name='p_list' action='iview.php' method='post'>";
 			<th>Filename</th>
 			<th>File Snippet</th> -->
 			</tr>
+			</thead><tbody>
 			";
-
+			$row_count=0;
 			while($row = mysqli_fetch_array($result)){
 			//echo "<option value='" . $row[0] . "'>" . $row[1] . "</option>";
 						$row_color = ($row_count % 2) ? $color1 : $color2;
-//						echo "<tr bgcolor='" . $row_color . "'><th>" . ($row_count + 1) . "</th><td>" . $firstnumber . "-" . $middlenumber . "-" . $lastnumber . "</td></tr>";
 
 			echo "
+			<tbody>
 			<tr bgcolor='" . $row_color . "'>
 			<th>" . $row[0] . "</th>
-			<td>" . $row[2] . ".00</td>
-			<td>" . $row[3] . "</td>
-			<td>" . $row[4] . "</td>
-			<td>" . $row[5] . "</td>
-			<td>" . $row[6] . "</td>
+			<td><a href='snippet/iview" . $row[0] . ".1.txt' target='_blank'>" . $row[2] . ".00</td>
+			<td><a href='snippet/iview" . $row[0] . ".2.txt' target='_blank'>" . $row[3] . "</a></td>
+			<td><a href='snippet/iview" . $row[0] . ".3.txt' target='_blank'>" . $row[4] . "</a></td>
+			<td><a href='snippet/iview" . $row[0] . ".4.txt' target='_blank'>" . $row[5] . "</a></td>
+			<td><a href='snippet/iview" . $row[0] . ".5.txt' target='_blank'>" . $row[6] . "</a></td>
 <!--			<td>" . $row[7] . "</td>
 			<td>" . $row[8] . "</td>
 			<td><a href='http://www.robholland.net/php/play/test/" . $row[0] . ".txt'>" . $row[0] . ".txt</td> -->
-			</tr>";
+			</tr></tbody>";
 						$row_count++;
 			}
 
-			echo "</table>";
+			echo "</tbody></table>";
 
 			echo "</form></body></html>";
 //			header('Location: iview.php');
