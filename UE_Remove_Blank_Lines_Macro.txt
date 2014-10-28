@@ -1,0 +1,17 @@
+Remove All Blank Lines in a File:
+
+InsertMode
+ColumnModeOff
+Top
+PerlReOn
+Find MatchCase RegExp "^(?:[\t ]*(?:\r?\n|\r))+"
+Replace All ""
+
+
+Remove Consecutive Blank Lines in all open file with a macro:
+
+InsertMode
+ColumnModeOff
+PerlReOn
+Find MatchCase RegExp "^[\t \xA0]*(\r\n|\n|\r)(?:[\t \xA0]*(?:\r?\n|\r))+"
+Replace All AllFiles "\1"
