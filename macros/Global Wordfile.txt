@@ -1,0 +1,1064 @@
+/L1"CCL" Line Comment = ; Block Comment On = /* Block Comment Off = */ File Extensions = CCL PRG Nocase
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Function String 1 = "%[a-z]*)"
+/Indent Strings = "Select""FROM""WHERE""ORDER""IF""ELSEIF""WHILE""ENDWHILE""FOR""ENDFOR""CASE""ENDCASE
+/Delimiters = ~!@%^&*()-+=|\/{}[]:;"'<> ,	.?
+/C1"CCL Commands" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ACCEPT
+BOX
+BREAK
+BRKTHRU
+BROWSE
+CALL
+CASE
+CCLCLASS
+CCLMENU
+CCLTAM
+CCLUSER
+CENTER
+CHO
+CLEAR
+COL
+COMMIT
+COMPILE
+CURHELP
+DATABASE
+DCL
+DDLRECORD
+DEBUG
+DECLARE
+DEFINE
+DIR
+DOC
+DROP
+ECHORECORD
+EDIT
+ERROR
+EXECUTE
+EXIT
+FOR
+FREE 
+GENERATE
+GENLINK
+GO
+GO
+GRANT
+HELP
+HOME
+IF
+IN
+INSERT
+JOINLINE
+LOGICAL
+MACRO
+MESSAGE
+MODIFY
+NULLREPORT
+PARSER
+PAUSE
+PLATFORM
+PRINT
+PRIO
+PROGRAM
+RANGE
+RDB
+RECORD
+RESET
+REVOKE
+RITY
+ROLLBACK
+ROW
+SCROLLDOWN
+SCROLLINT
+SCROLLTEXT
+SCROLLUP
+SELECT
+SET
+SKIPREPORT
+SPOOL
+SUBROUTINE
+TABLE
+TEXT
+TO
+TRACE
+TRANSACTION
+TRANSLATE
+UPDATE
+UPGRADE
+VALIDATE
+VIDEO
+VIEW
+VIEWS
+WARNING
+WHILE
+WIDTH
+/C2"CCL Reserved Variables" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+AND 
+BETWEEN BREAK BROWSE BY 
+CALL CASE CCLCLASS CCLMENU CCLTAM
+CCLUSER COMMIT CREATE 
+DATABASE DDLRECORD DECLARE DEFINE DELETE DETAIL
+DISTINCT DROP 
+EKMODULE ELSE ELSEIF END ENDCASE ENDFOR ENDIF ENDMACRO
+ENDWHILE EXECUTE EXISTS EXIT 
+FOOT FOR FOREIGN FREE FROM 
+GENERATE GENLINK
+GLOSSARY GO GRANT GRAPH GRELEMENT GRSECTION 
+HAVING HEAD 
+IF IN INSERT INTO
+IS 
+JOIN 
+KEY 
+LIKE 
+MACRO 
+NOT 
+OF ON OR ORDER ORJOIN 
+PAGE PAINT PLAN PROGRAM
+PROMPT 
+RANGE RDB READ RECORD REDEFINES REPORT RESET RETURN REVOKE ROLLBACK
+SELECT SET SIGN SUBROUTINE 
+TABLE TO TRANSLATE 
+UNION UNIQUE UPDATE 
+VIEW 
+WHERE WHILE WITH WRITE
+/C3"CCL Special Variables" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+COL CONCLUDE CURACCEPT CURBATCH CURCCLREV CURCLK CURDATE CURDIO CURECHO CURENDREPORT
+CURENV CURHELP CURLOCALE CURMEM CURPAGE CURPRCNAME CURPROG CURQUAL CURRDB
+CURRDBUSER CURRETURN CURREV CURREVAFD CURREVMINOR CURSCOPE CURSCROLL CURSYS
+CURTIME CURTIME2 CURTIME3 CURTIMEZONE CURUSER CURUTC CURUTCDIFF CURWORK
+MAXCOL MAXROW MEMALLOC MEMREALLOC MEMFREE 
+NULL 
+RDBBIND ROW 
+SYSDATE
+/C4"CCL Logicals" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+CCLALLOCATE
+ CCLANSI 
+ CCLCNVTAGE 
+ CCLDEBUG 
+ CCLDEFAULT 
+ CCLDEFAULT
+CCLDIR
+ CCLDIR500 
+ CCLEDIT 
+ CCLPLATFORM 
+ CCLREFLOG 
+ CCLSOURCE 
+ CCLUTCMODE 
+ CCLUSERDIR
+CCLUSERDIR500
+ADATE 
+CER_ORA_CORE 
+CER_ORA_RDBMS 
+CER_ORA_UPISHR
+CER_ RDBMS_CONNECT
+CER_TEMP
+CMB_TEMP
+CPCEXTENDED 
+ENVIRONMENT_
+MODE 
+JOU_INSTANCE 
+JOU_NODE LANG
+PNODE
+/C5"CCL Aggregate Functions" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABS 
+CEIL 
+EVEN EXP 
+FLOOR 
+GREATEST 
+LEAST LOG LOG10 
+MAXVAL MINVAL MOD 
+RAND
+/C6"CCL Math Functions" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+AVG 
+BAND BNOT BOR BTEST BXOR
+COUNT  
+MAX  MEDIAN  MIN  
+PERCENT  
+STDDEV  SUM  
+VARIANCE
+/C7"CCL String and Temporal Functions" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+BLOBGET BUILD 
+CNVTAGE CNVTAGEDATETIME CNVTCAP CNVTDATE CNVTDATE2 CNVTDATETIME CNVTDATETIME2 CNVTDATETIMEUTC CNVTLOOKAHEAD CNVTLOOKBEHIND CNVTLOWER CNVTNLSSORT CNVTMIN CNVTMIN2 CNVTSTRING CNVTTIME CNVTUPPER CONCAT 
+DATETIMEADD DATETIMECMP DATETIMEDIFF DAY 
+FILLSTRING FINDSTRING FORMAT  
+HOUR  
+MINUTE MONTH MOVESTRING 
+NOTRIM 
+PATSTRING 
+REPLACE 
+SUBSTRING 
+TEXT TRIM  
+WEEKDAY 
+YEAR
+/C8"CCL Misc Functions" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ASSIGN ASSIGN2 ASSIGN3 ALTER ALTERLIST ASIS 
+CALCPOS CALLPRG CCLFMT CEFPARSE CEFRETRIEVE CHAR CHECK CNVTACC CNVTACCENCODE CNVTALIAS CNVTALPHANUM CNVTB10B16 CNVTB10B36 CNVTB16B10 CNVTB36B10 CNVTHEXRAW CNVTINT CNVTPHON CNVTRAWHEX CNVTREAL COST 
+DECODE 
+ERROR EVALUATE 
+FINDFILE 
+ICHAR INITARRAY ISNUMERIC 
+LIST LOGICAL 
+MAXREC MEMALLOC MEMREALLOC MEMFREE MODCHECK MOVEREC 
+NEGATE NULL NULLCHECK NULLIND NULLTERM NULLVAL 
+OPERATOR OUTERJOIN 
+PERCENTILE
+RDBBIND REMOVE REPORTINFO REPORTROW ROUND 
+SEQ SIZE SORT SOUND SOUNDEX SQLPASSTHRU 
+TEXT TEXTLEN TRACE 
+VALIDATE VALUE 
+WTMODCHECK
+/L2"Visual Basic" Nocase HTML_LANG Line Comment = ' File Extensions = BAS FRM CLS VBS ASP INC
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Function String = "%*^{Sub^}^{Function^}*("
+/Indent Strings = "Do" "Else" "Then" "Select Case"
+/Unindent Strings = "End" "Next" "End If" "End Select" "Loop" "Wend"
+/C1"FUNCTIONS" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Abs Array Asc AscB AscW Atn Avg
+CBool CByte CCur CDate CDbl Cdec Choose Chr ChrB ChrW CInt CLng Command Cos Count CreateObject CSng CStr CurDir CVar CVDate CVErr
+Date DateAdd DateDiff DatePart DateSerial DateValue Day DDB Dir DoEvents
+Environ EOF Error Exp
+FileAttr FileDateTime FileLen Fix Format FreeFile FV
+GetAllStrings GetAttr GetAutoServerSettings GetObject GetSetting
+Hex Hour
+IIf IMEStatus Input InputB InputBox InStr InstB Int IPmt IsArray IsDate IsEmpty IsError IsMissing IsNull IsNumeric IsObject
+LBound LCase Left LeftB Len LenB LoadPicture Loc LOF Log LTrim
+Max Mid MidB Min Minute MIRR Month MsgBox
+Now NPer NPV
+Oct
+Partition Pmt PPmt PV
+QBColor
+Rate RGB Right RightB Rnd RTrim
+Second Seek Sgn Shell Sin SLN Space Spc Sqr StDev StDevP Str StrComp StrConv String Switch Sum SYD
+Tab Tan Time Timer TimeSerial TimeValue Trim TypeName
+UBound UCase 
+Val Var VarP VarType
+Weekday
+Year
+/C2"METHODS" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Accept Activate Add AddCustom AddFile AddFromFile AddFromTemplate AddItem AddNew AddToAddInToolbar AddToolboxProgID Append AppendChunk Arrange Assert AsyncRead
+BatchUpdate BeginTrans Bind
+Cancel CancelAsyncRead CancelBatch CancelUpdate CanPropertyChange CaptureImage CellText CellValue Circle Clear ClearFields ClearSel ClearSelCols Clone Close Cls ColContaining 
+ColumnSize CommitTrans CompactDatabase Compose Connect Copy CopyQueryDef CreateDatabase CreateDragImage CreateEmbed CreateField CreateGroup CreateIndex CreateLink 
+CreatePreparedStatement CreatePropery CreateQuery CreateQueryDef CreateRelation CreateTableDef CreateUser CreateWorkspace Customize
+Delete DeleteColumnLabels DeleteColumns DeleteRowLabels DeleteRows DoVerb Drag Draw
+Edit EditCopy EditPaste EndDoc EnsureVisible EstablishConnection Execute ExtractIcon
+Fetch FetchVerbs Files FillCache Find FindFirst FindItem FindLast FindNext FindPrevious Forward
+GetBookmark GetChunk GetClipString GetData GetFirstVisible GetFormat GetHeader GetLineFromChar GetNumTicks GetRows GetSelectedPart GetText GetVisibleCount GoBack GoForward
+Hide HitTest HoldFields
+Idle InitializeLabels InsertColumnLabels InsertColumns InsertObjDlg InsertRowLabels InsertRows Item
+KillDoc
+Layout Line LinkExecute LinkPoke LinkRequest LinkSend Listen LoadFile LoadResData LoadResPicture LoadResString LogEvent
+MakeCompileFile MakeReplica MoreResults Move MoveData MoveFirst MoveLast MoveNext MovePrevious
+NavigateTo NewPage NewPassword NextRecordset
+OLEDrag OnAddinsUpdate OnConnection OnDisconnection OnStartupComplete Open OpenConnection OpenDatabase OpenQueryDef OpenRecordset OpenResultset OpenURL Overlay
+PaintPicture Paste PastSpecialDlg PeekData Play Point PopulatePartial PopupMenu Print PrintForm PropertyChanged PSet
+Quit
+Raise RandomDataFill RandomFillColumns RandomFillRows rdoCreateEnvironment rdoRegisterDataSource ReadFromFile ReadProperty Rebind ReFill Refresh RefreshLink RegisterDatabase 
+Reload Remove RemoveAddInFromToolbar RemoveItem Render RepairDatabase Reply ReplyAll Requery ResetCustom ResetCustomLabel ResolveName RestoreToolbar Resync Rollback 
+RollbackTrans RowBookmark RowContaining RowTop
+Save SaveAs SaveFile SaveToFile SaveToolbar SaveToOle1File Scale ScaleX ScaleY Scroll Select SelectAll SelectPart SelPrint Send SendData Set SetAutoServerSettings SetData 
+SetFocus SetOption SetSize SetText SetViewport Show ShowColor ShowFont ShowHelp ShowOpen ShowPrinter ShowSave ShowWhatsThis SignOff SignOn Size Span SplitContaining 
+StartLabelEdit StartLogging Stop Synchronize
+TextHeight TextWidth ToDefaults TwipsToChartPart TypeByChartType
+Update UpdateControls UpdateRecord UpdateRow Upto
+WhatsThisMode WriteProperty
+ZOrder
+/C3"EVENTS" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+AccessKeyPress AfterAddFile AfterChangeFileName AfterCloseFile AfterColEdit AfterColUpdate AfterDelete AfterInsert AfterLabelEdit AfterRemoveFile AfterUpdate AfterWriteFile 
+AmbienChanged ApplyChanges Associate AsyncReadComplete AxisActivated AxisLabelActivated AxisLabelSelected AxisLabelUpdated AxisSelected AxisTitleActivated AxisTitleSelected 
+AxisTitleUpdated AxisUpdated
+BeforeClick BeforeColEdit BeforeColUpdate BeforeConnect BeforeDelete BeforeInsert BeforeLabelEdit BeforeLoadFile BeforeUpdate ButtonClick ButtonCompleted ButtonGotFocus 
+ButtonLostFocus
+Change ChartActivated ChartSelected ChartUpdated Click ColEdit Collapse ColResize ColumnClick Compare ConfigChageCancelled ConfigChanged ConnectionRequest
+DataArrival DataChanged DataUpdated DblClick Deactivate DeviceArrival DeviceOtherEvent DeviceQueryRemove DeviceQueryRemoveFailed DeviceRemoveComplete DeviceRemovePending 
+DevModeChange Disconnect DisplayChanged Dissociate DoGetNewFileName Done DonePainting DownClick DragDrop DragOver DropDown
+EditProperty EnterCell EnterFocus Event ExitFocus Expand
+FootnoteActivated FootnoteSelected FootnoteUpdated
+GotFocus
+HeadClick
+InfoMessage Initialize IniProperties ItemActivated ItemAdded ItemCheck ItemClick ItemReloaded ItemRemoved ItemRenamed ItemSeletected
+KeyDown KeyPress KeyUp
+LeaveCell LegendActivated LegendSelected LegendUpdated LinkClose LinkError LinkNotify LinkOpen Load LostFocus
+MouseDown MouseMove MouseUp
+NodeClick
+ObjectMove OLECompleteDrag OLEDragDrop OLEDragOver OLEGiveFeedback OLESetData OLEStartDrag OnAddNew OnComm
+Paint PanelClick PanelDblClick PathChange PatternChange PlotActivated PlotSelected PlotUpdated PointActivated PointLabelActivated PointLabelSelected PointLabelUpdated 
+PointSelected PointUpdated PowerQuerySuspend PowerResume PowerStatusChanged PowerSuspend
+QueryChangeConfig QueryComplete QueryCompleted QueryTimeout QueryUnload
+ReadProperties Reposition RequestChangeFileName RequestWriteFile Resize ResultsChanged RowColChange RowCurrencyChange RowResize RowStatusChanged
+SelChange SelectionChanged SendComplete SendProgress SeriesActivated SeriesSelected SeriesUpdated SettingChanged SplitChange StateChanged StatusUpdate SysColorsChanged
+Terminate TimeChanged TitleActivated TitleSelected TitleActivated
+UnboundAddData UnboundDeleteRow UnboundGetRelativeBookmark UnboundReadData UnboundWriteData Unload UpClick Updated
+Validate ValidationError
+WillAssociate WillChangeData WillDissociate WillExecute WillUpdateRows WithEvents WriteProperties
+/C4"STATEMENTS" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+AppActivate
+Base Beep
+Call Case ChDir ChDrive Const
+Declare DefBool DefByte DefCur DefDate DefDbl DefDec DefInt DefLng DefObj DefSng DefStr Deftype DefVar DeleteSetting Dim Do
+Else ElseIf End Enum Erase Event Exit Explicit
+False FileCopy For ForEach Friend Function 
+Get GoSub GoTo
+If Implements
+Kill
+Let LineInput Lock Loop LSet
+MkDir
+Name Next Not
+OnError On Option
+Private Property Public Put
+RaiseEvent Randomize ReDim Rem Reset Resume Return RmDir RSet 
+SavePicture SaveSetting SendKeys SetAttr Static Sub
+Then True Type
+Unlock
+Wend While Width With Write
+/C5"HTMLTAGS" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+<A </A> <ABBR> <ABBR </ABBR> <ABOVE> <ACRONYM> <ACRONYM </ACRONYM> <ADDRESS> <ADDRESS </ADDRESS> <APPLET </APPLET> <ARRAY> <AREA </AREA
+<B> <B </B> <BASE <BASEFONT <BDO> <BDO </BDO> <BGSOUND <BIG> <BIG </BIG> <BLINK> </BLINK> <BLOCKQUOTE> <BLOCKQUOTE </BLOCKQUOTE> <BODY <BODY> </BODY> <BOX> <BR <BR> <BIG 
+<BLINK <BUTTON> </BUTTON>
+<CAPTION> <CAPTION </CAPTION> <CENTER> <CENTER </CENTER> <CITE> <CITE </CITE> <CODE> <CODE </CODE> <COL> </COL> <COLGROUP> </COLGROUP> <COMMENT> </COMMENT> 
+<DD> <DD </DD> <DEL> <DEL </DEL> <DFN> <DFN </DFN> <DIR> <DIR </DIR> <DIV> <DIV </DIV> <DL> <DL </DL> <DT> <DT  </DT> 
+<EM> <EM </EM> <EMBED
+<FIELDSET> <FIELDSET </FIELDSET> <FIG> <FONT </FONT> <FORM> <FORM </FORM> <FRAME <FRAMESET </FRAMESET>
+<H1> <H1 </H1> <H2> <H2 </H2> <H3> <H3 </H3> <H4> <H4 </H4> <H5> <H5 </H5> <H6> <H6 </H6> <HEAD> <HEAD </HEAD> <HR> <HR <HTML> <HTML </HTML>
+<I> <I </I> <IFRAME> </IFRAME> <ILAYER> </ILAYER> <IMG <INPUT> <INPUT <INS> <INS </INS> <ISINDEX> <ISINDEX 
+<KBD> <KBD </KBD>
+<LABEL> <LABEL </LABEL> <LAYER> <LEGEND> <LEGEND </LEGEND> <LI> <LI </LI> <LINK <LISTING> </LISTING>
+<MAP </MAP> <MARQUEE </MARQUEE> <MENU> <MENU </MENU> <META <MULTICOL> </MULTICOL>
+<NEXTID <NOBR> </NOBR> <NOFRAMES> </NOFRAMES> <NOLAYER> </NOLAYER> <NOTE> </NOTE> <NOSCRIPT> </NOSCRIPT>
+<OBJECT> <OBJECT <OL> <OL </OL> <OPTION> <OPTION <OPTGROUP> <OPTGROUP </OPTGROUP>
+<P <P> </P> <PARAM <PRE> <PRE </PRE>
+<Q> <Q </Q> <QUOTE>
+<RANGE> <ROOT>
+<S> <S </S> <SAMP> <SAMP </SAMP> <SCRIPT <SCRIPT> </SCRIPT> <SELECT </SELECT> <SMALL> <SMALL </SMALL> <SOUND <SPACER> <SPAN> <SPAN </SPAN> <SQRT> <STRIKE> <STRIKE </STRIKE> 
+<STRONG> <STRONG </STRONG> <STYLE> <STYLE </STYLE> <SUB> <SUB </SUB> <SUP> <SUP </SUP>
+<TABLE> <TABLE </TABLE> <TBODY> <TBODY </TBODY> <TD <TD> </TD> <TEXT> <TEXTAREA <TEXTAREA> </TEXTAREA> <TFOOT> <TFOOT </TFOOT> <TH <TH> </TH> <THEAD> <THEAD </THEAD> <TITLE> 
+</TITLE> <TR <TR> </TR> <TT> </TT> <TT
+<U> <U </U> <UL> <UL </UL> 
+<VAR> </VAR> <VAR
+<WBR>
+<XMP> </XMP>
+/C6 Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+&
+/L3"PL/SQL" Nocase Line Comment = -- Block Comment On = /* Block Comment Off = */ File Extensions = SQL
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Delimiters = ~!%@^&*()-+=|\/{}[]:;"'<> ,	.?
+/Function String = "%[A-Z _]*[~\s]+(*)"
+/C1 "Keywords" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABORT ACCEPT ACCESS ADD ALL ALTER AND ANY ARRAY ARRAYLEN AS ASC ASSERT ASSIGN AT AUDIT AUTHORIZATION AVG
+BASE_TABLE BEGIN BETWEEN BINARY_INTEGER BODY BOOLEAN BY
+CASE CHAR CHAR_BASE CHECK CLOSE CLUSTER CLUSTERS COLAUTH COLUMN COMMENT COMMIT COMPRESS CONNECT CONSTANT CRASH CREATE CURRENT CURRVAL CURSOR
+DATABASE DATA_BASE DATE DBA DEBUGOFF DEBUGON DECLARE DECIMAL DEFAULT DEFINITION DELAY DELETE DESC DIGITS DISPOSE DISTINCT DO DROP
+ELSE ELSIF END ENTRY EXCEPTION EXCEPTION_INIT EXCLUSIVE EXISTS EXIT 
+FALSE FETCH FILE FLOAT FOR FORM FROM FUNCTION 
+GENERIC GOTO GRANT GROUP 
+HAVING 
+IDENTIFIED IF IMMEDIATE IN INCREMENT INDEX INDEXES INDICATOR INITIAL INSERT INTEGER INTERFACE INTERSECT INTO IS
+LEVEL LIKE LIMITED LOCK LONG LOOP
+MAX MAXEXTENTS MIN MINEXTENTS MINUS MISLABEL MOD MODE 
+NATURAL NATURALN NEW NEXTVAL NOAUDIT NOCOMPRESS NOLOGGING NOT NOWAIT NULL NUMBER NUMBER_BASE
+OF OFFLINE ON ONLINE OPEN OPTION OR ORDER OTHERS OUT
+PACKAGE PARTITION PCTFREE PCTUSED PLS_INTEGER POSITIVE POSITIVEN PRAGMA PRIOR PRIVATE PRIVILEGES PROCEDURE PUBLIC
+RAISE RANGE RAW REAL RECORD REF RELEASE REMR RENAME RESOURCE RETURN REVERSE REVOKE ROLLBACK ROW ROWID ROWLABEL ROWNUM ROWS ROWTYPE RUN
+SAVEPOINT SCHEMA SELECT SEPARATE SESSION SET SHARE SMALLINT SPACE SQL SQLCODE SQLERRM START STATEMENT STDDEV SUBTYPE SUCCESSFUL SUM SYNONYM SYSDATE
+TABAUTH TABLE TABLES TASK TERMINATE THEN TO TRIGGER TRUE TYPE 
+UID UNION UNIQUE UPDATE USE USER
+VALIDATE VALUES VARCHAR VARCHAR2 VARIANCE VIEW VIEWS 
+WHEN WHENEVER WHERE WHILE WITH WORK WRITE
+XOR
+/C2 "Packages" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+DBMS_OUTPUT
+DBMS_JOB
+DBMS_SQL
+/C3 "Package Methods" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+BIND_VARIABLE BIND_VARIABLE_CHAR BIND_VARIABLE_RAW BIND_VARIABLE_ROWID BROKEN
+CHANGE CLOSE_CURSOR COLUMN_VALUE COLUMN_VALUE_CHAR COLUMN_VALUE_RAW COLUMN_VALUE_ROWID
+DEFINE_COLUMN DEFINE_COLUMN_CHAR DEFINE_COLUMN_RAW DEFINE_COLUMN_ROWID DISABLE
+ENABLE EXECUTE EXECUTE_AND_FETCH
+FETCH_ROWS
+GET_LINE GET_LINES
+INTERVAL IS_OPEN
+LAST_ERROR_POSITION LAST_ROW_COUNT LAST_ROW_ID LAST_SQL_FUNCTION_CODE
+NEW_LINE NEXT_DATE 
+PARSE PUT PUT_LINE
+REMOVE 
+SUBMIT
+WHAT
+/C4 "SQL*Plus Commands" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+EXECUTE
+GRANT
+REPLACE
+RUN
+START
+/C5 "SQL*Plus Functions" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABS ADD_MONTHS ASCII
+CEIL CHR CONCAT CONVERT COS COSH
+DECODE
+EXP
+FLOOR
+GREATEST
+HEXTORAW 
+INITCAP INSTR
+LAST_DAY LENGTH LN LOG LOWER LPAD LTRIM
+MOD MONTHS_BETWEEN
+NEXT_DAY NEW_TIME NLS_INITCAP NLS_LOWER NLS_UPPER NVL
+POWER
+RAWTOHEX REPLACE ROUND ROWIDTOCHAR RPAD RTRIM
+SIGN SIN SINH SOUNDEX SQRT SUBSTR SUBSTRB
+TAN TANH TO_CHAR TO_DATE TO_LABEL TO_MULTI_BYTE TO_NUMBER TO_SINGLE_TYPE TRANSLATE TRUNC
+UPPER USERENV
+VSIZE
+/C6 "Should Be Reserved" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+BEFORE
+EACH
+FOR
+KEY
+PRIMARY
+WHEN WHERE WHILE
+/L9"Transact SQL" Nocase Line Comment = -- Block Comment On = /* Block Comment Off = */ File Extensions = SQL
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/C1 RESERVED WORDS Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABSOLUTE ACTION ALLOCATE ARE ASSERTION AT AUTHORIZATION
+BOTH
+CASCADE CASCADED CAST CATALOG CHAR_LENGTH CHARACTER CHARACTER_LENGTH COLLATE COLLATION COLUMN CONNECT CONNECTION CONSTRAINTS CORRESPONDING
+DATE DAY DEFERRABLE DEFERRED DESCRIBE DESCRIPTOR DIAGNOSTICS DISCONNECT DOMAIN
+END_EXEC ESCAPE EXCEPTION EXPIREDATE EXTERNAL EXTRACT
+FALSE FILE FIRST FULL
+GET GLOBAL
+HOUR
+IMMEDIATE INITIALLY INNER INPUT INTERVAL
+JOIN
+LAST LEADING LEFT LOCAL
+MATCH MINUTE MONTH
+NAMES NATIONAL NATURAL NCHAR NEXT NO
+OCTET_LENGTH OUTER OUTPUT OVERLAPS
+PAD PARTIAL POSITION PRESERVE PRIOR PRIVILEGES
+RELATIVE RESTRICT RETAINDAYS RIGHT ROWS
+SCHEMA SECOND SESSION SIZE SPACE SQLSTATE
+TIME TIMEZONE_HOUR TIMEZONE_MINUTE TRAILING TRANSLATE TRANSLATION TRUE
+UNKNOWN USAGE USING
+VALUE VOLUME
+WORK WRITE
+YEAR
+ZONE
+/C2 KEYWORDS Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ADD ALL ALTER AND ANY AS ASC AVG
+BEGIN BETWEEN BREAK BROWSE BULK BY
+CASE CHECK CHECKPOINT CLOSE CLUSTERED COALESCE COMMIT COMMITTED COMPUTE CONFIRM CONSTRAINT CONTINUE CONTROLROW CONVERT COUNT CREATE CURRENT CURRENT_DATE CURRENT_TIME CURRENT_TIMESTAMP CURRENT_USER CURSOR
+DATABASE DBCC DEALLOCATE DECLARE DEFAULT DELETE DESC DISK DISTINCT DOUBLE DROP DUMMY DUMP
+ELSE END ERRLVL ERROREXIT EXCEPT EXEC EXECUTE EXISTS EXIT
+FETCH FILLFACTOR FLOPPY FOR FOREIGN FROM
+GOTO GRANT GROUP
+HAVING HOLDLOCK
+IDENTITY IDENTITY_INSERT IDENTITYCOL IF IN INDEX INSENSITIVE INSERT INTERSECT INTO IS ISOLATION
+KEY KILL
+LEVEL LIKE LINENO LOAD
+MAX MIN MIRROREXIT
+NOCHECK NONCLUSTERED NOT NULL NULLIF
+OF OFF OFFSETS ON ONCE  ONLY OPEN OPTION OR ORDER OVER 
+PERM PERMANENT PIPE PLAN PRECISION PREPARE PRIMARY PRINT PROC PROCEDURE PROCESSEXIT PUBLIC
+RAISERROR READ RECONFIGURE REFERENCES REPEATABLE REPLICATION RETURN REVOKE ROLLBACK ROWCOUNT RULE
+SAVE SCROLL SELECT SERIALIZABLE SESSION_USER SET SETUSER SHUTDOWN SOME STATISTICS SUM SYSTEM_USER
+TABLE TAPE TEMP TEMPORARY TEXTSIZE THEN TO TRAN TRANSACTION TRIGGER TRUNCATE TSEQUAL
+UNCOMMITTED UNION UNIQUE UPDATE UPDATETEXT USE USER
+VALUES VARYING VIEW
+WAITFOR WHEN WHERE WHILE WITH WRITETEXT
+/C3 BUILT-IN STORED PROCEDURES Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+sp_column_privileges sp_special_columns sp_columns sp_sproc_columns sp_databases sp_statistics sp_datatype_info sp_stored_procedures sp_fkeys sp_table_privileges sp_pkeys sp_tables sp_server_info
+sp_addpublisher sp_dropsubscriber sp_addsubscriber sp_helpdistributor sp_changesubscriber sp_helpserver sp_dboption sp_helpsubscriberinfo sp_droppublisher sp_replsync sp_addarticle sp_helparticle sp_addpublication sp_helparticlecolumns sp_articlecolumn sp_helppublication sp_changearticle sp_helppublicationsync sp_changepublication sp_helpreplicationdb sp_droparticle sp_replflush sp_droppublication sp_replstatus sp_enumfullsubscribers sp_addsubscription sp_helpsubscription sp_changesubscription sp_subscribe sp_changesubstatus sp_unsubscribe sp_dropsubscription sp_helpreplicationdb sp_distcounters sp_replica sp_replcleanup sp_replsync sp_MSkill_job sp_repldone sp_replcmds sp_repltrans sp_replcounters sp_addtask sp_helptask sp_droptask sp_addalert sp_helpalert sp_addnotification sp_helpnotification sp_addoperator sp_helpoperator sp_dropalert sp_updatealert sp_dropnotification sp_updatenotification sp_dropoperator sp_updateoperator sp_addtask sp_helptask sp_droptask sp_purgehistory sp_helphistory sp_updatetask
+sp_MSSQLOLE65_version sp_MSSQLOLE_version sp_MS_upd_sysobj_category sp_MSdbuserprofile sp_MSdependencies sp_MSenumsubsystems sp_MSfilterclause sp_MSforeach_worker sp_MSforeachdb sp_MSforeachtable sp_MSgetalertinfo sp_MSgetexecinfo sp_MShelpcolumns sp_MShelpindex sp_MShelptype sp_MSindexspace sp_MSkilldb sp_MSloginmappings sp_MSmatchkey sp_MSobjectprivs sp_MSsetalertinfo sp_MSsetexecinfo sp_MSsettopology sp_MSsubscriptions sp_MStablechecks sp_MStablekeys sp_MStablerefs sp_MStablespace sp_MSuninstall_publishing sp_MSuniquename sp_TDGEN_CURSOR1 sp_TD_table_summary sp_TDaccess_server_drives sp_TDblocks sp_TDcheck_indexes sp_TDcheck_rowcount sp_TDdb_locks sp_TDdbsizes_data sp_TDdbsizes_log sp_TDdbsizes_total sp_TDdefault_db_audit sp_TDdevspace sp_TDdroplogin sp_TDformat_commas sp_TDget_logins sp_TDgetdbsizes sp_TDhelpdb sp_TDhelplogin sp_TDmirrorlogin sp_TDpassword_change sp_TDrunthis sp_TDspaceused sp_TDtable_sizes sp_TDupdate_stats sp_a_count_bits_on sp_abort_xact sp_add_app_user sp_addalias sp_addarticle sp_addextendedproc sp_addgroup sp_addlanguage sp_addlogin sp_addmessage sp_addpublication sp_addpublisher sp_addremotelogin sp_addsegment sp_addserver sp_addsubscriber sp_addsubscription sp_addtype sp_addumpdevice sp_adduser sp_altermessage sp_articlecolumn sp_articlefilter sp_articletextcol sp_articleview sp_bindefault sp_bindrule sp_blockcnt sp_certify_removable sp_change_users_login sp_changearticle sp_changedbowner sp_changegroup sp_changepublication sp_changesubscriber sp_changesubscription sp_changesubstatus sp_check_objects sp_check_removable sp_checknames sp_chklangparam sp_coalesce_fragments sp_column_privileges sp_columns sp_commit_xact sp_commonkey sp_configure sp_create_distribution_tables sp_create_removable sp_databases sp_datatype_info sp_db_locks sp_db_upgrade sp_db_upgrade1 sp_db_upgrade2 sp_db_upgrade3 sp_dbinstall sp_dboption sp_dbremove sp_ddopen sp_defaultdb sp_defaultlanguage sp_depends sp_devcreate sp_devoption sp_diskdefault sp_distcounters sp_dropalias sp_droparticle sp_dropdevice sp_dropextendedproc sp_dropgroup sp_dropkey sp_droplanguage sp_droplogin sp_dropmessage sp_droppublication sp_droppublisher sp_dropremotelogin sp_dropsegment sp_dropserver sp_dropsubscriber sp_dropsubscription sp_droptype sp_dropuser sp_dropwebtask sp_dsninfo sp_dtdba_checkfull sp_dtdba_constraint sp_dtdba_createsql sp_dtdba_freedevice sp_dtdba_getobj sp_dtdba_getobjectpermissions sp_dtdba_gettabkey sp_dtdba_gettabper sp_dtdba_getuserpermissions sp_dtdba_helpcolumn sp_dtdba_helpcolumn2 sp_dtdba_indexkeys sp_dtdba_userprotects sp_enumdsn sp_enumfullsubscribers sp_exec sp_extendsegment sp_fallback_MS_enroll_db sp_fallback_MS_enroll_dev sp_fallback_MS_enroll_usg sp_fallback_MS_sel_fb_svr sp_fallback_MS_verify_ri sp_fallback_activate_svr sp_fallback_deactivate_svr sp_fallback_deactivate_svr_db sp_fallback_enroll_svr_db sp_fallback_help sp_fallback_help_db_dev sp_fallback_permanent_svr sp_fallback_upd_dev_drive sp_fallback_withdraw_svr_db sp_fixindex sp_fkeys sp_foreignkey sp_get_volume_label sp_hcchangesubstatus1 sp_hcchangesubstatus2 sp_help sp_help_revdatabase sp_helparticle sp_helparticlecolumns sp_helpconstraint sp_helpdb sp_helpdevice sp_helpdistributor sp_helpextendedproc sp_helpgroup sp_helpindex sp_helpjoins sp_helpkey sp_helplanguage sp_helplog sp_helplogins sp_helppublication sp_helppublicationsync sp_helpremotelogin sp_helpreplicationdb sp_helprotect sp_helpsegment sp_helpserver sp_helpsort sp_helpsql sp_helpstartup sp_helpsubscriberinfo sp_helpsubscription sp_helptext sp_helpuser sp_kill sp_lock sp_lock2 sp_lockinfo sp_logdevice sp_lookup sp_makestartup sp_makewebtask sp_markreport sp_monitor sp_namecrack sp_namecrack_qi sp_objcheck sp_objectsegment sp_password sp_pkeys sp_placeobject sp_primarykey sp_probe_xact sp_processinfo sp_processmail sp_publishdb sp_recompile sp_remoteoption sp_remove_xact sp_rename sp_renamedb sp_replica sp_runwebtask sp_scan_xact
+sp_schedulersignal sp_server_info sp_serveroption sp_setlangalias sp_setnetname sp_spaceused sp_special_columns sp_sproc_columns sp_sqlexec sp_sqlregister sp_start_xact sp_stat_xact sp_statistics sp_stored_procedures sp_subscribe sp_sysbackuphistory_limiter sp_table_privileges sp_tableoption sp_tables sp_tempdbspace sp_textcolstatus sp_unbindefault sp_unbindrule sp_unmakestartup sp_unsubscribe sp_user_counter1 sp_user_counter10 sp_user_counter2 sp_user_counter3 sp_user_counter4 sp_user_counter5 sp_user_counter6 sp_user_counter7 sp_user_counter8 sp_user_counter9 sp_userdefcounters sp_validlang sp_validname
+sp_who sp_who2
+xp_enumgroups xp_logininfo xp_grantlogin xp_revokelogin xp_loginconfig xp_deletemail xp_sendmail xp_findnextmsg xp_startmail xp_readmail xp_stopmail xp_cmdshell xp_sprintf xp_logevent xp_sscanf xp_msver
+/C4 GLOBAL VARIABLES Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+CONNECTIONS CPU_BUSY CURSOR_ROWS
+DATEFIRST DBTS
+ERROR
+FETCH_STATUS
+IDLE IO_BUSY
+LANGID LANGUAGE
+MAX_CONNECTIONS MAX_PRECISION MICROSOFTVERSION
+NESTLEVEL
+PACK_RECEIVED PACK_SENT PACKET_ERRORS PROCID
+REMSERVER
+SERVERNAME SERVICENAME SPID
+TIMETICKS TOTAL_ERRORS TOTAL_READ TOTAL_WRITE TRANCOUNT
+VERSION
+/C5 BUILT-IN FUNCTIONS Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABS ACOS ASCII ASIN ATAN ATN2 
+COL_NAME CHARINDEX CHAR COT COS CEILING COL_LENGTH
+DB_NAME DB_ID DATALENGTH DIFFERENCE DATEADD DATENAME  DATEDIFF DATEPART DEGREES
+EXP
+FLOOR
+GETANSINULL GETDATE
+HOST_ID HOST_NAME
+ISNULL INDEX_COL IDENT_SEED IDENT_INCR
+LOWER LTRIM LOG LOG10
+OBJECT_ID OBJECT_NAME
+PATINDEX POWER PI
+RTRIM REVERSE REPLICATE RADIANS RAND ROUND
+SUSER_NAME SUSER_ID STATS_DATE SUBSTRING STUFF STR SOUNDEX SIGN SIN SQRT
+TEXTVALID TEXTPTR TAN
+USER_NAME USER_ID UPPER
+/C6 DATA TYPES Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+BINARY BIT
+DATETIME DECIMAL
+FLOAT
+IMAGE INT
+MONEY
+NTEXT NUMERIC NVARCHAR
+REAL
+SMALLDATETIME SMALLMONEY
+TEXT TIMESTAMP TINYINT
+UNIQUEIDENTIFIER
+VARBINARY VARCHAR
+/L4"C++ Header" Line Comment = // Block Comment On = /* Block Comment Off = */ Escape Char = \ String Chars = "' File Extensions = HPP
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Delimiters = ~!@%^&*()-+=|\{}[]<>:;"' ,	.?
+/Function String = "%[a-zA-Z_]*)[~;]"
+/Indent Strings = "{"
+/Unindent Strings = "}"
+
+/C1"Blue Keywords" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+bool
+char class const
+double
+enum explicit export extern
+false float friend
+inline int
+long
+mutable
+namespace
+operator
+protected private public
+short signed sizeof static struct 
+template throw true typedef typename
+union unsigned using
+virtual void volatile
+wchar_t
+
+/C2"Red Keywords" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+asm auto
+break
+case catch const_cast continue
+default do delete dynamic_cast
+else
+for
+goto
+if
+new
+register reinterpret_cast return
+static_cast switch
+this try typeid
+while
+
+/C3"Blue Hash directives" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+#define #error #elif #if #line #else #ifdef #pragma #endif #ifndef #undef
+
+/C4"Red Hash directives" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+#include
+
+/C5"Operators" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
++
+-
+=
+// /
+%
+&
+>
+<
+^
+!
+|
+*
+^
+
+/C6"Punctuators" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+{
+}
+;
+(
+)
+,
+/L5"C++ Source" Line Comment = // Block Comment On = /* Block Comment Off = */ Escape Char = \ String Chars = "' File Extensions = CPP
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Delimiters = ~!@%^&*()-+=|\{}[]<>:;"' ,	.?
+/Function String = "%[a-zA-Z_]*)[~;]"
+/Indent Strings = "{"
+/Unindent Strings = "}"
+
+/C1"Blue Keywords" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+bool
+char class const case catch const_cast
+double default do delete dynamic_cast
+else enum explicit export extern
+for false float friend
+if inline int
+long
+mutable
+new namespace
+operator
+protected private public
+reinterpret_cast return
+short signed sizeof static struct static_cast switch
+template throw true typedef typename this try typeid
+union unsigned using
+virtual void volatile
+wchar_t while
+
+/C2"Red Keywords" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+asm auto
+break
+continue
+goto
+register 
+
+/C3"Hash directives" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+#define #error #include #elif #if #line #else #ifdef #pragma #endif #ifndef #undef
+
+/C4"Operators" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
++
+-
+=
+// /
+%
+&
+>
+<
+^
+!
+|
+*
+^
+
+/C5"Punctuators" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+{
+}
+;
+(
+)
+,
+/L6"VBScript ActiveServerPages" Nocase Noquote HTML_LANG Line Comment = '  Block Comment On = <!-- Block Comment Off = --> Block Comment On Alt = <% Block Comment Off Alt = %> File Extensions = vsp vsa
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Delimiters = ~!@$%^&*()+=|\{}[]:;"'<> ,        .?
+/Function String = "%[PF]*)$"
+/Indent Strings = "Then"
+/Unindent Strings = "End" "Next" "End If" "End Select"
+/C1"HTML TAGS" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+<A </A> <ABBR> <ABBR </ABBR> <ABOVE> <ACRONYM> <ACRONYM </ACRONYM> <ADDRESS> <ADDRESS </ADDRESS> <APPLET </APPLET> <ARRAY> <AREA </AREA
+<B> <B </B> <BASE <BASEFONT <BDO> <BDO </BDO> <BGSOUND <BIG> <BIG </BIG> <BLINK> </BLINK> <BLOCKQUOTE> <BLOCKQUOTE </BLOCKQUOTE> <BODY <BODY> </BODY> <BOX> <BR <BR> <BIG <BLINK <BUTTON> </BUTTON>
+<CAPTION> <CAPTION </CAPTION> <CENTER> <CENTER </CENTER> <CITE> <CITE </CITE> <CODE> <CODE </CODE> <COL> </COL> <COLGROUP> </COLGROUP> <COMMENT> </COMMENT>
+<DD> <DD </DD> <DEL> <DEL </DEL> <DFN> <DFN </DFN> <DIR> <DIR </DIR> <DIV> <DIV </DIV> <DL> <DL </DL> <DT> <DT  </DT>
+<EM> <EM </EM> <EMBED
+<FIELDSET> <FIELDSET </FIELDSET> <FIG> <FONT </FONT> <FORM> <FORM </FORM> <FRAME <FRAMESET </FRAMESET>
+<H1> <H1 </H1> <H2> <H2 </H2> <H3> <H3 </H3> <H4> <H4 </H4> <H5> <H5 </H5> <H6> <H6 </H6> <HEAD> <HEAD </HEAD> <HR> <HR <HTML> <HTML </HTML>
+<I> <I </I> <IFRAME> </IFRAME> <ILAYER> </ILAYER> <IMG <INPUT> <INPUT <INS> <INS </INS> <ISINDEX> <ISINDEX
+<KBD> <KBD </KBD>
+<LABEL> <LABEL </LABEL> <LAYER> <LEGEND> <LEGEND </LEGEND> <LI> <LI </LI> <LINK <LISTING> </LISTING>
+<MAP </MAP> <MARQUEE </MARQUEE> <MENU> <MENU </MENU> <META <MULTICOL> </MULTICOL>
+<NEXTID <NOBR> </NOBR> <NOFRAMES> </NOFRAMES> <NOLAYER> </NOLAYER> <NOTE> </NOTE> <NOSCRIPT> </NOSCRIPT>
+<OBJECT> <OBJECT <OL> <OL </OL> <OPTION> <OPTION <OPTGROUP> <OPTGROUP </OPTGROUP>
+<P <P> </P> <PARAM <PRE> <PRE </PRE>
+<Q> <Q </Q> <QUOTE>
+<RANGE> <ROOT>
+<S> <S </S> <SAMP> <SAMP </SAMP> <SCRIPT <SCRIPT> </SCRIPT> <SELECT </SELECT> <SMALL> <SMALL </SMALL> <SOUND <SPACER> <SPAN> <SPAN </SPAN> <SQRT> <STRIKE> <STRIKE </STRIKE> <STRONG> <STRONG </STRONG> <STYLE> <STYLE </STYLE> <SUB> <SUB </SUB> <SUP> <SUP </SUP>
+<TABLE> <TABLE </TABLE> <TBODY> <TBODY </TBODY> <TD <TD> </TD> <TEXT> <TEXTAREA <TEXTAREA> </TEXTAREA> <TFOOT> <TFOOT </TFOOT> <TH <TH> </TH> <THEAD> <THEAD </THEAD> <TITLE> </TITLE> <TR <TR> </TR> <TT> </TT> <TT
+<U> <U </U> <UL> <UL </UL>
+<VAR> </VAR> <VAR
+<WBR>
+<XMP> </XMP>
+/C2"HTML ATTRIBUTES" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABBR= ACCEPT-CHARSET= ACCEPT= ACCESSKEY= ACTION= ALIGN= ALINK= ALT= ARCHIVE= AXIS=
+BACKGROUND= BEHAVIOR BELOW BGCOLOR= BORDER=
+CELLPADDING= CELLSPACING= CHAR= CHAROFF= CHARSET= CHECKED CITE= CLASS= CLASSID= CLEAR= CODE= CODEBASE= CODETYPE= COLOR= COLS= COLSPAN= COMPACT CONTENT= COORDS=
+DATA= DATETIME= DECLARE DEFER DIR= DISABLED
+ENCTYPE=
+FACE= FOR= FRAME= FRAMEBORDER= FRAMESPACING=
+HEADERS= HEIGHT= HIDDEN= HREF= HREFLANG= HSPACE= HTTP-EQUIV=
+ID= ISMAP=
+LABEL= LANG= LANGUAGE= LINK= LOOP= LONGDESC=
+MAILTO= MARGINHEIGHT= MARGINWIDTH= MAXLENGTH= MEDIA= METHOD= MULTIPLE
+NAME= NOHREF NORESIZE NOSHADE
+OBJECT= ONBLUR= ONCHANGE= ONFOCUS= ONKEYDOWN= ONKEYPRESS= ONKEYUP= ONLOAD= ONRESET= ONSELECT= ONSUBMIT= ONUNLOAD= ONCLICK= ONDBLCLICK= ONMOUSEDOWN= ONMOUSEMOVE= ONMOUSEOUT= ONMOUSEOVER= ONMOUSEUP=
+PROFILE= PROMPT=
+READONLY REL= REV= ROWS= ROWSPAN= RULES=
+SCHEME= SCOPE= SCROLLING= SELECTED SHAPE= SIZE= SPAN= SRC= STANDBY= START= STYLE= SUMMARY=
+TABINDEX= TARGET= TEXT= TITLE= TOPMARGIN= TYPE=
+URL= USEMAP=
+VALIGN= VALUE= VALUETYPE= VERSION= VLINK= VSPACE=
+WIDTH=
+=
+/C3"VBScript FUNCTIONS" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Abs Array Asc Atn Avg
+CBool CByte CCur CDate CDbl Chr CInt CLng Cos CSng CStr
+Date DateAdd DateDiff DatePart DateSerial DateValue Day
+Eval Exp
+Filter Fix FormatCurrency FormatDateTime FormatNumber FormatPercent
+GetObject GetRef
+Hex Hour
+InputBox InStr InstrRev Int IsArray IsDate IsEmpty IsNull IsNumeric IsObject
+Join
+LBound LCase Left Len LoadPicture Log LTrim
+Mid Minute Month MonthName MsgBox
+Now
+Oct
+Replace RGB Right Rnd Round RTrim
+ScriptEngine ScriptEngineBuildVersion ScriptEngineMajorVersion ScriptEngineMinorVersion Second Sgn Sin Space Split Sqr StrComp String StrReverse
+Tan Time Timer TimeSerial TimeValue Trim TypeName
+UBound UCase
+VarType
+Weekday WeekdayName
+Year
+/C4"VBScript Statements" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Call Case Class Const
+Dim Do
+Else ElseIf End Erase Error Execute Exit Explicit
+For ForEach Function
+Get
+If
+Let Loop
+Next
+On Option
+Private Property Public
+Set
+Randomize ReDim Rem Resume
+Select Set Sub
+Then
+Wend While With
+/C5"ASP and VBScript OBJECTS" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Application
+Dictionary
+Err
+FileSystemObject
+Match Matches
+ObjectContext
+RegExp Request Response
+Scripting Server Session
+/C6"ASP and VBScript Methods/Events/Properties/Collections" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Abandon AddHeader AppendToLog
+BinaryRead BinaryWrite Buffer
+CacheControl Charset Clear ClientCertificate Close CodePage Contents ContentType Cookies CreateObject
+Description
+Expires ExpiresAbsolute
+Fields FirstIndex Flush Form
+Global
+HelpContext HelpFile HTMLEncode
+IgnoreCase Initialize IsClientConnected
+LCID Length Lock
+MapPath
+Number
+OnEnd OnStart OnTransactionCommit OnTransactionAbort Open
+Pattern Pics
+QueryString
+Raise Redirect
+ScriptTimeout ServerVariables SessionID SetComplete SetAbort Source StaticObjects Status
+Terminate Test Timeout TotalBytes
+Unlock URLEncode
+Value
+Write
+/C7"VBScript Constants" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+vbBlack vbBlue vbCyan vbGreen vbMagenta vbRed vbWhite vbYellow
+vbBinaryCompare vbTextCompare
+vbSunday vbMonday vbTuesday vbWednesday vbThursday vbFriday vbSaturday vbUseSystem vbUseSystemDayOfWeek vbFirstJan1 vbFirstFourDays vbFirstFullWeek
+vbGeneralDate vbLongDate vbShortDate vbLongTime vbShortTime
+vbObjectError
+vbOKOnly vbOKCancel vbAbortRetryIgnore vbYesNoCancel vbYesNo vbRetryCancel vbCritical vbQuestion vbExclamation vbInformation vbDefaultButton1 vbDefaultButton2 vbDefaultButton3 vbDefaultButton4 vbApplicationModal vbSystemModal
+vbCr vbCrLf vbFormFeed vbLf vbNewLine vbNullChar vbNullString vbTab vbVerticalTab
+vbUseDefault vbTrue vbFalse
+/C8"Operators" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+And
+Eqv
+Imp
+In Is
+Mod
+Not
+Or
+Xor
+=
++
+// /
+\
+*
+^
+-
+&
+/L7"VBScript" Line Comment = ' File Extensions = VBS WSF
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Function String = "^{Sub^}^{Function^} [a-z,A-Z,0-9,_, ,(,)]+$"
+/Delimiters =  	.(),-+=|\/{}[]:;"'<	>
+/Indent Strings = "Then" "Else"
+/Unindent Strings = "End" "Next" "End If" "End Select" "End Sub" "Wend"
+/C1"Statement/Operator" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+And As
+Call Case Class Const
+Dim Do
+Each Else ElseIf Empty End Eqv Erase Error Execute Exit Explicit
+For Function
+Get Goto
+If Imp Is
+Let Loop
+Mod
+Next New Not Nothing Null
+On Option Or
+Private Property Public
+Randomize ReDim Rem Resume
+Select Set Stop Sub
+Then To 
+Until
+Wend While With
+
+/C2"Functions" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Abs Array Asc Atn
+CBool CByte CCur CDate CDbl Chr CInt CLng Cos CSng CStr
+Date DateAddFunction DateDiff DatePart DateSerial DateValue Day
+Eval Exp
+Filter Fix FormatCurrency FormatDateTime FormatNumber FormatPercent
+GetObject GetRef
+Hex Hour
+InputBox InStr InStrRev Int IsArray IsDate IsEmpty IsNull IsNumeric IsObject
+Join
+LBound LCase Left Len LoadPicture Log LTrim
+Mid Minute Month MonthName MsgBox
+Now
+Oct
+Replace RGB Right Rnd Round RTrim
+ScriptEngine ScriptEngineBuildVersion ScriptEngineMajorVersion ScriptEngineMinorVersion Second Sgn Sin Space
+Split Sqr StrComp String StrReverse
+Tan Time Timer TimeSerial TimeValue Trim TypeName
+UBound UCase
+VarType
+Weekday WeekdayName
+Year
+
+/C3"Properties" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+AccountDisabled AccountExpirationDate Application Arguments AtEndOfLine AtEndOfStream
+Attributes AutoUnlockInterval AvailableSpace
+BadPasswordAttempts
+Column CompareMode ComputerName Count
+DateCreated DateLastAccessed DateLastModified Description Drive DriveLetter DriveType Drives
+Environment
+FileSystem Files FirstIndex FreeSpace FullName
+Global
+HelpContext HelpFile HomeDirDrive HomeDirectory HotKey
+IconLocation IgnoreCase Interactive IsAccountLocked IsReady IsRootFolder Item
+Key
+LastLogin LastLogoff Length Line LockoutObservationInterval LoginHours LoginScript LoginWorkstations
+MaxBadPasswordsAllowed MaxLogins MaxPasswordAge MaxStorage MinPasswordAge MinPasswordLength
+Name Number
+ObjectSid
+Parameters ParentFolder PasswordAge PasswordExpirationDate PasswordExpired PasswordHistoryLength
+Path Pattern PrimaryGroupID Profile
+Remove RootFolder
+ScriptFullName ScriptName SerialNumber ShareName ShortName ShortPath Size Source SpecialFolders Subfolders
+TargetPath TotalSize Type
+UserDomain UserFlags UserName
+Value Version VolumeName
+WindowStyle WorkingDirectory
+
+/C4"Methods" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Add AddPrinterConnection AddWindowsPrinterConnection AppActivate
+BuildPath
+Clear Close ConnectObject Copy CopyFile CopyFolder CreateFolder CreateObject CreateShortcut CreateTextFile
+Delete DeleteFile DeleteFolder DisconnectObject DriveExists
+Echo EnumNetworkDrives EnumPrinterConnections Exists ExpandEnvironmentStrings
+FileExists FolderExists
+GetAbsolutePathName GetBaseName GetDrive GetDriveName GetExtensionName GetFile GetFileName GetFolder
+GetParentFolderName GetResource GetSpecialFolder GetTempName
+Items
+Keys
+LogEvent
+MapNetworkDrive Move MoveFile MoveFolder
+OpenAsTextStream OpenTextFile
+Popup Put
+Quit
+Raise Read ReadAll ReadLine RegDelete RegRead RegWrite RemoveAll RemoveNetworkDrive RemovePrinterConnection Replace Run
+Save SendKeys SetDefaultPrinter Skip SkipLine Sleep SetInfo
+Test
+Write WriteBlankLines WriteLine
+
+/C5"Objects" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Dictionary 
+Err
+File FileSystemObject Folder
+Match
+RegExp
+TextStream
+Wscript WshNetwork WshShell
+
+/C6"Constants" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+False FALSE
+True TRUE
+vbAbort vbAbortRetryIgnore vbApplicationModal vbArray vbBinaryCompare vbBlack vbBlue vbBoolean vbByte vbCancel
+vbCr vbCritical vbCrLf vbCurrency vbCyan vbDataObject vbDate vbDecimal vbDefaultButton1 vbDefaultButton2
+vbDefaultButton3 vbDefaultButton4 vbDouble vbEmpty vbError vbExclamation vbFirstFourDays vbFirstFullWeek
+vbFirstJan1 vbFormFeed vbFriday vbGeneralDate vbGreen vbIgnore vbInformation vbInteger vbLf vbLong vbLongDate
+vbLongTime vbMagenta vbMonday vbNewLine vbNo vbNull vbNullChar vbNullString vbObject vbObjectError vbOK vbOKCancel
+vbOKOnly vbQuestion vbRed vbRetry vbRetryCancel vbSaturday vbShortDate vbShortTime vbSingle vbString vbSunday
+vbSystemModal vbTab vbTextCompare vbThursday vbTuesday vbUseSystem vbUseSystemDayOfWeek vbVariant vbVerticalTab
+vbWednesday vbWhite vbYellow vbYes vbYesNo vbYesNoCancel
+/L8"ASP JScript" Nocase Noquote HTML_LANG Line Comment = //  Block Comment On = <!-- Block Comment Off = --> Block Comment On Alt = /* Block Comment Off Alt = */ Escape Char = \ File Extensions = ASP ASA
+/Colors = 0,8421376,8421376,8421504,255,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/Delimiters = ~!@$%^&*()+=|\{}[]:;"'<> ,	.?
+/Function String = "function[ ^t]+^([A-Za-z_]+*)^)"
+/Indent Strings = "{"
+/Unindent Strings = "}"
+/C1"HTML TAGS" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+<A </A> <ABBR> <ABBR </ABBR> <ABOVE> <ACRONYM> <ACRONYM </ACRONYM> <ADDRESS> <ADDRESS </ADDRESS> <APPLET </APPLET> <ARRAY> <AREA </AREA
+<B> <B </B> <BASE <BASEFONT <BDO> <BDO </BDO> <BGSOUND <BIG> <BIG </BIG> <BLINK> </BLINK> <BLOCKQUOTE> <BLOCKQUOTE </BLOCKQUOTE> <BODY <BODY> </BODY> <BOX> <BR <BR> <BIG <BLINK <BUTTON> </BUTTON>
+<CAPTION> <CAPTION </CAPTION> <CENTER> <CENTER </CENTER> <CITE> <CITE </CITE> <CODE> <CODE </CODE> <COL> </COL> <COLGROUP> </COLGROUP> <COMMENT> </COMMENT>
+<DD> <DD </DD> <DEL> <DEL </DEL> <DFN> <DFN </DFN> <DIR> <DIR </DIR> <DIV> <DIV </DIV> <DL> <DL </DL> <DT> <DT  </DT>
+<EM> <EM </EM> <EMBED
+<FIELDSET> <FIELDSET </FIELDSET> <FIG> <FONT </FONT> <FORM> <FORM </FORM> <FRAME <FRAMESET </FRAMESET>
+<H1> <H1 </H1> <H2> <H2 </H2> <H3> <H3 </H3> <H4> <H4 </H4> <H5> <H5 </H5> <H6> <H6 </H6> <HEAD> <HEAD </HEAD> <HR> <HR <HTML> <HTML </HTML>
+<I> <I </I> <IFRAME> </IFRAME> <ILAYER> </ILAYER> <IMG <INPUT> <INPUT <INS> <INS </INS> <ISINDEX> <ISINDEX
+<KBD> <KBD </KBD>
+<LABEL> <LABEL </LABEL> <LAYER> <LEGEND> <LEGEND </LEGEND> <LI> <LI </LI> <LINK <LISTING> </LISTING>
+<MAP </MAP> <MARQUEE </MARQUEE> <MENU> <MENU </MENU> <META <MULTICOL> </MULTICOL>
+<NEXTID <NOBR> </NOBR> <NOFRAMES> </NOFRAMES> <NOLAYER> </NOLAYER> <NOTE> </NOTE> <NOSCRIPT> </NOSCRIPT>
+<OBJECT> <OBJECT <OL> <OL </OL> <OPTION> <OPTION <OPTGROUP> <OPTGROUP </OPTGROUP>
+<P <P> </P> <PARAM <PRE> <PRE </PRE>
+<Q> <Q </Q> <QUOTE>
+<RANGE> <ROOT>
+<S> <S </S> <SAMP> <SAMP </SAMP> <SCRIPT <SCRIPT> </SCRIPT> <SELECT </SELECT> <SMALL> <SMALL </SMALL> <SOUND <SPACER> <SPAN> <SPAN </SPAN> <SQRT> <STRIKE> <STRIKE </STRIKE> <STRONG> <STRONG </STRONG> <STYLE> <STYLE </STYLE> <SUB> <SUB </SUB> <SUP> <SUP </SUP>
+<TABLE> <TABLE </TABLE> <TBODY> <TBODY </TBODY> <TD <TD> </TD> <TEXT> <TEXTAREA <TEXTAREA> </TEXTAREA> <TFOOT> <TFOOT </TFOOT> <TH <TH> </TH> <THEAD> <THEAD </THEAD> <TITLE> </TITLE> <TR <TR> </TR> <TT> </TT> <TT
+<U> <U </U> <UL> <UL </UL>
+<VAR> </VAR> <VAR
+<WBR>
+<XMP> </XMP>
+/C2"HTML ATTRIBUTES" Colors = 255 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+ABBR= ACCEPT-CHARSET= ACCEPT= ACCESSKEY= ACTION= ALIGN= ALINK= ALT= ARCHIVE= AXIS=
+BACKGROUND= BEHAVIOR BELOW BGCOLOR= BORDER=
+CELLPADDING= CELLSPACING= CHAR= CHAROFF= CHARSET= CHECKED CITE= CLASS= CLASSID= CLEAR= CODE= CODEBASE= CODETYPE= COLOR= COLS= COLSPAN= COMPACT CONTENT= COORDS=
+DATA= DATETIME= DECLARE DEFER DIR= DISABLED
+ENCTYPE=
+FACE= FOR= FRAME= FRAMEBORDER= FRAMESPACING=
+HEADERS= HEIGHT= HIDDEN= HREF= HREFLANG= HSPACE= HTTP-EQUIV=
+ID= ISMAP=
+LABEL= LANG= LANGUAGE= LINK= LOOP= LONGDESC=
+MAILTO= MARGINHEIGHT= MARGINWIDTH= MAXLENGTH= MEDIA= METHOD= MULTIPLE
+NAME= NOHREF NORESIZE NOSHADE
+OBJECT= ONBLUR= ONCHANGE= ONFOCUS= ONKEYDOWN= ONKEYPRESS= ONKEYUP= ONLOAD= ONRESET= ONSELECT= ONSUBMIT= ONUNLOAD= ONCLICK= ONDBLCLICK= ONMOUSEDOWN= ONMOUSEMOVE= ONMOUSEOUT= ONMOUSEOVER= ONMOUSEUP=
+PROFILE= PROMPT=
+READONLY REL= REV= ROWS= ROWSPAN= RULES=
+SCHEME= SCOPE= SCROLLING= SELECTED SHAPE= SIZE= SPAN= SRC= STANDBY= START= STYLE= SUMMARY=
+TABINDEX= TARGET= TEXT= TITLE= TOPMARGIN= TYPE=
+URL= USEMAP=
+VALIGN= VALUE= VALUETYPE= VERSION= VLINK= VSPACE=
+WIDTH=
+=
+/C3"JScript keywords" Colors = 33023 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+abstract
+boolean break byte
+case catch char class const continue
+default do double
+else extends
+false final finally float for function
+goto
+if implements import in instanceof int interface
+long
+native new null
+package private protected public
+return
+short static super switch synchronized
+this throw throws transient true try
+var void
+while with
+/C4"JScript constants" Colors = 32768 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+escape eval
+isNaN
+parseFloat parseInt
+unescape
+/C5"JScript functions" Colors = 4210816 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+abs acos alert anchor asin atan atan2
+back big blink blur bold
+captureEvents ceil charAt clearInterval clearTimeout click close confirm cos
+exp
+find fixed floor focus fontcolor fontsize forward
+getDate getDay getHours getMinutes getMonth getSeconds getSelection getTime
+getTimezoneOffset getYear go
+handleEvent home
+indexof italics
+javaEnabled join
+lastinexOf link log
+match max min moveBy moveTo
+open
+parse pow print pompt
+random refresh releaseEvents reload replace reset resizeBy resizeTo reverse
+round routeEvent
+scroll scrollBy scrollTo select setDate setHours setInterval setMinutes
+setMonth setSeconds setTime setTimeout setYear sin small sort split sqrt
+stop strikesub submit substring sup
+tan toGMTString toLocaleString toLowerCase toString toUpperCase
+UTC
+write writeln
+/C6"ASP OBJECTS" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Application
+Dictionary
+Err
+FileSystemObject
+Matches
+ObjectContext
+RegExp Request Response
+Scripting Server Session
+/C7"ASP Methods/Events/Properties/Collections" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+Abandon AddHeader AppendToLog
+BinaryRead BinaryWrite Buffer
+CacheControl Charset Clear ClientCertificate CodePage Contents ContentType Cookies CreateObject
+Description
+Execute Expires ExpiresAbsolute
+Fields FirstIndex Flush Form
+Global
+HelpContext HelpFile HTMLEncode
+IgnoreCase Initialize IsClientConnected Item
+LCID Length Lock
+MapPath
+Number
+OnEnd OnStart OnTransactionCommit OnTransactionAbort
+Pattern Pics
+QueryString
+Raise Redirect
+ScriptTimeout ServerVariables SessionID SetComplete SetAbort Source StaticObjects Status
+Terminate Test Timeout TotalBytes
+Unlock URLEncode
+Value
+/C8"Operators" Colors = 16711680 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+&&
+==
+!=
+<
+>
+!
+~
+!
+=
++
+*
+^
+-
+&
