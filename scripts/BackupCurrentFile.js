@@ -66,7 +66,7 @@ UltraEdit.saveAs(FullFileName
       + hours
       + minutes
       + seconds
-      + ".bak");
+      + "RH.bak");
 UltraEdit.closeFile(UltraEdit.activeDocument.path,2);
 
 // Go back to the document whose contents we copied.
