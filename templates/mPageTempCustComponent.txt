@@ -1,0 +1,57 @@
+Script Author: Robert Holland
+Banner Namespace: holland
+CCL Name: 1bh_mpage_holland
+;----------------------------------------------------------------------------
+//BEGIN holland
+/**
+* Project:
+* Version: 1.0
+* Released:	Saturday, March 14, 2015 15:57:29
+* Updated:
+* Purpose:
+* @author: Robert Holland
+* Request#:
+*/
+
+MPage.namespace("banner");
+banner.holland = function(){};
+banner.holland.prototype = new MPage.Component();
+banner.holland.prototype.constructor = MPage.Component();
+banner.holland.prototype.base = MPage.Component.prototype;
+banner.holland.prototype.name = "banner.holland";
+banner.holland.prototype.cclProgram = "1bh_mpage_holland";
+banner.holland.prototype.cclParams = [];
+banner.holland.prototype.cclDataType = "JSON";
+
+banner.holland.prototype.init = function(options)
+{
+//	// Check cookie for param update
+//	if(readCookie("bldgltframe") == null){
+//		createCookie("bldgltframe","72,H",1);
+//	}
+
+	var params = [];
+	params.push("mine");
+	params.push(this.getProperty("personId"));
+	params.push(this.getProperty("encounterId"));
+//	params.push(readCookie("bldgltframe"));
+	params.push(300);
+	this.cclParams = params;
+};
+
+banner.holland.prototype.render = function()
+{
+	var tempStr=[];
+	var element = this.getTarget();
+	var jsonObj = this.data;
+    var recordData = jsonObj.RECORD_DATA;
+	var compid = this.getComponentUid();
+	MPage.getCustomComp(compid).setProperty("headerSubTitle","");
+
+//alert("Hello World");
+	tempStr.push("<div><table><tr><td>",this.name,"</td></tr></table></div>");
+	element.innerHTML = tempStr.join("");
+
+};
+
+// END holland
