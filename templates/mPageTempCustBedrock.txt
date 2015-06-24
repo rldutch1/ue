@@ -1,0 +1,208 @@
+;Program Author: [+Author+]
+;Program Name: 1bh_mpage_[+NameSpace+].prg
+;Creation Date: [DATE_TEXT] [TIME]
+;Last Modified:
+;Copyright: (c) [DATE_TEXT]
+;Purpose:
+;Request #:
+;Namespace: [+NameSpace+]
+;----------------------------------------------------------------------------
+;free record request go
+;/*Add any fields and data type in your "record request" that your CCL will need to run.*/
+;
+;record request
+;( 	;1 encntr_id = i4
+;	1 per_id = i4
+;	1 enc_id = i4
+;	;1 cvalue = i4
+;) go
+;
+;/*Setting the request equal to the Encounter ID that will be sent from PowerChart.
+;This information is manually entered here when testing. */
+;
+;	set request->per_id = 123456789.00 go
+;	set request->enc_id = 987654321.00 go
+;
+;/*The CCL that you want to execute to produce the data. */
+;
+;	execute 1bh_mpage_[+NameSpace+] "MINE", request->per_id, request->enc_id go
+
+;----------------------------------------------------------------------------
+
+drop program 1bh_mpage_[+NameSpace+]:dba go
+create program 1bh_mpage_[+NameSpace+]:dba
+
+prompt
+	"Output to File/Printer/MINE" = "MINE"   ;* Enter or select the printer or file name to send this report to.
+	, "per_id" = 0
+	, "enc_id" = 0
+
+with OUTDEV, per_id, enc_id
+
+%i cust_script:1samt_az_common.inc
+;%i cust_script:1samt_az_common_cds.inc
+;PROGRAM HEADER ABOVE
+
+/*Begin Record Structure*/
+;Record structure elements can be lowercase here but must be uppercase in your .js.
+free record [+NameSpace+]_structure
+record [+NameSpace+]_structure (
+1 [+NameSpace+]_structure_cnt=i4
+1 [+NameSpace+]_structure_array[*]
+/*Create record structure aliases and assign the proper data type that will match the columns in your query*/
+	2 returned_person_id = f8 ; Assiging a name and data type to a value returned from the select statement.
+	2 returned_name_full_formatted = vc ; Assiging a name and data type to a value returned from the select statement.
+	2 returned_encounter_id = f8 ; Assiging a name and data type to a value returned from the select statement.
+	2 returned_encounter_type = vc ; Assiging a name and data type to a value returned from the select statement.
+	2 returned_mrn = vc ;
+	2 returned_fin = vc ;
+
+
+%i cclsource:status_block.inc
+)
+/*End Record Structure*/
+
+set [+NameSpace+]_structure->status_data.status ="F"
+set debug_ind = 1
+
+declare fin_alias = vc
+declare mrn_alias = vc
+
+select
+	ea.alias
+
+from
+	encntr_alias ea
+
+where ea.encntr_id = $enc_id;72958204.00;$enc_id;
+and ea.encntr_alias_type_cd in (1077.00, 1079.00);FIN Number and MRN Number
+detail
+case (ea.encntr_alias_type_cd)
+	of 1077.00 : fin_alias = trim(ea.alias)
+	of 1079.00 : mrn_alias = trim(ea.alias)
+endcase
+
+/*Select Query Begin*/
+
+select ;into "NL"
+	p.person_id
+	,p.name_full_formatted
+	,e.encntr_id
+	,Encounter_Type = uar_get_code_display(e.encntr_type_cd)
+
+from
+	person p
+	, encounter e
+
+plan p where p.person_id = $per_id ;37298420.00
+join e where e.person_id = p.person_id and e.encntr_id = $enc_id ;54975811.00
+
+/*Select Query End*/
+
+head report
+x=1
+[+NameSpace+]_structure_cnt=0
+
+/*The "Head" section is most important part of what you are pulling from your query. Example:
+You could have "head p.person_id" and under that you need to return data from the query into it. */
+
+head p.person_id ;alias.fieldname | Opening the header. Should be an indexed column.
+[+NameSpace+]_structure_cnt=[+NameSpace+]_structure_cnt+1
+rec_cnt = 0 ; Setting record count to zero.
+
+   if (size([+NameSpace+]_structure->[+NameSpace+]_structure_array,5)<[+NameSpace+]_structure_cnt ) ; Checking the size of the [+NameSpace+]_structure_array array
+      stat= alterlist([+NameSpace+]_structure->[+NameSpace+]_structure_array, [+NameSpace+]_structure_cnt+10) ; this is increasing the size of the [+NameSpace+]_structure_array array by 10 if needed.
+   endif
+
+/*Returning column data from the query into the record structure aliases*/
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_person_id = cnvtreal(p.person_id)
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_name_full_formatted = trim(p.name_full_formatted)
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_encounter_id = cnvtreal(e.encntr_id)
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_encounter_type = trim(Encounter_Type)
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_mrn = mrn_alias
+[+NameSpace+]_structure->[+NameSpace+]_structure_array[[+NameSpace+]_structure_cnt].returned_fin = fin_alias
+
+foot p.person_id ;alias.fieldname | Closing the header. Same name as head.
+x=1
+foot report
+x=1
+stat= alterlist([+NameSpace+]_structure->[+NameSpace+]_structure_array, [+NameSpace+]_structure_cnt)
+[+NameSpace+]_structure->[+NameSpace+]_structure_cnt = [+NameSpace+]_structure_cnt
+with nocounter
+
+
+set [+NameSpace+]_structure->status_data.status = "S"   ;info_point (Sets status to S for Success)
+
+#exit_script   ;  ID for end of PRG
+
+call ajax_reply([+NameSpace+]_structure) 	; info_point (ajax_reply is a function that changes the
+							;record structure to a string.
+
+call echo(cnvtrectojson([+NameSpace+]_structure)) 	; info_point (cnvtrectojson is a function that changes the
+							;record structure to a JSON string and returns the string to the JS).
+
+if (debug_ind)
+	call echorecord([+NameSpace+]_structure)  ;info_point (displays record structure in listing - troubleshooting)
+else
+	free record [+NameSpace+]_structure  ;info_point (clears record structure)
+endif
+
+CALL log_end_script("1bh_mpage_[+NameSpace+]", debug_ind) ; info_point (For log files)
+
+end
+go
+
+/*JS NAMESPACE BELOW*/
+//BEGIN [+NameSpace+]
+/**
+* Project:
+* Version: 1.0
+* Released:	[DATE_TEXT] [TIME]
+* Updated:
+* Purpose:
+* @author: [+Author+]
+* Request#:
+*/
+
+MPage.namespace("banner");
+banner.[+NameSpace+] = function(){};
+banner.[+NameSpace+].prototype = new MPage.Component();
+banner.[+NameSpace+].prototype.constructor = MPage.Component();
+banner.[+NameSpace+].prototype.base = MPage.Component.prototype;
+banner.[+NameSpace+].prototype.name = "banner.[+NameSpace+]";
+banner.[+NameSpace+].prototype.cclProgram = "1bh_mpage_[+NameSpace+]";
+banner.[+NameSpace+].prototype.cclParams = [];
+banner.[+NameSpace+].prototype.cclDataType = "JSON";
+
+banner.[+NameSpace+].prototype.init = function(options)
+{
+//	// Check cookie for param update
+//	if(readCookie("bldgltframe") == null){
+//		createCookie("bldgltframe","72,H",1);
+//	}
+
+	var params = [];
+	params.push("mine");
+	params.push(this.getProperty("personId"));
+	params.push(this.getProperty("encounterId"));
+//	params.push(readCookie("bldgltframe"));
+	params.push(300);
+	this.cclParams = params;
+};
+
+banner.[+NameSpace+].prototype.render = function()
+{
+	var tempStr=[];
+	var element = this.getTarget();
+	var jsonObj = this.data;
+    var recordData = jsonObj.RECORD_DATA;
+	var compid = this.getComponentUid();
+	MPage.getCustomComp(compid).setProperty("headerSubTitle","");
+
+//alert("Hello World");
+	tempStr.push("<div><table><tr><td>",this.name,"</td></tr></table></div>");
+	element.innerHTML = tempStr.join("");
+
+};
+
+// END [+NameSpace+]
