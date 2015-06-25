@@ -5,7 +5,7 @@
 ;Copyright: (c) [DATE_TEXT]
 ;Purpose:
 ;Request #:
-;Namespace: [+NameSpace+]
+;Namespace: banner.[+NameSpace+]
 ;----------------------------------------------------------------------------
 ;free record request go
 ;/*Add any fields and data type in your "record request" that your CCL will need to run.*/
