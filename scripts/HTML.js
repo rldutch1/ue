@@ -6,6 +6,7 @@ myDate.setDate(myDate.getDate());
 var copyrightyear=new Date();
 var copyright = (copyrightyear.getFullYear());
 
+UltraEdit.activeDocument.write("<!DOCTYPE html> \r\n");
 UltraEdit.activeDocument.write("<!-- \r\n");
 UltraEdit.activeDocument.write("Script Author: Robert Holland \r\n");
 UltraEdit.activeDocument.write("Script Name: \r\n");
@@ -17,10 +18,16 @@ UltraEdit.activeDocument.write("--> \r\n");
 UltraEdit.activeDocument.write("\r\n");
 UltraEdit.activeDocument.write("\r\n");
 UltraEdit.activeDocument.write("<html> \r\n");
+UltraEdit.activeDocument.write("<head> \r\n");
 UltraEdit.activeDocument.write("<title></title> \r\n");
-UltraEdit.activeDocument.write("<head></head> \r\n");
+UltraEdit.activeDocument.write("<script type='text/javascript' src='js/filename.js'></script> \r\n");
+UltraEdit.activeDocument.write("<link rel='stylesheet' type='text/css' href='css/filename.css' /> \r\n");
+UltraEdit.activeDocument.write("</head> \r\n");
+UltraEdit.activeDocument.write("\r\n");
 UltraEdit.activeDocument.write("<body> \r\n  \r\n");
+UltraEdit.activeDocument.write("\r\n");
 UltraEdit.activeDocument.write("<p> Blank </p> \r\n  \r\n");
+UltraEdit.activeDocument.write("\r\n");
 UltraEdit.activeDocument.write("</body> \r\n");
 UltraEdit.activeDocument.write("</html> \r\n");
 
