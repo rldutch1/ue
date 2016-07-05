@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ASCII"?>
+<TEMPLATES>
+  <Template ID="0">
+    <Name>tmp_PDOconnect</Name>
+    <Data>&lt;?php
+//PDO connect method:
+try {
+	$handler = new PDO('mysql:host=localhost;dbname=TheDatabaseName', 'TheDatabaseUser', 'TheUserPassword'); //Setting the handler. See next line if this line fails.
+	$handler-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Setting the attributes for the handler that we want to see if exception error.
+}
+catch(PDOException $e) { //Return the PDO exception and naming it $e.
+//	echo 'Caught';
+//	die('Sorry database problem.'); //Production message.
+	echo $e-&gt;getMessage(); //Show specific error message. Development.
+}
+?&gt;</Data>
+  </Template>
+  <Template ID="1">
+    <Name>tmp_PDOselect</Name>
+    <Data>&lt;?php
+//http://stackoverflow.com/questions/11068230/using-like-in-bindparam-for-a-mysql-pdo-query
+include_once('pwcernerpdo.php');
+
+$statement = $handler-&gt;prepare("select * from TheTable order by id;");
+$statement-&gt;execute();
+$rowcount = $statement-&gt;rowCount();
+echo "
+&lt;html&gt;
+&lt;head&gt;&lt;/head&gt;
+&lt;style&gt;
+.rowone {background-color: #ffb900;}
+.rowtwo {background-color: yellow;}
+.rowthree {background-color: #c0c0c0;}
+&lt;/style&gt;
+&lt;body&gt;
+";
+			echo '&lt;br /&gt;&lt;div&gt;&lt;table border="1"&gt;&lt;caption&gt;Questions&lt;/caption&gt;';
+			while($r = $statement-&gt;fetch(PDO::FETCH_OBJ)){
+			echo '&lt;tr&gt;&lt;th align="left" colspan="3" class="rowone"&gt;', $r-&gt;id, '&lt;br /&gt;Row One: ', nl2br($r-&gt;column1), '&lt;/th&gt;&lt;/tr&gt;' .
+			'&lt;tr&gt;&lt;td colspan="3" class="rowtwo"&gt;&lt;strong&gt;Row Two:&lt;/strong&gt; ', nl2br($r-&gt;colum2), '&lt;/td&gt;&lt;/tr&gt;' .
+			'&lt;tr&gt;&lt;td colspan="3" class="rowthree"&gt;&lt;br /&gt;Row Three: ', nl2br($r-&gt;colum3), '&lt;/td&gt;&lt;/tr&gt;' .
+			'&lt;tr&gt;&lt;/tr&gt;';
+			}
+			echo '&lt;/table&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;';
+echo "
+&lt;/body&gt;&lt;/html&gt;
+";
+?&gt;</Data>
+  </Template>
+</TEMPLATES>
