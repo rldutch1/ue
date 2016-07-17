@@ -47,4 +47,93 @@ echo "
 ";
 ?&gt;</Data>
   </Template>
+  <Template ID="2">
+    <Name>tmp_PDOindex</Name>
+    <Data>&lt;?php
+include_once('tmp_PDOconnect.php');
+include('tmp_PDOinsert.php');
+
+if (isset($_POST['submit'])){
+	if (!empty($_POST['field1']) &amp;&amp; !empty($_POST['field2'])){
+		$stmt-&gt;execute();
+	}
+	else {
+		echo "&lt;script type='text/javascript'&gt;alert('Input field must not be empty!');&lt;/script&gt;";
+	}
+}
+
+echo "
+&lt;html&gt;
+   &lt;head&gt;
+      &lt;title&gt;Page Title&lt;/title&gt;
+      &lt;!-- &lt;a href='http://stackoverflow.com/questions/20738329/how-to-call-a-php-function-on-the-click-of-a-button' target='_blank'&gt;jQuery Example&lt;/a&gt; --&gt;
+      &lt;script type='text/javascript' src='js/jquery-1.11.3.js'&gt;&lt;/script&gt;
+     	&lt;script type='text/javascript' src='js/tmp_PDOjs.js'&gt;&lt;/script&gt;
+			&lt;link href='css/tmp_PDOcss.css' rel='stylesheet' type='text/css'&gt;
+      &lt;script type='text/javascript' language='javascript'&gt;
+			//http://www.w3schools.com/jquery/jquery_ajax_get_post.asp
+			&lt;/script&gt;
+
+   &lt;/head&gt;
+
+&lt;body&gt;
+
+	&lt;form action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "' method='POST'&gt;
+	&lt;table class='looknormal'&gt;
+	&lt;caption align='center'&gt;Time: " . $cur_dttm . "&lt;/caption&gt;
+	&lt;tr&gt;
+	&lt;th colspan='4'&gt;field1&lt;/th&gt;&lt;th colspan='4'&gt;field2&lt;/th&gt;&lt;th colspan='4'&gt;Slide&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field1' name='field1'&gt;&lt;/textarea&gt;&lt;/td&gt;
+	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field2' name='field2'&gt;&lt;/textarea&gt;&lt;/td&gt;
+	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field3' name='field3'&gt;&lt;/textarea&gt;&lt;/td&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+	&lt;th align='left'&gt;&lt;input type='submit' name='submit' value='Submit' id='submit' class='buttons'/&gt;&lt;/th&gt;
+	&lt;th align='left'&gt;&lt;button onClick='clear()' class='buttons' id='clear'&gt;Clear&lt;/button&gt;&lt;/th&gt;
+	&lt;/tr&gt;
+	&lt;tr&gt;
+	&lt;td colspan='4'&gt;&lt;center&gt;
+
+	&lt;/tr&gt;
+	&lt;/table&gt;
+	&lt;/form&gt;
+	
+
+	
+	&lt;iframe width='850' height='100' frameborder='0'&gt;
+	&lt;div id='stage'&gt;
+    -----
+  &lt;/div&gt;&lt;/center&gt;&lt;/td&gt;
+	&lt;/iframe&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+";
+
+?&gt;</Data>
+  </Template>
+  <Template ID="3">
+    <Name>tmp_PDOinsert</Name>
+    <Data>&lt;?php
+//http://php.net/manual/en/function.date-default-timezone-set.php
+include_once('tmp_PDOconnect.php');
+
+$utc_dttm = gmdate("Y-m-d H:i:s",time()+date("Z"));
+$timestamp = strtotime($utc_dttm) - (420*60); //AZ time offset.
+$cur_dttm = date("Y-m-d H:i:s", $timestamp);
+
+$field1 = htmlentities($_POST['field1']);
+$field2 = htmlentities($_POST['field2']);
+$field3 = htmlentities($_POST['field3']);
+$stmt = $handler-&gt;prepare('INSERT INTO TheTable (field1, field2, field3) VALUES (:field1, :field2, :field3);');
+$stmt-&gt;bindValue(':field1', $field1);
+$stmt-&gt;bindValue(':field2', $field2);
+$stmt-&gt;bindValue(':field3', $field3);
+
+echo "Field1: " . $field1 . "&lt;br /&gt;Field2" . $field2 . " Field3: " . $field3 . "!&lt;br /&gt;";
+
+?&gt;</Data>
+  </Template>
 </TEMPLATES>
