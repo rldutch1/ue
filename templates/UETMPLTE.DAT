@@ -136,4 +136,41 @@ echo "Field1: " . $field1 . "&lt;br /&gt;Field2" . $field2 . " Field3: " . $fiel
 
 ?&gt;</Data>
   </Template>
+  <Template ID="4">
+    <Name>tmp_html</Name>
+    <Data>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;script type="text/javascript" src="http://example.com/js/filename.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="http://example.com/css/filname.css" /&gt;
+
+&lt;/head&gt;
+&lt;style&gt;
+/*common css*/
+th {background-color:#c0c0c0;}
+table, th, td {border-collapse:collapse; border: 1px solid black;}
+tr:nth-child(even) {background: #CCC};
+tr:nth-child(odd) {background: #FFF};
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: underline;}
+a:active {text-decoration: underline;}
+
+&lt;/style&gt;
+&lt;body&gt;
+&lt;div&gt;
+&lt;p&gt;This is a table&lt;/p&gt;
+&lt;table&gt;&lt;caption&gt;Table Caption&lt;/caption&gt;
+&lt;tr&gt;&lt;th&gt;One&lt;/th&gt;&lt;th&gt;Two&lt;/th&gt;&lt;th&gt;Three&lt;/th&gt;&lt;th&gt;Four&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</Data>
+  </Template>
 </TEMPLATES>
