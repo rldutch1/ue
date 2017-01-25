@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Templates encode="utf8escenc"><Template Name="PHP_MySQL_PDO_Connect" Description="PHP MySQL PDO Connect" Comments="0" Strings="0">&lt;?php&#xD;
+//PDO connect&#xD;
+try {&#xD;
+	$handler = new PDO('mysql:host=servername; dbname=databasename', 'dbusername', 'dbpassword');&#xD;
+	$handler-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);&#xD;
+}&#xD;
+catch(PDOException $e) { //Return the PDO exception "$e". &#xD;
+	//die('Sorry database problem.'); //Production message.&#xD;
+	echo $e-&gt;getMessage(); //Show specific error message. Development.&#xD;
+}&#xD;
+&#xD;
+//No carriage return after the end. It screws up header information when included.&#xD;
+?&gt;</Template><Template Name="PHP_MySQL_Connect" Description="PHP MySQL Connect" Comments="0" Strings="0">&lt;?php&#xD;
+&#xD;
+//database server&#xD;
+define('db_server', 'database_servername');&#xD;
+//define('db_server', 'localhost');&#xD;
+&#xD;
+//user, password, and database variables&#xD;
+&#xD;
+$db3_user = 'database_username';&#xD;
+$db3_password = 'database_userpassword';&#xD;
+$db3_dbname = 'database_name';&#xD;
+&#xD;
+//echo $q;&#xD;
+$con = mysql_connect(db_server, $db3_user, $db3_password);&#xD;
+ if (!$con)&#xD;
+   {&#xD;
+   die('Could not connect: ' . mysql_error());&#xD;
+   }&#xD;
+&#xD;
+mysql_select_db($db3_dbname, $con);&#xD;
+&#xD;
+?&gt;</Template></Templates>
