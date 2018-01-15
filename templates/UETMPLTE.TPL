@@ -564,7 +564,7 @@ var spc0='&amp;nbsp;&amp;nbsp;';&#xD;
 var spc1='&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;';&#xD;
 var tempStr=[];&#xD;
 	tempStr.push('&lt;b&gt;',viewpoint.VIEWPOINT_NAME,'&lt;/b&gt;&lt;br /&gt;');&#xD;
-	tempStr.push('mPages in ',viewpoint.VIEWPOINT_NAME,'&lt;br /&gt;');&#xD;
+	tempStr.push('mPages in ',viewpoint.VIEWPOINT_NAME, ' (',viewpoint.VIEWPOINT_NAME_KEY,')&lt;br /&gt;');&#xD;
 for(var i=0,all_cnt=viewpoint.VIEWS.length;i&lt;all_cnt;i++){&#xD;
 //alert(i);&#xD;
 &#xD;
