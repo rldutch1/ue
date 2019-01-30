@@ -1355,4 +1355,21 @@ SELECT * FROM information_schema.REFERENTIAL_CONSTRAINTS&#xD;&#xD;
 where usr_person_id = [+person_id+]&#xD;&#xD;
 go&#xD;&#xD;
 commit go&#xD;&#xD;
-</Template></Templates>
+</Template><Template Name="mpt_FindComponent" Description="" Comments="0" Strings="0">select  DISTINCT INTO "NL:"&#xD;&#xD;
+	mPage_Name=bdc.category_name,&#xD;&#xD;
+	mPage_Layout =&#xD;&#xD;
+if (bdc.layout_flag = 0 )	"Summary"&#xD;&#xD;
+elseif(bdc.layout_flag = 1)	"Workflow" endif,&#xD;&#xD;
+	bdc.category_mean ,&#xD;&#xD;
+	bdv.mpage_param_value,&#xD;&#xD;
+	bdf.filter_mean ,&#xD;&#xD;
+	bdf.filter_seq,&#xD;&#xD;
+	bdc.layout_flag,&#xD;&#xD;
+	;bdc.*&#xD;&#xD;
+	;bdv.*&#xD;&#xD;
+	bdf.*&#xD;&#xD;
+from BR_DATAMART_CATEGORY BDC, br_datamart_value bdv,  br_datamart_filter bdf&#xD;&#xD;
+where bdc.br_datamart_category_id = bdv.br_datamart_category_id&#xD;&#xD;
+and bdv.mpage_param_value = "[+ComponentName+]"&#xD;&#xD;
+and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id&#xD;&#xD;
+order by bdc.category_name, bdc.layout_flag</Template></Templates>
