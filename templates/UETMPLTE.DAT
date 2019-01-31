@@ -1,146 +1,15 @@
 <?xml version="1.0" encoding="ASCII"?>
 <TEMPLATES>
   <Template ID="0">
-    <Name>tmp_PDOconnect</Name>
-    <Data>&lt;?php
-//PDO connect method:
-try {
-	$handler = new PDO('mysql:host=localhost;dbname=TheDatabaseName', 'TheDatabaseUser', 'TheUserPassword'); //Setting the handler. See next line if this line fails.
-	$handler-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Setting the attributes for the handler that we want to see if exception error.
-}
-catch(PDOException $e) { //Return the PDO exception and naming it $e.
-//	echo 'Caught';
-//	die('Sorry database problem.'); //Production message.
-	echo $e-&gt;getMessage(); //Show specific error message. Development.
-}
-?&gt;</Data>
-  </Template>
-  <Template ID="1">
-    <Name>tmp_PDOselect</Name>
-    <Data>&lt;?php
-//http://stackoverflow.com/questions/11068230/using-like-in-bindparam-for-a-mysql-pdo-query
-include_once('pwcernerpdo.php');
-
-$statement = $handler-&gt;prepare("select * from TheTable order by id;");
-$statement-&gt;execute();
-$rowcount = $statement-&gt;rowCount();
-echo "
-&lt;html&gt;
-&lt;head&gt;&lt;/head&gt;
-&lt;style&gt;
-.rowone {background-color: #ffb900;}
-.rowtwo {background-color: yellow;}
-.rowthree {background-color: #c0c0c0;}
-&lt;/style&gt;
-&lt;body&gt;
-";
-			echo '&lt;br /&gt;&lt;div&gt;&lt;table border="1"&gt;&lt;caption&gt;Questions&lt;/caption&gt;';
-			while($r = $statement-&gt;fetch(PDO::FETCH_OBJ)){
-			echo '&lt;tr&gt;&lt;th align="left" colspan="3" class="rowone"&gt;', $r-&gt;id, '&lt;br /&gt;Row One: ', nl2br($r-&gt;column1), '&lt;/th&gt;&lt;/tr&gt;' .
-			'&lt;tr&gt;&lt;td colspan="3" class="rowtwo"&gt;&lt;strong&gt;Row Two:&lt;/strong&gt; ', nl2br($r-&gt;colum2), '&lt;/td&gt;&lt;/tr&gt;' .
-			'&lt;tr&gt;&lt;td colspan="3" class="rowthree"&gt;&lt;br /&gt;Row Three: ', nl2br($r-&gt;colum3), '&lt;/td&gt;&lt;/tr&gt;' .
-			'&lt;tr&gt;&lt;/tr&gt;';
-			}
-			echo '&lt;/table&gt;&lt;div style="clear: both;"&gt;&lt;/div&gt;&lt;/div&gt;';
-echo "
-&lt;/body&gt;&lt;/html&gt;
-";
-?&gt;</Data>
-  </Template>
-  <Template ID="2">
-    <Name>tmp_PDOindex</Name>
-    <Data>&lt;?php
-include_once('tmp_PDOconnect.php');
-include('tmp_PDOinsert.php');
-
-if (isset($_POST['submit'])){
-	if (!empty($_POST['field1']) &amp;&amp; !empty($_POST['field2'])){
-		$stmt-&gt;execute();
-	}
-	else {
-		echo "&lt;script type='text/javascript'&gt;alert('Input field must not be empty!');&lt;/script&gt;";
-	}
-}
-
-echo "
-&lt;html&gt;
-   &lt;head&gt;
-      &lt;title&gt;Page Title&lt;/title&gt;
-      &lt;!-- &lt;a href='http://stackoverflow.com/questions/20738329/how-to-call-a-php-function-on-the-click-of-a-button' target='_blank'&gt;jQuery Example&lt;/a&gt; --&gt;
-      &lt;script type='text/javascript' src='js/jquery-1.11.3.js'&gt;&lt;/script&gt;
-     	&lt;script type='text/javascript' src='js/tmp_PDOjs.js'&gt;&lt;/script&gt;
-			&lt;link href='css/tmp_PDOcss.css' rel='stylesheet' type='text/css'&gt;
-      &lt;script type='text/javascript' language='javascript'&gt;
-			//http://www.w3schools.com/jquery/jquery_ajax_get_post.asp
-			&lt;/script&gt;
-
-   &lt;/head&gt;
-
-&lt;body&gt;
-
-	&lt;form action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "' method='POST'&gt;
-	&lt;table class='looknormal'&gt;
-	&lt;caption align='center'&gt;Time: " . $cur_dttm . "&lt;/caption&gt;
-	&lt;tr&gt;
-	&lt;th colspan='4'&gt;field1&lt;/th&gt;&lt;th colspan='4'&gt;field2&lt;/th&gt;&lt;th colspan='4'&gt;Slide&lt;/th&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field1' name='field1'&gt;&lt;/textarea&gt;&lt;/td&gt;
-	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field2' name='field2'&gt;&lt;/textarea&gt;&lt;/td&gt;
-	&lt;td colspan='4'&gt;&lt;textarea type='text' autofocus='autofocus' maxlength='1000000' rows='6' wrap='soft' id='field3' name='field3'&gt;&lt;/textarea&gt;&lt;/td&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-	&lt;th align='left'&gt;&lt;input type='submit' name='submit' value='Submit' id='submit' class='buttons'/&gt;&lt;/th&gt;
-	&lt;th align='left'&gt;&lt;button onClick='clear()' class='buttons' id='clear'&gt;Clear&lt;/button&gt;&lt;/th&gt;
-	&lt;/tr&gt;
-	&lt;tr&gt;
-	&lt;td colspan='4'&gt;&lt;center&gt;
-
-	&lt;/tr&gt;
-	&lt;/table&gt;
-	&lt;/form&gt;
-	
-
-	
-	&lt;iframe width='850' height='100' frameborder='0'&gt;
-	&lt;div id='stage'&gt;
-    -----
-  &lt;/div&gt;&lt;/center&gt;&lt;/td&gt;
-	&lt;/iframe&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-";
-
-?&gt;</Data>
-  </Template>
-  <Template ID="3">
-    <Name>tmp_PDOinsert</Name>
-    <Data>&lt;?php
-//http://php.net/manual/en/function.date-default-timezone-set.php
-include_once('tmp_PDOconnect.php');
-
-$utc_dttm = gmdate("Y-m-d H:i:s",time()+date("Z"));
-$timestamp = strtotime($utc_dttm) - (420*60); //AZ time offset.
-$cur_dttm = date("Y-m-d H:i:s", $timestamp);
-
-$field1 = htmlentities($_POST['field1']);
-$field2 = htmlentities($_POST['field2']);
-$field3 = htmlentities($_POST['field3']);
-$stmt = $handler-&gt;prepare('INSERT INTO TheTable (field1, field2, field3) VALUES (:field1, :field2, :field3);');
-$stmt-&gt;bindValue(':field1', $field1);
-$stmt-&gt;bindValue(':field2', $field2);
-$stmt-&gt;bindValue(':field3', $field3);
-
-echo "Field1: " . $field1 . "&lt;br /&gt;Field2" . $field2 . " Field3: " . $field3 . "!&lt;br /&gt;";
-
-?&gt;</Data>
-  </Template>
-  <Template ID="4">
-    <Name>tmp_html</Name>
+    <Name>tmp_BasicHTML</Name>
     <Data>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="description" content="Template HTML Document"&gt;
+  &lt;meta name="keywords" content="comma,separated,keywords"&gt;
+  &lt;meta name="author" content="Robert Holland"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
 &lt;title&gt;&lt;/title&gt;
 &lt;script type="text/javascript" src="http://example.com/js/filename.js"&gt;&lt;/script&gt;
 &lt;link rel="stylesheet" href="http://example.com/css/filname.css" /&gt;
@@ -148,10 +17,10 @@ echo "Field1: " . $field1 . "&lt;br /&gt;Field2" . $field2 . " Field3: " . $fiel
 &lt;/head&gt;
 &lt;style&gt;
 /*common css*/
-th {background-color:#c0c0c0;}
 table, th, td {border-collapse:collapse; border: 1px solid black;}
-tr:nth-child(even) {background: #CCC};
-tr:nth-child(odd) {background: #FFF};
+th {background-color:#ffff00;}
+tr:nth-child(even) {background: #CCC;}
+tr:nth-child(odd) {background: #FFF;}
 a:link {text-decoration: none;}
 a:visited {text-decoration: none;}
 a:hover {text-decoration: underline;}
@@ -159,8 +28,13 @@ a:active {text-decoration: underline;}
 
 &lt;/style&gt;
 &lt;body&gt;
+
+&lt;img src='data:image/png;base64,
+' {base64 data goes here without the braces} /&gt;
+&lt;br /&gt;
+
 &lt;div&gt;
-&lt;p&gt;This is a table&lt;/p&gt;
+&lt;p&gt;Blah blah blah&lt;/p&gt;
 &lt;table&gt;&lt;caption&gt;Table Caption&lt;/caption&gt;
 &lt;tr&gt;&lt;th&gt;One&lt;/th&gt;&lt;th&gt;Two&lt;/th&gt;&lt;th&gt;Three&lt;/th&gt;&lt;th&gt;Four&lt;/th&gt;&lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
@@ -171,6 +45,534 @@ a:active {text-decoration: underline;}
 &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
+</Data>
+  </Template>
+  <Template ID="1">
+    <Name>tmp_BasicHTMLSort</Name>
+    <Data>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="description" content="Template HTML Document"&gt;
+  &lt;meta name="keywords" content="comma,separated,keywords"&gt;
+  &lt;meta name="author" content="Robert Holland"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" /&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+//$(document).ready(function() {
+//    $('#example').DataTable();
+//} );
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        //scrollX:        '50vh', //On a small table, this will center the table data and leave the table headers left adjustes.
+        scrollY:        '50vh',
+        scrollCollapse: true,
+        paging:         false
+    } );
+} );
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;style&gt;
+/*common css*/
+th {background-color:#c0c0c0;}
+table, th, td {border-collapse:collapse; border: 1px solid black;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: underline;}
+a:active {text-decoration: underline;}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;img src='data:image/png;base64,
+' {base64 data goes here without the braces} /&gt;
+&lt;br /&gt;
+
+&lt;table id="example" class="display" width="50%"&gt;&lt;caption&gt;Table Caption&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th&gt;One&lt;/th&gt;&lt;th&gt;Two&lt;/th&gt;&lt;th&gt;Three&lt;/th&gt;&lt;th&gt;Four&lt;/th&gt;&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tfoot&gt;
+&lt;tr&gt;&lt;th&gt;One&lt;/th&gt;&lt;th&gt;Two&lt;/th&gt;&lt;th&gt;Three&lt;/th&gt;&lt;th&gt;Four&lt;/th&gt;&lt;/tr&gt;
+&lt;/tfoot&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a href="http://example.com"&gt;Example Anchor Link&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</Data>
+  </Template>
+  <Template ID="2">
+    <Name>tmp_Blanklines</Name>
+    <Data>Find What:
+  %[^^t ]++[^^r^^n]+
+
+Replace With:
+ "" (without the quotes)
+
+Check "Regular Expressions"
+Select "UltraEdit" regex type.
+
+Put cursor at top of file and run.
+
+Note: For Mac formatted-files not converted to DOS on load
+the UltraEdit regular expression find string must
+be "^^r[^^t ]++^^r" and the replace string "^^r"
+(both without the quotes).
+</Data>
+  </Template>
+  <Template ID="3">
+    <Name>tmp_phpMSSQLPDOConnect</Name>
+    <Data>&lt;?php
+/*
+*Program Author: [+Author+]
+*Program Name: [+Program_Name+]
+*Creation Date:  [DATE_TEXT]  [TIME]
+*Last Modified:
+*Copyright (c)[DATE_USER]yyyy[DATE_USER_END]
+*Purpose:
+*Request #:
+*/
+$serverName = "[+MSSQL_ServerFQDN+]";
+
+try {
+	$handler = new PDO("sqlsrv:server=$serverName; Database=[+databasename+]", "[+username+]", "[+password+]");
+	$handler-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Setting the attributes for the handler that we want to see if exception error.
+}
+catch(PDOException $e) { //Return the PDO exception and naming it $e.
+//	echo 'Caught';
+//	die('Sorry database problem.'); //Production message.
+	echo $e-&gt;getMessage(); //Show specific error message. Development.
+}
+
+$query0 = $handler-&gt;query('select * from [+databasename+]');
+//ONE: Output each column as row of data.
+//	while($r = $query0-&gt;fetch()) {
+//		echo $r[1]
+//		, ' ', $r[2]
+//		, ' ', $r[3]
+//		, ' ', $r[4]
+//		, ' ', $r[5]
+//		, ' ', $r[6]
+//		, ' ', $r[7]
+//		, ' ', $r[8]
+//		, ' ', $r[9]
+//		, ' ', $r[10]
+//		, ' ', $r[11]
+//		, ' ', $r[12]
+//		, ' ', $r[13]
+//		, ' ', $r[14]
+//		, ' ', $r[15]
+//		, ' ', $r[16]
+//		, ' ', $r[17]
+//		, ' ', $r[18]
+//		, ' ', $r[19]
+//		, ' ', $r[20]
+//		, ' ', $r[21]
+//		, '\r\n';
+//	}
+
+//TWO: Prints one array.
+//	$r = $query0-&gt;fetch(PDO::FETCH_ASSOC); //Will fetch the associative array only.
+//	echo '&lt;pre&gt;', print_r($r), '&lt;/pre&gt;';
+
+//THREE: Column 1 followed by dashes.
+//	foreach($query0 as $r){
+//		echo $r[0] . "-----";
+//
+//	}
+
+//FOUR: Not sure what I was doing here.
+//	foreach($query0 as $key =&gt; $r){
+//		$out = array_values($r);
+//		echo json_encode($out);
+//}
+
+//FIVE: Proper JSON.
+	$r = $query0-&gt;fetchAll(PDO::FETCH_ASSOC);
+	//echo '&lt;pre&gt;', print_r($r), '&lt;/pre&gt;';
+	echo json_encode($r);
+?&gt;
+</Data>
+  </Template>
+  <Template ID="4">
+    <Name>tmp_phpMySQLConnect</Name>
+    <Data>&lt;?php
+//Program Author: [+Author+]
+//Program Name: [+connect.php+]
+//Creation Date: [DATE_TEXT] [TIME]
+//Last Modified:
+//Purpose:
+//Request #:
+//----------------------------------------------------------------------------
+//database server
+
+define('db_server', '[+database_servername+]');
+
+//user, password, and database variables
+
+$db_user = '[+database_username+]';
+$db_password = '[+database_userpassword+]';
+$db_dbname = '[+database_name+]';
+
+//echo $q;
+$con = mysql_connect(db_server, $db_user, $db_password);
+ if (!$con)
+   {
+   die('Could not connect: ' . mysql_error());
+   }
+
+mysql_select_db($db_dbname, $con);
+?&gt;</Data>
+  </Template>
+  <Template ID="5">
+    <Name>tmp_phpMySQLiConnect</Name>
+    <Data>&lt;?php
+//Program Author: [+Author+]
+//Program Name: [+connect.php+]
+//Creation Date: [DATE_TEXT] [TIME]
+//Last Modified:
+//Purpose:
+//Request #:
+//----------------------------------------------------------------------------
+//MySQLi Connect
+
+$db_server = '[+database_servername+]';
+$db_user = '[+database_username+]';
+$db_password = '[+database_userpassword+]';
+$db_dbname = '[+database_name+]';
+
+$con = mysqli_connect($db_server, $db_user, $db_password, $db_dbname);
+        if(!$con){
+                        die("Failed to connect to the database: " . mysqli_error($con));
+                }
+        if (mysqli_connect_errno()){
+                        die("Error data : " . mysqli_connect_errno()." : ". mysqli_connect_error());
+                }
+//      else {
+//                      echo "Connected successfully! &lt;br /&gt;\r\n";
+//              }
+?&gt;
+</Data>
+  </Template>
+  <Template ID="6">
+    <Name>tmp_phpMySQLPDOConnect</Name>
+    <Data>&lt;?php
+//Program Author: [+Author+]
+//Program Name: [+connect.php+]
+//Creation Date: [DATE_TEXT] [TIME]
+//Last Modified:
+//Purpose:
+//Request #:
+//----------------------------------------------------------------------------
+//PDO connect
+try {
+	$handler = new PDO('mysql:host=servername; dbname=[+databasename+]', '[+dbusername+]', '[+dbpassword+]');
+	$handler-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e) { //Return the PDO exception "$e".
+	//die('Sorry database problem.'); //Production message.
+	echo $e-&gt;getMessage(); //Show specific error message. Development.
+}
+
+//No carriage return after the end. It screws up header information when included.
+?&gt;
+</Data>
+  </Template>
+  <Template ID="7">
+    <Name>tmp_phpMySQLPDOInsert</Name>
+    <Data>&lt;?php
+// ----------------------------------------------------------------------------
+// Script Author: [+Author+]
+// Script Name: [+Script_Name+]
+// Creation Date: [DATE_TEXT] [TIME]
+// Last Modified:
+// Version: 1.0.0
+// Purpose:
+// ----------------------------------------------------------------------------
+
+include('connect.php');
+
+$fname = htmlentities($_POST['firstname']);
+$mname = htmlentities($_POST['middlename']);
+$lname = htmlentities($_POST['lastname']);
+$bdate = htmlentities($_POST['birthdate']);
+
+$stmt = $handler-&gt;prepare("insert into test (firstname, middlename, lastname, birthdate) values (:firstname, :middlename, :lastname, :birthdate);");
+
+$stmt-&gt;bindParam(':firstname', $fname);
+$stmt-&gt;bindParam(':middlename', $mname);
+$stmt-&gt;bindParam(':lastname', $lname);
+$stmt-&gt;bindParam(':birthdate', $bdate);
+$stmt-&gt;execute();
+//header('Location: ../index.php');
+?&gt;
+</Data>
+  </Template>
+  <Template ID="8">
+    <Name>tmp_phpMySQLPDOOutput</Name>
+    <Data>&lt;?php
+//Program Author: [+Author+]
+//Program Name: [+connect.php+]
+//Creation Date: [DATE_TEXT] [TIME]
+//Last Modified:
+//Purpose:
+//Request #:
+//----------------------------------------------------------------------------
+//MySQL PDO Output
+
+require('[+pdoconnect.php+]');
+//$statement = $handler-&gt;prepare("select * from [+thetablename+] order by id;");
+$statement = $handler-&gt;prepare("select this from that order by this_id; ");
+$statement-&gt;execute(); //Run the prepared query. Prevents MySQL injection.
+
+$RowCount = $statement-&gt;rowCount(); //Count the number of rows returned.
+
+//Send records to HTML table in browser.
+echo "
+&lt;html&gt;
+&lt;head&gt;
+	&lt;script type='text/javascript' src='../js/jquery-1.11.3.js'&gt;&lt;/script&gt;
+	&lt;script type='text/javascript' src='js/custom.js'&gt;&lt;/script&gt; &lt;/head&gt; &lt;style&gt;
+	th {text-align: left; background-color: #d0e4fe;}
+	table, th, td {border-collapse:collapse; border: 1px solid black;}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+/*     border-bottom: 1px dotted black;  If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */ .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+&lt;/style&gt;
+&lt;body&gt;
+&lt;table id='us_states' class='tablesorter'&gt; &lt;thead&gt; &lt;tr&gt;
+	&lt;th&gt;&lt;/th&gt;
+	&lt;th&gt;State&lt;/th&gt;
+	&lt;th&gt;Capital&lt;/th&gt;
+	&lt;th&gt;Date Formed&lt;/th&gt;
+	&lt;th&gt;Size&lt;/th&gt;
+	&lt;th&gt;Edit&lt;/th&gt;
+&lt;tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+";
+			while($r = $statement-&gt;fetch(PDO::FETCH_OBJ)){
+			$id_column = $r-&gt;id;
+			$state_column = $r-&gt;state;
+			$capital_column = $r-&gt;capital;
+			$date_formed_column = $r-&gt;date_formed;
+			$statedata_column = $r-&gt;data;
+			$sq_miles_column = $r-&gt;sq_miles;
+			echo "&lt;tr&gt;&lt;td&gt;" . $id_column . "&lt;/td&gt;
+			&lt;td&gt;" . $state_column . "&lt;/td&gt;
+			&lt;td&gt;" . $capital_column . "&lt;/td&gt;
+			&lt;td class='tooltip'&gt;&lt;span class='tooltiptext'&gt;" . $statedata_column . "&lt;/span&gt;" . $date_formed_column . "&lt;/td&gt;
+			&lt;td&gt;" . number_format($sq_miles_column) . " sqm.&lt;/td&gt;
+			&lt;td&gt;&lt;input type='radio' name='edit' id='" . $id_column . "'&gt;&lt;/td&gt;
+			&lt;/tr&gt;";
+			}
+echo "&lt;/tbody&gt;&lt;/table&gt;";
+&lt;!-- &lt;div class='tooltip'&gt;Hover over me
+  &lt;span class='tooltiptext'&gt;Tooltip text&lt;/span&gt; &lt;/div&gt; --&gt; ";
+?&gt;
+</Data>
+  </Template>
+  <Template ID="9">
+    <Name>tmp_rhts</Name>
+    <Data>[DATE_TEXT] [TIME]</Data>
+  </Template>
+  <Template ID="10">
+    <Name>tmp_MySQLDBUser</Name>
+    <Data>/*
+-- Create local user.
+//Database Username: [+dbusername+]
+//Database Password: [+dbpassword+]
+//----------------------------------------------------------------------------
+*/
+
+CREATE USER '[+dbusername+]'@'localhost' IDENTIFIED BY '[+dbpassword+]';
+-- Create remote user.
+CREATE USER '[+dbusername+]'@'%' IDENTIFIED BY '[+dbpassword+]';
+-- Tell the server to reload the GRANT TABLES.
+FLUSH PRIVILEGES;
+</Data>
+  </Template>
+  <Template ID="11">
+    <Name>tmp_MySQLDBUserandDatabase</Name>
+    <Data>/*
+-- Create user and database.
+//Database Username: [+dbusername+]
+//Database Password: [+dbpassword+]
+//----------------------------------------------------------------------------
+*/
+
+CREATE DATABASE [+dbusername+];
+-- Create local user.
+CREATE USER '[+dbusername+]'@'localhost' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbusername+].* TO '[+dbusername+]'@'localhost' WITH GRANT OPTION;
+-- Create remote user.
+CREATE USER '[+dbusername+]'@'%' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbusername+].* TO '[+dbusername+]'@'%' WITH GRANT OPTION;
+-- Tell the server to reload the GRANT TABLES.
+FLUSH PRIVILEGES;
+</Data>
+  </Template>
+  <Template ID="12">
+    <Name>tmp_MySQLDBUserDBAccess</Name>
+    <Data>/*
+--Create user and grant access to database.
+//Database Username: [+dbusername+]
+//Database Password: [+dbpassword+]
+//Database Name: [+dbname+]
+//----------------------------------------------------------------------------
+*/
+
+-- Create local user.
+CREATE USER '[+dbusername+]'@'localhost' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbname+].* TO '[+dbusername+]'@'localhost' WITH GRANT OPTION;
+-- Create remote user.
+CREATE USER '[+dbusername+]'@'%' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbname+].* TO '[+dbusername+]'@'%' WITH GRANT OPTION;
+-- Tell the server to reload the GRANT TABLES.
+FLUSH PRIVILEGES;
+
+MySQLDBPasswordChange:
+-- Remote user password change:
+alter user set password for '[+dbusername+]'@'%' = '[+dbpassword+]';
+FLUSH PRIVILEGES;
+
+
+-- ALTER USER EXAMPLES ==
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
+-- This worked for me from the MySQL DB prompt:
+	SET PASSWORD = PASSWORD('your_new_password');
+
+-- Source: http://stackoverflow.com/questions/33467337/reset-mysql-root-password-using-alter-user-statement-after-install-on-mac
+
+-- This syntax enables changing your own password without naming your account literally.
+	ALTER USER USER() IDENTIFIED BY 'auth_string';
+
+-- This statement changes the password for jeffrey but leaves that for jeanne unchanged. For both accounts, connections are required to use SSL and -- each account can be used for a maximum of two simultaneous connections:
+	ALTER USER
+  	'jeffrey'@'localhost' IDENTIFIED BY 'new_password',
+  	'jeanne'@'localhost'
+  	REQUIRE SSL WITH MAX_USER_CONNECTIONS 2;
+
+-- Example 1: Change an account's password and expire it. As a result, the user must connect with the named password and choose a new one at the next connection:
+	ALTER USER 'jeffrey'@'localhost'
+  	IDENTIFIED BY 'new_password' PASSWORD EXPIRE;
+
+-- Example 2: Modify an account to use the sha256_password authentication plugin and the given password. Require that a new password be chosen every 180 days:
+	ALTER USER 'jeffrey'@'localhost'
+  	IDENTIFIED WITH sha256_password BY 'new_password'  (SHA256 may require an SSL connection on some systems)
+  	PASSWORD EXPIRE INTERVAL 180 DAY;
+
+-- Example 3: Lock or unlock an account:
+	ALTER USER 'jeffrey'@'localhost' ACCOUNT LOCK;
+		ALTER USER 'jeffrey'@'localhost' ACCOUNT UNLOCK;
+
+-- Example 4: Require an account to connect using SSL and establish a limit of 20 connections per hour:
+	ALTER USER 'jeffrey'@'localhost'
+  	REQUIRE SSL WITH MAX_CONNECTIONS_PER_HOUR 20;
+
+-- http://dev.mysql.com/doc/refman/5.7/en/alter-user.html
+</Data>
+  </Template>
+  <Template ID="13">
+    <Name>tmp_MySQLFKReferences</Name>
+    <Data>-- To run from the command prompt type:
+-- mysql -u rob -p &lt; display_foreign_key_references.sql &gt; current_fk_refs.txt
+
+use INFORMATION_SCHEMA;
+select concat(TABLE_SCHEMA,'.',TABLE_NAME,'.',COLUMN_NAME) as This_DB_Table_and_Column,
+concat(TABLE_SCHEMA,'.',REFERENCED_TABLE_NAME,'.',REFERENCED_COLUMN_NAME) as References_This_DB_Table_and_Column,
+CONSTRAINT_NAME
+from KEY_COLUMN_USAGE
+where referenced_table_name is not NULL
+order by This_DB_Table_and_Column;
+
+-- The order by clause may not work on all DB's. If there is an error remove it and run again.
+
+-- Same query but this one shows the cascade rules.
+use INFORMATION_SCHEMA;
+select
+concat(kcu.TABLE_SCHEMA,'.',kcu.TABLE_NAME,'.',kcu.COLUMN_NAME) as This_DB_Table_and_Column,
+concat(kcu.TABLE_SCHEMA,'.',kcu.REFERENCED_TABLE_NAME,'.',kcu.REFERENCED_COLUMN_NAME) as References_This_DB_Table_and_Column,
+kcu.CONSTRAINT_NAME,
+rc.update_rule,
+rc.delete_rule
+from
+KEY_COLUMN_USAGE KCU
+join REFERENTIAL_CONSTRAINTS RC on (rc.CONSTRAINT_NAME= kcu.CONSTRAINT_NAME)
+where kcu.referenced_table_name is not NULL order by This_DB_Table_and_Column;
+-- The order by clause may not work on all DB's. If there is an error remove it and run again.
+-- On Tracy's Ubuntu MySQL server I got this error message: Unknown column 'kcu.TABLE_SCHEMA' in 'field list'
+
+-- This is a quick way to view all of the contraints:
+SELECT * FROM information_schema.REFERENTIAL_CONSTRAINTS
+</Data>
+  </Template>
+  <Template ID="14">
+    <Name>tmp_FindComponent</Name>
+    <Data>select  DISTINCT INTO "NL:"
+	mPage_Name=bdc.category_name,
+	mPage_Layout =
+if (bdc.layout_flag = 0 )	"Summary"
+elseif(bdc.layout_flag = 1)	"Workflow" endif,
+	bdc.category_mean ,
+	bdv.mpage_param_value,
+	bdf.filter_mean ,
+	bdf.filter_seq,
+	bdc.layout_flag,
+	;bdc.*
+	;bdv.*
+	bdf.*
+from BR_DATAMART_CATEGORY BDC, br_datamart_value bdv,  br_datamart_filter bdf
+where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+and bdv.mpage_param_value = "[+ComponentName+]"
+and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id
+order by bdc.category_name, bdc.layout_flag
+</Data>
+  </Template>
+  <Template ID="15">
+    <Name>tmp_gitDirectory</Name>
+    <Data>md [+reponame+].git
+cd [+reponame+].git
+git init --bare --shared
+cd ../
+sudo chgrp -R [+thegroupname+] [+reponame+].git
+sudo chmod g+rws [+reponame+].git
+sudo chmod o-rwx [+reponame+].git
 </Data>
   </Template>
 </TEMPLATES>
