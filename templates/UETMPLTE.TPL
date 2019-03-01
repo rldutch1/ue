@@ -601,7 +601,7 @@ from&#xD;&#xD;
 	cust_samt.cust_prsnlauthpos cp,&#xD;&#xD;
 	prsnl p&#xD;&#xD;
 plan cp&#xD;&#xD;
-where cp.usr_person_id = (select person_id from prsnl where username = "[+USERNAME+]");3916850&#xD;&#xD;
+where cp.usr_person_id = (select person_id from prsnl where username = "[+USERNAME+]");&#xD;&#xD;
 join p where p.person_id = cp.usr_person_id&#xD;&#xD;
 order by cp.bh_mp_pref_id desc&#xD;&#xD;
 &#xD;&#xD;
