@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Template HTML Document">
+  <meta name="keywords" content="comma,separated,keywords">
+  <meta name="author" content="Robert Holland">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<script type="text/javascript" src="http://example.com/js/filename.js"></script>
+<link rel="stylesheet" href="http://example.com/css/filname.css" />
+</head>
+
+<style>
+/*common css*/
+table, th, td {border-collapse:collapse; border: 1px solid black;}
+th {background-color:#ffff00;}
+tr:nth-child(even) {background: #CCC;}
+tr:nth-child(odd) {background: #FFF;}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: underline;}
+a:active {text-decoration: underline;}
+</style>
+
+<body>
+<img src='data:image/png;base64,
+' {base64 data goes here without the braces} />
+<br />
+
+<div>
+<p>Blah blah blah</p>
+
+<table><caption>Table Caption</caption>
+<tr><th>One</th><th>Two</th><th>Three</th><th>Four</th></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+</table>
+
+</div>
+</body>
+</html>

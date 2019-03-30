@@ -1,0 +1,13 @@
+/*
+-- Create local user.
+//Database Username: [+dbusername+]
+//Database Password: [+dbpassword+]
+//----------------------------------------------------------------------------
+*/
+
+-- Create local user.
+CREATE USER '[+dbusername+]'@'localhost' IDENTIFIED BY '[+dbpassword+]';
+-- Create remote user.
+CREATE USER '[+dbusername+]'@'%' IDENTIFIED BY '[+dbpassword+]';
+-- Tell the server to reload the GRANT TABLES.
+FLUSH PRIVILEGES;

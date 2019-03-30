@@ -1,0 +1,36 @@
+-- To run from the command prompt type:
+-- mysql -u rob -p < display_foreign_key_references.sql > current_fk_refs.txt
+
+use information_schema;
+select
+	concat(table_schema,'.',table_name,'.',column_name) as this_db_table_and_column,
+	concat(table_schema,'.',referenced_table_name,'.',referenced_column_name) as references_this_db_table_and_column,
+	constraint_name
+from key_column_usage
+where referenced_table_name is not null
+order by this_db_table_and_column;
+
+-- The order by clause may not work on all DB's. If there is an error remove it and run again.
+
+-- Same query but this one shows the cascade rules.
+use information_schema;
+select
+	concat(kcu.table_schema,'.',kcu.table_name,'.',kcu.column_name) as this_db_table_and_column,
+	concat(kcu.table_schema,'.',kcu.referenced_table_name,'.',kcu.referenced_column_name) as references_this_db_table_and_column,
+	kcu.constraint_name,
+	rc.update_rule,
+	rc.delete_rule
+from
+	key_column_usage kcu
+join referential_constraints rc on (rc.constraint_name= kcu.constraint_name)
+where kcu.referenced_table_name is not null order by this_db_table_and_column;
+
+-- The order by clause may not work on all DB's. If there is an error remove it and run again.
+
+-- On Tracy's Ubuntu MySQL server I got this error message: Unknown column 'kcu.TABLE_SCHEMA' in 'field list' because the alias in the from clause was in uppercase and lowercase in the select portion.
+
+-- This is a quick way to view all of the contraints:
+select * from information_schema.referential_constraints;
+
+-- This is a quick way to view constraints from a specific database:
+select * from information_schema.referential_constraints where constraint_schema = 'thedatabasename';

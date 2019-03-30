@@ -1,7 +1,7 @@
 select; into $outdev
 Bedrock_Viewpoint_Name = cnvtupper (m.viewpoint_name ) ,
 Bedrock_View_Name = cnvtupper (c.category_name )  ,
-Bedrock_Identifier_Name = c.category_mean,
+Bedrock_Identifier_Name_on_5th_Line_of_Blackbird = c.category_mean,
 Bedrock_Mpage_Name = c.category_name; same as m.viewpoint_name
 from (mp_viewpoint m ) ,
 (mp_viewpoint_reltn r ) ,

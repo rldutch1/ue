@@ -1,0 +1,12 @@
+;Drop/Create User as DBA
+ drop program user_to_dba go
+ create program user_to_dba
+
+ prompt "MINE" = "MINE"
+
+ with outdev
+ DROP CCLUSER [+USERNAME+]
+ commit
+ CREATE CCLUSER [+USERNAME+] TO DBA
+ commit
+ end go
