@@ -1,0 +1,25 @@
+select; into $outdev
+	cname = cnvtupper (c.category_name ) 	,
+	c.br_datamart_category_id 	,
+	c.category_name 	,
+	c.category_mean 	,
+	c.layout_flag 	,
+	br.report_mean 	,
+	br.report_name 	,
+	br.report_seq
+from
+	br_datamart_category   c 	,
+	br_datamart_report   br 	,
+	br_datamart_report_filter_r   bfr 	,
+	br_datamart_filter   bf
+plan c
+where
+	c.br_datamart_category_id > 0
+join  br
+where br.br_datamart_category_id = c.br_datamart_category_id
+join bfr
+where bfr.br_datamart_report_id = br.br_datamart_report_id
+join bf
+where bf.br_datamart_filter_id = bfr.br_datamart_filter_id
+	and bf.filter_category_mean = cnvtupper("mp_sect_params")
+order by 	cname 	, bf.filter_seq

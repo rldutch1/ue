@@ -1,0 +1,65 @@
+#WHILE loop
+i=1
+while [[ $i -le 10 ]]
+do
+  echo "Searching Node $i: "
+  ssh rholland@pcma"$i"p.bdcm.bannerhealth.com "ls -al /cerner/w_custom/
+cust_wh/code/$1/$2"
+  # echo "$i"
+   let i=i+1
+done
+
+#FOR Loop
+for file in *.txt
+do
+	cat $file >> OneBigFile.txt
+done
+
+#AIX Array:
+set -A profileup 2 3 4 5 6 7 8 9 10
+for i in ${profileup[@]}
+do
+echo "Updating .profile on pcma${i}: "
+scp ~/.profile rholland@pcma"$i"p.bdcm.bannerhealth.com:~/
+#echo "$i"
+done
+
+LINUX Array:
+rho_hosts=(2 3 4 5 6 7 8 9 10 11 12 19 20 22) #Skipping Node 1 in the array
+for i in ${rho_hosts[@]}
+do
+  echo "Updating .bashrc on samtazapp${i}: "
+  scp ~/.bashrc rholland@samtazapp"$i":~/
+#  #echo "$i"
+done
+
+Make Dummy Files:
+dummyfiles(){
+if [ $# -eq 0 ]
+then
+echo "dummyfiles 30"
+else
+#printf '%s ' {1..$1}.txt |xargs touch
+for ((i=1; i<=$1; i++)); do : >> dummyfile_"$i".txt; done
+fi
+}
+
+functionname(){
+if [ $# -eq 0 ]
+then
+echo "Message"
+else
+case $1 in
+	argument1)
+		do something
+	;;
+	argument2)
+		do something
+	;;
+	*)
+		message00="The message"
+		echo $message00
+	;;
+esac
+fi
+}
