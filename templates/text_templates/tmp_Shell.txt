@@ -43,3 +43,23 @@ else
 for ((i=1; i<=$1; i++)); do : >> dummyfile_"$i".txt; done
 fi
 }
+
+functionname(){
+if [ $# -eq 0 ]
+then
+echo "Message"
+else
+case $1 in
+	argument1)
+		do something
+	;;
+	argument2)
+		do something
+	;;
+	*)
+		message00="The message"
+		echo $message00
+	;;
+esac
+fi
+}
