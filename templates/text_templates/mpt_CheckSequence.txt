@@ -40,3 +40,4 @@ create table custom.cust_prsnlauthpos
 	end_effective_dt_tm date default sysdate
 	constraint cust_pk_prsnlauthpos primary key(bh_mp_pref_id)
 );
+^
