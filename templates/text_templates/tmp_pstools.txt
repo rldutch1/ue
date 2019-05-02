@@ -1,0 +1,5 @@
+pslist \\{+ComputerName+] -m [+AppNameProcessName+]
+pslist \\{+ComputerName+] -m [+AppNameProcessName+] | sort
+
+pskill -t \\{+ComputerName+] [+AppNameProcessName+]
+^
