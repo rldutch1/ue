@@ -1,0 +1,29 @@
+;Page was unable to load successfully error.
+;[+USERNAME+] [+VIEWNAME+] - Example viewname: VWP|EDNURSINGVIEW
+select distinct
+n.parent_entity_id
+,n.pvc_value
+,n.name_value_prefs_id
+,a.application_number
+,n.pvc_name
+from
+app_prefs a
+,name_value_prefs n
+plan a
+where a.prsnl_id = (select person_id from prsnl p where p.username = cnvtupper("[+USERNAME+]"))
+join n
+where n.parent_entity_id = a.app_prefs_id
+and n.parent_entity_name = "APP_PREFS"
+;;and cnvtupper(n.pvc_name) = "VWP|EDNURSINGVIEW"
+and cnvtupper(n.pvc_name) = "[+VIEWNAME+]"; Comment this line to see all view names (n.pvc_name) associated with the username.
+order by n.pvc_name, n.parent_entity_id, n.sequence
+
+delete
+from
+name_value_prefs n
+where n.parent_entity_id in (6839964849.00)
+and n.parent_entity_name = "APP_PREFS"
+and n.pvc_name = "[+VIEWNAME+]"
+go
+commit go
+^

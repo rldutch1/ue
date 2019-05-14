@@ -1,0 +1,43 @@
+;cust_samt.cust_hcc_documentation table.
+declare mp_next_id = f8
+go
+  select into "nl:"
+    seq_id = seq(cust_hcc_documentation_seq,nextval)
+  from dual
+  detail
+    mp_next_id = seq_id
+  with nocounter
+go
+call echo(mp_next_id)
+go
+
+;cust_samt.cust_prsnlauthpos table
+declare bhmp_next_id = f8
+go
+select into "nl:"
+bhmp_next_id2 = seq(BHS_MP_DATA_SEQ,nextval)
+from dual
+detail
+bhmp_next_id = bhmp_next_id2
+with nocounter
+go
+call echo(bhmp_next_id)
+go
+^
+create table custom.cust_prsnlauthpos
+(
+	bh_mp_pref_id number not null,
+	usr_person_id number not null,
+	position_cd number not null,
+	active_ind number DEFAULT 1 not null,
+	updt_applctx  number DEFAULT 0,
+	updt_cnt number DEFAULT 0,
+	updt_dt_tm  DATE DEFAULT SYSDATE,
+	updt_id number DEFAULT 1,
+	updt_task number DEFAULT 99999,
+	bh_mp_pref_id number not null,
+	beg_effective_dt_tm date default sysdate,
+	end_effective_dt_tm date default sysdate
+	constraint cust_pk_prsnlauthpos primary key(bh_mp_pref_id)
+);
+^

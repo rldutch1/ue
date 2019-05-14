@@ -1,0 +1,3 @@
+-- Show linked servers.
+	EXEC sys.sp_linkedservers
+

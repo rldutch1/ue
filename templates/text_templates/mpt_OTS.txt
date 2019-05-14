@@ -1,50 +1,64 @@
-;Enter person_id or USERNAME
+;Enter [+123456.00+] or [+USERNAME+]
 select
-	cp.bh_mp_pref_id,
-	cp.updt_dt_tm";;",
-	cp.usr_person_id,
-	cp.position_cd,
-	position_name=uar_get_code_display(cp.position_cd),
 	p.username,
 	p.name_full_formatted,
-	cp.active_ind
+	cp.usr_person_id,
+	cp.rowid,
+	cp.position_cd,
+	position_name=uar_get_code_display(cp.position_cd),
+	cp.active_ind,
+	cp.updt_cnt,
+	cp.updt_dt_tm,
+	cp.bh_mp_pref_id,
+	cp.beg_effective_dt_tm";;",
+	cp.end_effective_dt_tm";;"
 from
 	cust_samt.cust_prsnlauthpos cp,
 	prsnl p
 plan cp
-where cp.usr_person_id = person_id
+where cp.usr_person_id = (select person_id from prsnl where username = cnvtupper("[+USERNAME+]"));
 join p where p.person_id = cp.usr_person_id
 order by cp.bh_mp_pref_id desc
 
+---------------------
 select
-	cp.bh_mp_pref_id,
-	cp.updt_dt_tm";;",
-	cp.usr_person_id,
-	cp.position_cd,
-	position_name=uar_get_code_display(cp.position_cd),
 	p.username,
 	p.name_full_formatted,
-	cp.active_ind
+	cp.usr_person_id,
+	cp.rowid,
+	cp.position_cd,
+	position_name=uar_get_code_display(cp.position_cd),
+	cp.active_ind,
+	cp.updt_cnt,
+	cp.updt_dt_tm,
+	cp.bh_mp_pref_id,
+	cp.beg_effective_dt_tm";;",
+	cp.end_effective_dt_tm";;"
 from
 	cust_samt.cust_prsnlauthpos cp,
 	prsnl p
 plan cp
-where cp.usr_person_id = (select person_id from prsnl where username = cnvtupper("USERNAME"));
+where cp.usr_person_id = [+123456.00+];
 join p where p.person_id = cp.usr_person_id
 order by cp.bh_mp_pref_id desc
 
+---------------------
 delete from cust_samt.cust_prsnlauthpos
-where usr_person_id = person_id
+where usr_person_id = [+123456.00+]
 go
 commit go
 
+---------------------
 delete from cust_samt.cust_prsnlauthpos
-where usr_person_id = (select person_id from prsnl where username = cnvtupper("USERNAME"))
+where usr_person_id = (select person_id from prsnl where username = cnvtupper("[+USERNAME+]"))
 go
 commit go
 
-select * from cust_samt.cust_prsnlauthpos where usr_person_id = person_id go
+---------------------
+select * from cust_samt.cust_prsnlauthpos where usr_person_id = [+123456.00+] go
 
+---------------------
 select * from cust_samt.cust_prsnlauthpos
-where usr_person_id = (select person_id from prsnl where username = cnvtupper("USERNAME"))
+where usr_person_id = (select person_id from prsnl where username = cnvtupper("[+USERNAME+]"))
 go
+^
