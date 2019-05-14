@@ -10,12 +10,12 @@ from
 app_prefs a
 ,name_value_prefs n
 plan a
-where a.prsnl_id = (select person_id from prsnl p where p.username = cmvtupper("[+USERNAME+]"))
+where a.prsnl_id = (select person_id from prsnl p where p.username = cnvtupper("[+USERNAME+]"))
 join n
 where n.parent_entity_id = a.app_prefs_id
 and n.parent_entity_name = "APP_PREFS"
 ;;and cnvtupper(n.pvc_name) = "VWP|EDNURSINGVIEW"
-and cnvtupper(n.pvc_name) = "[+VIEWNAME+]"; Comment this line to see all view names (n.pvc_name associated with the username.
+and cnvtupper(n.pvc_name) = "[+VIEWNAME+]"; Comment this line to see all view names (n.pvc_name) associated with the username.
 order by n.pvc_name, n.parent_entity_id, n.sequence
 
 delete
