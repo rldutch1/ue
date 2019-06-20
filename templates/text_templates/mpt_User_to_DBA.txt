@@ -20,4 +20,10 @@ DROP CCLUSER [+USERNAME+] go
 commit go
 CREATE CCLUSER [+USERNAME+] TO DBA go
 commit go
+
+select *
+from DUAF
+where
+user_name = "[+USERNAME+]"
+go
 ^
