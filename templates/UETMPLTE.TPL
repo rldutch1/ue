@@ -116,6 +116,7 @@ select * from dba_objects where owner = "CUST_SAMT" go; Shows all of the tables 
 select * from v$database go; Shows database name/id, read/write status.&#xD;
 select * from v$instance go; Shows instance name, host name, version, startup time, status.&#xD;
 select * from dba_tables where table_name = "CUST*" go; DM = Data Management&#xD;
+select * from dba_tab_privs where owner = 'CUST_SAMT'; Shows select, update, insert, and delete privileges.&#xD;
 select last_analyzed";;", * from dba_tables where table_name = "CUST*" go&#xD;
 reset; if you make a mistake while typing on the backend.&#xD;
 ;The following method does not understand "=" so you have to use "like" and "%" for the wildcard.&#xD;

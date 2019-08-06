@@ -1,0 +1,46 @@
+;From: Bannerman,Pat <Pat.Bannerman@Cerner.com>
+;Sent: Friday, June 28, 2019 7:06 AM
+;To: Soliman, Raphael <Rouphail.Soliman@bannerhealth.com>; Aluko, Adebiyi <Adebiyi.Aluko@bannerhealth.com>; Deme, Kavitha <Kavitha.Deme@bannerhealth.com>; Holland, Robert L <Robert.Holland@bannerhealth.com>; Untalan, Cory A <Cory.Untalan@bannerhealth.com>; Xie, Mike <michael.xie@bannerhealth.com>
+;Subject: [EXTERNAL] RE: sql to capture prefmaint
+;
+;Here's another one for you
+
+select
+ONE = build2(^declare ^
+                ,trim(cv.display_key)
+                ,^_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",^
+                ,trim(CNVTSTRING(cv.code_set))
+                ,^, "^
+                ,trim(cv.display_key)
+                ,^"))^)
+from code_value cv
+where cv.code_value in (
+3139256.00
+,3074207.00
+,1675021548.00
+,549276179.00
+,1049068668.00
+,1049069275.00
+,6943362.00
+,639136995.00
+,553088905.00
+,322114254.00
+,3075430.00
+)
+;Will give you
+declare DISCHARGETO_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "DISCHARGETO"))
+declare TRANSFERTO_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "TRANSFERTO"))
+declare ADMITTOINPATIENT_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "ADMITTOINPATIENT"))
+declare PATIENTPLACEMENTCOMMUNICATION_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "PATIENTPLACEMENTCOMMUNICATION"))
+declare REGISTRATIONCORRECTIONCOMMUNICATION_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "REGISTRATIONCORRECTIONCOMMUNICATION"))
+declare EDPOTENTIALADMITOROBSERVATIONCOMMUN_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "EDPOTENTIALADMITOROBSERVATIONCOMMUN"))
+declare PLACEINOBSERVATION_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "PLACEINOBSERVATION"))
+declare PLACEINEXTENDEDRECOVERY_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "PLACEINEXTENDEDRECOVERY"))
+declare EDTRANSITIONTOOB_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "EDTRANSITIONTOOB"))
+declare EDTRANSITIONTOOROUTPATIENT_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "EDTRANSITIONTOOROUTPATIENT"))
+declare EDHIGHPRIORITYCRITICALCAREPATIENT_CD = f8 with protect, constant(UAR_GET_CODE_BY("DISPLAYKEY",200, "EDHIGHPRIORITYCRITICALCAREPATIENT"))
+
+;It is recommended to declare variables for codes which are used more than once, as it is more efficient.  In addition, this will handle multiple environment in the (rare) case that the code_value values are different.
+
+;Pat
+^
