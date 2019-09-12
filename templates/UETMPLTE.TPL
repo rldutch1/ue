@@ -395,7 +395,9 @@ join pa where p.person_id = pa.person_id&#xD;
 and pa.prsnl_alias_type_cd = 28769904.00 &#xD;
 and pa.alias_pool_cd = 498265387.00&#xD;
 and pa.active_ind = 1&#xD;
-with nocounter, separator="#", format, maxrec = 20 select&#xD;
+with nocounter, separator="#", format, maxrec = 20&#xD;
+&#xD;
+select&#xD;
 p.username,&#xD;
 p.name_full_formatted,&#xD;
 p.person_id,&#xD;
@@ -414,7 +416,7 @@ join pa where p.person_id = pa.person_id&#xD;
 and pa.prsnl_alias_type_cd = 28769904.00 &#xD;
 and pa.alias_pool_cd = 498265387.00&#xD;
 and pa.active_ind = 1&#xD;
-with nocounter, separator="#", format, maxrec = 20^ </Template>
+with nocounter, separator="#", format, maxrec = 20&#xD;^ </Template>
 <Template Name="mpt_prefmaint_positions" Description="Find positions that have access to prefmaint published application" Comments="0" Strings="0">;Find positions that have access to prefmaint published application&#xD;
 SELECT&#xD;
 	d.application_number&#xD;
