@@ -1,0 +1,5 @@
+select Base_Group = info_char
+from dm_info
+where info_domain = "INS"
+and info_name in ("MP_BASE_GROUP","WKLIST_BASE_GROUP")
+^

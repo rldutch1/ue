@@ -1,0 +1,16 @@
+/*
+--Create user and grant access to database.
+//Database Username: [+dbusername+]
+//Database Password: [+dbpassword+]
+//Database Name: [+dbname+]
+//----------------------------------------------------------------------------
+*/
+
+-- Create local user.
+CREATE USER '[+dbusername+]'@'localhost' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbname+].* TO '[+dbusername+]'@'localhost' WITH GRANT OPTION;
+-- Create remote user.
+CREATE USER '[+dbusername+]'@'%' IDENTIFIED BY '[+dbpassword+]';
+GRANT ALL PRIVILEGES ON [+dbname+].* TO '[+dbusername+]'@'%' WITH GRANT OPTION;
+-- Tell the server to reload the GRANT TABLES.
+FLUSH PRIVILEGES;

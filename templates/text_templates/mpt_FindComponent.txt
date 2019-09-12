@@ -1,0 +1,18 @@
+select  DISTINCT INTO "NL:"
+ 	mPage_Name=bdc.category_name,
+ 	mPage_Layout =
+if (bdc.layout_flag = 0 )	"Summary"
+elseif(bdc.layout_flag = 1)	"Workflow" endif,
+ 	bdc.category_mean ,
+ 	bdv.mpage_param_value,
+ 	bdf.filter_mean ,
+ 	bdf.filter_seq,
+ 	bdc.layout_flag,
+ 	;bdc.*
+ 	;bdv.*
+ 	bdf.*
+from BR_DATAMART_CATEGORY BDC, br_datamart_value bdv,  br_datamart_filter bdf
+where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+and bdv.mpage_param_value = "[+ComponentName+]"
+and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id
+order by bdc.category_name, bdc.layout_flag

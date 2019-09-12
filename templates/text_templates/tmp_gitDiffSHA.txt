@@ -1,0 +1,8 @@
+git diff olderSHA newerSHA -- [+filename+]
+
+Example:
+git diff 744213d3c5b54d9814e121ca3fe413e2f26c6820 8b2a9494d2fc7175dc85e31a98c606dd72e8c815 -- [+filename+]
+
+git diff 744213d3c5b54d9814e121ca3fe413e2f26c6820:path/to/[+filename+] 8b2a9494d2fc7175dc85e31a98c606dd72e8c815:path/to/[+filename+]
+
+^
