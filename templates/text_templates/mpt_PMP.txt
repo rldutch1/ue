@@ -1,3 +1,5 @@
+
+Enter: [+USERNAME+] or [+123456.00+]
 select
 p.username,
 p.name_full_formatted,
@@ -12,9 +14,31 @@ from
 	Prsnl_alias pa
 plan p
 where
-	p.person_id = PERSON ID
+	p.person_id = [+123456.00+]
 join pa where p.person_id = pa.person_id
 and pa.prsnl_alias_type_cd = 28769904.00
 and pa.alias_pool_cd = 498265387.00
 and pa.active_ind = 1
 with nocounter, separator="#", format, maxrec = 20
+
+select
+p.username,
+p.name_full_formatted,
+p.person_id,
+alias_type_cd_display=uar_get_code_display(pa.prsnl_alias_type_cd),
+alias_pool_cd_display=uar_get_code_display(pa.alias_pool_cd),
+alias_identifier=pa.alias,
+pa.updt_dt_tm;,
+;pa.*
+from
+	prsnl p,
+	Prsnl_alias pa
+plan p
+where
+	p.person_id = (select person_id from prsnl where username = cnvtupper("[+USERNAME+]"))
+join pa where p.person_id = pa.person_id
+and pa.prsnl_alias_type_cd = 28769904.00
+and pa.alias_pool_cd = 498265387.00
+and pa.active_ind = 1
+with nocounter, separator="#", format, maxrec = 20
+^
