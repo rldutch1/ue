@@ -1,0 +1,42 @@
+For Donna Barger (Hide non-billable ICD10 codes):
+;Display the data
+select n.disallowed_ind, n.*
+from nomenclature n
+where n.source_vocabulary_cd = 1232054373.00 ; ICD-10-CM
+and n.active_ind = 1
+and n.end_effective_dt_tm >= cnvtdatetime(curdate,curtime3)
+and n.contributor_system_cd != 467
+and n.concept_cki = (select cce.concept_cki
+from cmt_concept_extension cce
+where cce.active_ind = 1
+and cce.beg_effective_dt_tm <= cnvtdatetime(curdate,curtime3)
+and cce.end_effective_dt_tm >= cnvtdatetime(curdate,curtime3)
+and cce.EXTENSION_TYPE_MEAN = "BILLABLE"
+and cce.EXTENSION_VALUE = "N")
+go
+
+
+**************the update statement for the disallowed_ind column*************
+
+free define oraclesystem go
+define oraclesystem 'custom/perf0rmance@azb1' go
+
+update from nomenclature n
+set n.disallowed_ind = 1,
+n.updt_id = 32913554,     ;Robert Holland's person_id
+n.updt_task = 1234567890,
+n.updt_dt_tm = cnvtdatetime(curdate,curtime3)
+where n.source_vocabulary_cd = 1232054373.00 ; ICD-10-CM  in PROD
+and n.active_ind = 1
+and n.end_effective_dt_tm >= cnvtdatetime(curdate,curtime3)
+and n.contributor_system_cd != 467
+and n.concept_cki = (select cce.concept_cki
+from cmt_concept_extension cce
+where cce.active_ind = 1
+and cce.beg_effective_dt_tm <= cnvtdatetime(curdate,curtime3)   ; if I run this before 10/1, I’ll have to comment this line out
+and cce.end_effective_dt_tm >= cnvtdatetime(curdate,curtime3)
+and cce.EXTENSION_TYPE_MEAN = "BILLABLE"
+AND cce.EXTENSION_VALUE = "N")
+go
+commit go
+^
