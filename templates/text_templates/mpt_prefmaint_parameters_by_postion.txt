@@ -1,5 +1,5 @@
 
-;PrefMaint parameters by position: 123456 or Information Services Staff 5
+;PrefMaint parameters by position: 12345678.00 or Scribe
 ;Show position display name
 select code_value, display from code_value where code_set = 88 and active_ind = 88;
 
@@ -45,8 +45,8 @@ name_value_prefs n
 plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
 join v where n.parent_entity_id = v.view_prefs_id
 and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
-;and v.position_cd =  123456
-and v.position_cd =  (select x.code_value from code_value x where display = "Information Services Staff 5" and code_set = 88 and active_ind = 1)
+;and v.position_cd = 12345678.00
+and v.position_cd in (select x.code_value from code_value x where display in ("Scribe") and code_set = 88 and active_ind = 1)
 and  v.frame_type = "CHART"  ;Raphael 04/03
 join app where v.application_number = app.application_number
 join cv where cv.code_value = v.position_cd
