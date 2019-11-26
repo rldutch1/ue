@@ -1,5 +1,5 @@
 
-;PrefMaint parameters by position: 12345678.00 or Scribe
+;PrefMaint parameters by position: [+position_cd+] or [+position name+]
 ;Show position display name
 select code_value, display from code_value where code_set = 88 and active_ind = 88;
 
@@ -32,6 +32,7 @@ Application = app.description
   )
 , n2.name_value_prefs_id
 , Updated_By = p.name_full_formatted
+, n3.updt_dt_tm";;"
 
 from
 name_value_prefs n
@@ -45,9 +46,9 @@ name_value_prefs n
 plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
 join v where n.parent_entity_id = v.view_prefs_id
 and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
-;and v.position_cd = 12345678.00
-and v.position_cd in (select x.code_value from code_value x where display in ("Scribe") and code_set = 88 and active_ind = 1)
-and  v.frame_type = "CHART"  ;Raphael 04/03
+;and v.position_cd = [+position_cd+]
+and v.position_cd in (select x.code_value from code_value x where display in ("[+position name+]") and code_set = 88 and active_ind = 1)
+and  v.frame_type in ("CHART","ORG") ;Updated to show both. RH
 join app where v.application_number = app.application_number
 join cv where cv.code_value = v.position_cd
 	and (
@@ -65,7 +66,7 @@ and dp.person_id = 0
 join n2 where n2.parent_entity_id = outerjoin(dp.detail_prefs_id)
 and n2.pvc_name = outerjoin("REPORT_PARAM")
 join n3 where n3.parent_entity_id = dp.detail_prefs_id
-and n3.pvc_value = "mp_unified_driver"  ;Raphael 04/03
+;and n3.pvc_value = "mp_unified_driver"  ;Raphael 04/03 ;Commented to show all drivers. RH
 and n3.pvc_name = "REPORT_NAME"
 join p where n3.updt_id = p.person_id
 order by v.view_name, Application, Position_Display
