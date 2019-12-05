@@ -1,4 +1,3 @@
-
 ;PrefMaint parameters by position: [+position_cd+] or [+position name+]
 ;Show position display name
 select code_value, display from code_value where code_set = 88 and active_ind = 88;
@@ -6,7 +5,7 @@ select code_value, display from code_value where code_set = 88 and active_ind = 
 ;Show Tab names
 select
 Application = app.description
-, n.updt_dt_tm
+, n.updt_dt_tm";;"
 ;, v.updt_dt_tm
 ;, n2.updt_dt_tm
 ;, n3.updt_dt_tm
@@ -32,7 +31,6 @@ Application = app.description
   )
 , n2.name_value_prefs_id
 , Updated_By = p.name_full_formatted
-, n3.updt_dt_tm";;"
 
 from
 name_value_prefs n
@@ -66,7 +64,7 @@ and dp.person_id = 0
 join n2 where n2.parent_entity_id = outerjoin(dp.detail_prefs_id)
 and n2.pvc_name = outerjoin("REPORT_PARAM")
 join n3 where n3.parent_entity_id = dp.detail_prefs_id
-;and n3.pvc_value = "mp_unified_driver"  ;Raphael 04/03 ;Commented to show all drivers. RH
+and n3.pvc_value like "*driver*" ;Wildcard to show all drivers. RH
 and n3.pvc_name = "REPORT_NAME"
 join p where n3.updt_id = p.person_id
 order by v.view_name, Application, Position_Display
