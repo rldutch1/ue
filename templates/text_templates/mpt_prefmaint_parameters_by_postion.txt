@@ -45,7 +45,7 @@ plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
 join v where n.parent_entity_id = v.view_prefs_id
 and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
 ;and v.position_cd = [+position_cd+]
-and v.position_cd in (select x.code_value from code_value x where display in ("[+position name+]") and code_set = 88 and active_ind = 1)
+and v.position_cd in (select x.code_value from code_value x where display in ("[+position name+]") and x.code_set = 88 and x.active_ind = 1)
 and  v.frame_type in ("CHART","ORG") ;Updated to show both. RH
 join app where v.application_number = app.application_number
 join cv where cv.code_value = v.position_cd
