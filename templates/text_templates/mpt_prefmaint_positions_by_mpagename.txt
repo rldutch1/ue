@@ -1,9 +1,5 @@
+;[+mPage Name+] ; Example: Physician Handoff Worklist Responsive
 
-;PrefMaint parameters by position display: [+position_cd+] or [+position name+]
-;Show position display name
-select code_value, display from code_value where code_set = 88 and active_ind = 88;
-
-;Show Tab names
 select
 Application = app.description
 , n.updt_dt_tm";;"
@@ -43,10 +39,8 @@ name_value_prefs n
 , detail_prefs dp
 , person p
 plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
-join v where n.parent_entity_id = v.view_prefs_id
+join v where n.parent_entity_id = v.view_prefs_id and n.pvc_value = "[+mPage Name+]"
 and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
-;and v.position_cd = [+position_cd+]
-and v.position_cd in (select x.code_value from code_value x where display in ("[+position name+]") and x.code_set = 88 and x.active_ind = 1)
 and  v.frame_type in ("CHART","ORG") ;Updated to show both. RH
 join app where v.application_number = app.application_number
 join cv where cv.code_value = v.position_cd
@@ -70,3 +64,4 @@ and n3.pvc_name = "REPORT_NAME"
 join p where n3.updt_id = p.person_id
 order by v.view_name, Application, Position_Display
 with time = 90
+^
