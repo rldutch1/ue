@@ -1,7 +1,7 @@
 
 ;PrefMaint parameters by position display: [+position_cd+] or [+position name+]
 ;Show position display name
-select code_value, display from code_value where code_set = 88 and active_ind = 88;
+select code_value, display, code_set from code_value where code_set = 88 and active_ind = 1 and display = "[+position name+]" or code_value = [+position_cd+];
 
 ;Show Tab names
 select
@@ -68,5 +68,5 @@ join n3 where n3.parent_entity_id = dp.detail_prefs_id
 and n3.pvc_value like "*driver*" ;Wildcard to show all drivers. RH
 and n3.pvc_name = "REPORT_NAME"
 join p where n3.updt_id = p.person_id
-order by v.view_name, Application, Position_Display
+order by n.pvc_value, v.view_name, Application, Position_Display
 with time = 90

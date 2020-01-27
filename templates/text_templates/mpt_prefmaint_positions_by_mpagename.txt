@@ -62,6 +62,6 @@ join n3 where n3.parent_entity_id = dp.detail_prefs_id
 and n3.pvc_value like "*driver*" ;Wildcard to show all drivers. RH
 and n3.pvc_name = "REPORT_NAME"
 join p where n3.updt_id = p.person_id
-order by v.view_name, Application, Position_Display
+order by Position_Display
 with time = 90
 ^
