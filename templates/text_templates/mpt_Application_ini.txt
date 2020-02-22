@@ -1,0 +1,30 @@
+select
+from
+	application_ini
+where
+	person_id = (select x.person_id from prsnl x where x.username = cnvtupper("[+username+]"))
+and
+	application_number=600005; Powerchart
+	;application_number=4250111; FirstNet
+	;application_number=3070000; Explorer Menu
+	;application_number=800040; SurgiNet
+	;application_number=820000; SurgiNet
+	;application_number=390000; Pharm Charge/Credit
+	;application_number=380000; Ph MedMgr
+go
+
+delete
+from
+	application_ini
+where
+	person_id = (select x.person_id from prsnl x where x.username = cnvtupper("[+username+]"))
+and
+	application_number=600005; Powerchart
+	;application_number=4250111; FirstNet
+	;application_number=3070000; Explorer Menu
+	;application_number=800040; SurgiNet
+	;application_number=820000; SurgiNet
+	;application_number=390000; Pharm Charge/Credit
+	;application_number=380000; Ph MedMgr
+go
+^
