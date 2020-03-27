@@ -1,4 +1,4 @@
-;[+mPage Name+] ; Example: Physician Handoff Worklist Responsive
+;[+TOC Tab Name+] ; Example: Outside Records
 
 select
 Application = app.description
@@ -13,7 +13,7 @@ Application = app.description
   , " ", "-GLOBAL-"
   , uar_get_code_display(v.position_cd), uar_get_code_display(v.position_cd)
   )
-, Tab_Name = n.pvc_value
+, TOC_Tab_Name = n.pvc_value
 , v.frame_type
 , Report_Name = evaluate(
   n3.pvc_value
@@ -39,7 +39,7 @@ name_value_prefs n
 , detail_prefs dp
 , person p
 plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
-join v where n.parent_entity_id = v.view_prefs_id and n.pvc_value = "[+mPage Name+]"
+join v where n.parent_entity_id = v.view_prefs_id and n.pvc_value = "[+TOC Tab Name+]"
 and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
 and  v.frame_type in ("CHART","ORG") ;Updated to show both. RH
 join app where v.application_number = app.application_number
