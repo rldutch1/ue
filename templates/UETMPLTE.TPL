@@ -329,7 +329,7 @@ join c&#xD;&#xD;
 where&#xD;&#xD;
 	c.br_datamart_category_id = r.br_datamart_category_id&#xD;&#xD;
 and &#xD;&#xD;
-	c.category_name = "[+mPage Name+]"&#xD;&#xD;
+	c.category_name = "[+Exact Spelling mPage Name+]"&#xD;&#xD;
 order by &#xD;&#xD;
 	viewpoint_name ,&#xD;&#xD;
 	view_name&#xD;&#xD;

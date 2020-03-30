@@ -329,7 +329,7 @@ join c&#xD;&#xD;
 where&#xD;&#xD;
 	c.br_datamart_category_id = r.br_datamart_category_id&#xD;&#xD;
 and &#xD;&#xD;
-	c.category_name = "[+mPage Name+]"&#xD;&#xD;
+	c.category_name = "[+Exact Spelling mPage Name+]"&#xD;&#xD;
 order by &#xD;&#xD;
 	viewpoint_name ,&#xD;&#xD;
 	view_name&#xD;&#xD;
@@ -2638,4 +2638,9 @@ rhoprod.world =&#xD;&#xD;
     (ENABLE = BROKEN)&#xD;&#xD;
     (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = cust_rpt_p1805.world)  )&#xD;&#xD;
 )&#xD;&#xD;
+^</Template><Template Name="tmp_zzzzzz" Description="Testing" Comments="0" Strings="0">^^&#xD;&#xD;
+asdfasdf&#xD;&#xD;
+sdfadf&#xD;&#xD;
+^^&#xD;&#xD;
+asdasdfsda&#xD;&#xD;
 ^</Template></Templates>
