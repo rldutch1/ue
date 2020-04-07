@@ -1,5 +1,5 @@
 
-Enter: [+USERNAME+] or [+123456.00+]
+;Enter: [+USERNAME+] or [+123456.00+]
 select
 p.username,
 p.name_full_formatted,
@@ -41,4 +41,13 @@ and pa.prsnl_alias_type_cd = 28769904.00
 and pa.alias_pool_cd = 498265387.00
 and pa.active_ind = 1
 with nocounter, separator="#", format, maxrec = 20
+
+Hi XXXXXX,
+
+We have seen several instances similar to this one where the State Pharmacy Board does not have the correct NPI number. You may need to email the Arizona State Pharmacy Board at PMP@azpharmacy.gov or call phone number 855-929-4767 and verify your NPI number with them. We show your NPI number as: YYYYYYYY.
+ 
+You can also check the Arizona PMP Website: https://pharmacypmp.az.gov/integration/statewide-integration-resources
+
+
+Robert-
 ^
