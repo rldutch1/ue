@@ -26,7 +26,7 @@ for file in *.txt; do
 done
 
 Use the Perl "rename" utility:
-	rename "s/oldExtension/newExtension/" *.txt
+	rename "s/\.txt/\.text/" *.txt
 
 	Rename when your files don't have any extension and you want to add one:
 	rename 's/$/.txt/' *
