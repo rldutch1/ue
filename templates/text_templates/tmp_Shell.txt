@@ -15,6 +15,22 @@ do
 	cat $file >> OneBigFile.txt
 done
 
+# Rename all *.txt to *.text
+for file in *.txt; do
+    mv -- "$file" "${file%.txt}.text"
+done
+
+#Rename, If you have to use basename, your syntax would be:
+for file in *.txt; do
+    mv -- "$file" "$(basename -- "$file" .txt).text"
+done
+
+Use the Perl "rename" utility:
+	rename "s/oldExtension/newExtension/" *.txt
+
+	Rename when your files don't have any extension and you want to add one:
+	rename 's/$/.txt/' *
+
 #AIX Array:
 set -A profileup 2 3 4 5 6 7 8 9 10
 for i in ${profileup[@]}
@@ -42,19 +58,27 @@ else
 #printf '%s ' {1..$1}.txt |xargs touch
 for ((i=1; i<=$1; i++)); do : >> dummyfile_"$i".txt; done
 fi
-}
-
-functionname(){
+} functionname(){
 if [ $# -eq 0 ]
 then
 echo "Message"
 else
 case $1 in
 	argument1)
-		do something
+		echo "Doing something"
+		Do Something
 	;;
 	argument2)
-		do something
+		echo "Doing something"
+		Do Something
+	;;
+	argument3)
+		echo "Doing something"
+		Do Something
+	;;
+	argument4)
+		echo "Doing something"
+		Do Something
 	;;
 	*)
 		message00="The message"
