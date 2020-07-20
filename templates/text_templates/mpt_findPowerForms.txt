@@ -1,0 +1,55 @@
+Find form id (form_id)
+[+Form Name+]
+[+Form ID+]
+[+ce.event code+]
+[+put dcp_forms_ref_id here+]
+
+;If you know the name of the form:
+select
+d.dcp_forms_ref_id
+,d.description
+,d.event_cd
+from dcp_forms_ref d
+where d.description like "[+Form Name+]*" ;Form name.
+and active_ind = 1
+
+;If you know the id of the form:
+select a.description
+,a.dcp_forms_ref_id
+from dcp_forms_activity a
+where a.dcp_forms_ref_id = [+Form ID+]; Form ID.
+and a.active_ind = 1
+;dcp_forms_activity_id
+
+;Find the form and chart some data on it.
+;Run the Clinical Event Quick Code and look for the form name. Usually has "PF" in the name.
+;Get the ce.event_cd and plug it into d.event_cd below.
+;This will show you the dcp_forms_ref_id from the dcp_forms_activity table.
+
+select
+	dfr.dcp_forms_activity_id
+	, form_dttm_res = FORMAT (dfr.form_dt_tm,  "mm/dd/yy hh:mm;;d")
+	, trim(cnvtstring(dfr.dcp_forms_ref_id),3)
+from
+	dcp_forms_activity dfr
+	, dcp_forms_ref d
+plan dfr
+where
+	dfr.encntr_id = 69059734.00;$enc_id;69030820.00;
+and
+	dfr.person_id = 35545762.00;$per_id;35535629.00;
+;and
+;	dfr.dcp_forms_ref_id = 2338330015.00
+and
+	dfr.form_status_cd not in(26.00,28.00, 29.00, 30.00, 31.00, 654643.00)
+join d where d.dcp_forms_ref_id = dfr.dcp_forms_ref_id
+and d.event_cd = [+ce.event code+];
+order by
+	dfr.last_activity_dt_tm desc
+
+;Plug the dcp_forms_ref_id into this js code.
+var personid1 = this.getProperty("personId");
+var encntrid1 = this.getProperty("encounterId");
+var form = "<a id='Add' class='add-plus' href='javascript:MPAGES_EVENT(\"POWERFORM\",\""+personid1+"|"+encntrid1+"|[+put dcp_forms_ref_id here+]|0|0\")'><span class='add-icon'> </span><span class='add-text'>Add</span></a>";
+MPage.getCustomComp(compid).setProperty("headerSubTitle",form);
+^
