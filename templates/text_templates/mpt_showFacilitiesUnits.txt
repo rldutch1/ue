@@ -1,0 +1,41 @@
+;mx_test.prg
+select ;into "nl:"
+l.location_cd,
+l_location_disp = uar_get_code_display(l.location_cd) ;facility name
+, ","
+, lo.location_cd
+, ";"
+	, lo_location_disp = uar_get_code_display(lo.location_cd) ;unit name
+	, l_facility_accn_prefix_disp = uar_get_code_display(l.facility_accn_prefix_cd)
+
+from
+	location   l
+	, location   lo
+	, code_value cv1
+	, code_value cv_lo
+
+plan l
+	where	l.location_type_cd = 783.00 ;facility(s)
+	and		l.active_ind = 1
+	and		l.patcare_node_ind = 1
+
+; 	and l.location_cd =  4298880175.00	;bumcs
+
+join lo
+	where	lo.organization_id = l.organization_id
+	and 	lo.active_ind = 1
+	and		lo.location_type_cd = 794.00 ;nurse unit(s)
+
+join cv1
+	where	cv1.code_value = l.location_cd
+	and		cv1.display_key not in ("BANNERHEALTH","STARTORGANIZAT","BPC")
+
+join cv_lo
+	where	cv_lo.code_value = lo.location_cd
+;	and		cv_lo.display not in ("*test*","*test*") ;enabled when go live
+
+order by
+	l_location_disp
+	, lo_location_disp
+
+with nocounter, format, time=30
