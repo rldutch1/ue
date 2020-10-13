@@ -1,0 +1,8 @@
+create table display_test (id int unsigned auto_increment primary key,
+column1 varchar(100) not null,
+column2 varchar(100) not null,
+dt_tm datetime default now(),
+updt_dt_tm datetime not null default current_timestamp on update current_timestamp,
+active_ind int not null default 1
+)engine=innodb;
+^
