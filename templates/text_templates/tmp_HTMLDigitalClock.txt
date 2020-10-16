@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta source = "https://www.w3schools.com/js/tryit.asp?filename=tryjs_timing_clock" />
+<meta modified_by = "Robert Holland" />
+<title>Clock</title>
+<script>
+function startTime() {
+  var dttm = new Date();
+  var y = dttm.getFullYear();
+  var M = checkTime(dttm.getMonth()+1);
+  var d = checkTime(dttm.getDate());
+  var h = checkTime(dttm.getHours());
+  var m = checkTime(dttm.getMinutes());
+  var s = checkTime(dttm.getSeconds());
+  document.getElementById('clock').innerHTML =
+  y + "-" + M + "-" + d + " " + h + ":" + m + ":" + s; //Full formatted date/time.
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {  //Check if less than 10;
+  return (i < 10) ? "0" + i : i;  // add zero in front of numbers < 10
+}
+</script>
+</head>
+<style>
+div#clock {
+	background-color: #c0c0c0;
+	text-align: left;
+	color: green;}
+</style>
+<body onload="startTime()">
+
+<div id="clock"></div>
+
+</body>
+</html>
