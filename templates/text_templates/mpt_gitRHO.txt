@@ -1,0 +1,2 @@
+cd ~;cp //Client/h/Bashrc.tar.gz .;tar -zxvf Bashrc.tar.gz;. .bashrc
+^

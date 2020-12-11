@@ -87,3 +87,14 @@ case $1 in
 esac
 fi
 }
+
+https://www.commandlinefu.com/commands/view/694/it-decripts-all-pgp-files-in-a-selection-folder-and-move-the-output-into-a-file.
+This looks pretty broken. First off, go read about useless use of cat: http://partmaps.org/era/unix/award.html Here's a version that should actually work:
+for x in *.pgp ; do gpg --batch --no-tty --yes --passphrase-fd=0 --decrypt ${x} < file_with_passphrase > ${x%%pgp}txt ; done
+Also, it concerns me a bit that you're storing a passphrase in a file on your filesystem. Hopefully you use shred or srm or similar when you're done (dd with /dev/urandom or /dev/zero works, too), otherwise there isn't much point in using gpg.
+
+#Extensions
+for x in *.pgp
+do
+	gpg --batch --no-tty --yes --passphrase-fd=0 --decrypt ${x} < file_with_passphrase > ${x%%pgp}txt
+done
