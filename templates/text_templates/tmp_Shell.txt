@@ -98,3 +98,4 @@ for x in *.pgp
 do
 	gpg --batch --no-tty --yes --passphrase-fd=0 --decrypt ${x} < file_with_passphrase > ${x%%pgp}txt
 done
+^
