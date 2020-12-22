@@ -1,0 +1,17 @@
+Patient Level mPage:
+REPORT_NAME:
+mp_unified_driver
+
+REPORT_PARAM:
+Connect to View:
+"MINE", $PAT_PERSONID$, $VIS_ENCNTRID$, $USR_PERSONID$, $USR_PositionCd$, $PAT_PPRCode$, "$APP_AppName$", "", "[+ARCHIVEDRECORDS+]"
+
+Connect to mPage:
+"MINE", $PAT_PERSONID$, $VIS_ENCNTRID$, $USR_PERSONID$, $USR_PositionCd$, $PAT_PPRCode$, "$APP_AppName$", "", "[+VB_ARCHIVEDRECORDS+]"
+
+Organizer Level mPage:
+REPORT_NAME:
+
+
+REPORT_PARAM:
+^
