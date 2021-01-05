@@ -1,3 +1,4 @@
+;Find components using this ccl: "[+CCLNAME+]"
 select  DISTINCT INTO "NL:"
 	mPage_Name=bdc.category_name,
 	mPage_Layout =
@@ -18,25 +19,17 @@ elseif(bdc.layout_flag = 9)	"SCM Inventory Management Organizer" endif,
 	bdf.filter_display,
 	bdf.filter_seq,
 	bdc.layout_flag,
-	;bdc.*
-	;bdv.*
+	bdc.*,
+	bdv.*,
 	bdf.*
-from BR_DATAMART_CATEGORY BDC, br_datamart_value bdv,  br_datamart_filter bdf
+from
+BR_DATAMART_CATEGORY BDC,
+br_datamart_value bdv,
+br_datamart_filter bdf
 where bdc.br_datamart_category_id = bdv.br_datamart_category_id
-and bdv.mpage_param_value = "[+Component Name+]"
 and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id
+and bdv.freetext_desc = "[+CCLNAME+]"
+;and bdv.freetext_desc = "1bh_mp_wklst_cc_code_status_v3"
+;and bdf.filter_display = "Custom Column 4 CCL Script"
 order by bdc.category_name, bdc.layout_flag
-
-/*
-;Display Layout Flag Types:
-SELECT
-	DM.FLAG_VALUE,
-	DM.DESCRIPTION,
-	DM.DEFINITION
-FROM DM_FLAGS DM
-WHERE DM.TABLE_NAME = "BR_DATAMART_CATEGORY"
-	AND DM.COLUMN_NAME = "LAYOUT_FLAG"
-WITH  FORMAT, TIME = 60
-*/
 ^
-
