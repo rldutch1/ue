@@ -609,6 +609,8 @@ Open the log file and look for the name of the filter that is producing the erro
 		br_datamart_value bdv&#xD;&#xD;
 	where &#xD;&#xD;
 		bdv.br_datamart_filter_id = [+&lt;the_filter_id&gt;+]&#xD;&#xD;
+order by&#xD;&#xD;
+	cv_display&#xD;&#xD;
 &#xD;&#xD;
 Make a copy of the data before deleting it&#xD;&#xD;
 After running the delete statement cycle server 535 then update the filter&#xD;&#xD;

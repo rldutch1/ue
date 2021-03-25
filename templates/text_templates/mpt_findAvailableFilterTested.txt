@@ -77,6 +77,8 @@ Open the log file and look for the name of the filter that is producing the erro
 		br_datamart_value bdv
 	where
 		bdv.br_datamart_filter_id = [+<the_filter_id>+]
+	order by
+		cv_display
 
 Make a copy of the data before deleting it
 After running the delete statement cycle server 535 then update the filter
