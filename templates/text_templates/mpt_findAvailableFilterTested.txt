@@ -1,0 +1,86 @@
+;MULTIPURPOSE CCL: Find mPages using a DTA in an available filter. Need to know the available filter name and DTA.
+;This shows all mPages with "CM Transition Plan Initial Assess Form" configured in the "Clinical Documentation" available filter.
+[+<AVAILABLE_FILTER_NAME>+] ; (ex. "Clinical documentation specialty group #1 results", "Temperature results").
+[+<DTA_NAME>+] ; (ex. "CM Transition Plan Initial Assess Form", "Phone Message/Call").
+[+<mPAGE_NAME>+] ; (ex. "Primary Care Amb Workflow", "Pharmacy Workflow").
+[+<the_filter_id>+] ; Run Bedrock with Control + Shift + I.
+
+select  DISTINCT
+            mPage_Name=bdc.category_name,
+            bdc.category_mean ,
+            bdf.filter_mean ,
+            bdf.filter_display,
+            bdv.br_datamart_filter_id,
+            ;WRONG_DTA = bdv.freetext_desc,
+            CORRECT_DTA = uar_get_code_display(bdv.parent_entity_id),
+            bdv.parent_entity_id
+from
+BR_DATAMART_CATEGORY BDC,
+br_datamart_value bdv,
+br_datamart_filter bdf
+where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id
+;Available Filter Name:
+	and bdf.filter_display like "[+<AVAILABLE_FILTER_NAME>+]";Available filter.
+;mPage Name:
+	;and bdc.category_name = "[+<mPAGE_NAME>+]" ;Comment this line to show all mPages with the above available filter
+;Search by Code Value Display Name:
+	;and bdv.parent_entity_id = (select cv.code_value from code_value cv where cv.display = "[+<DTA_NAME>+]");CM Transition Plan Initial Assess Form
+order by bdc.category_name, bdf.filter_mean, bdv.freetext_desc
+
+;-----------------
+;List DTA's configured for a particular filter.
+;I used this to find the DTA configured on all mPages that have the "Confirmation applied to diagnosis" Available filter.
+select
+  bdv.br_datamart_value_id
+  ,sequence_order = value_seq
+  ,code_value = parent_entity_id; This could also be nomenclature_id
+  ,cv_display = uar_get_code_display(parent_entity_id)
+  ,bdv.br_datamart_filter_id
+  ,bdv.br_datamart_category_id
+  ,bdv.parent_entity_name
+  ;,*
+from
+	br_datamart_value bdv
+where
+	bdv.br_datamart_filter_id = (
+		select  DISTINCT
+            bdv1.br_datamart_filter_id
+		from
+			BR_DATAMART_CATEGORY BDC,
+			br_datamart_value bdv1,
+			br_datamart_filter bdf
+		where bdc.br_datamart_category_id = bdv1.br_datamart_category_id
+		and bdf.br_datamart_filter_id = bdv1.br_datamart_filter_id
+		;Available Filter Name:
+			and bdf.filter_display like "[+<AVAILABLE_FILTER_NAME>+]";Available filter (ex. "Previous Overdose", "Confirmation applied to diagnosis").
+		;mPage Name: (ex. "Primary Care Amb Workflow", "Pharmacy Workflow")
+			and bdc.category_name = "[+<mPAGE_NAME>+]" ;Comment this line to show all mPages with the above available filter
+		)
+
+;-----------------
+Get filter_id from query above. What is [+<the_filter_id>+]?
+To get the necessary information from the log file, run Bedrock with Control + Shift + I and reproduce the error.
+Open the log file and look for the name of the filter that is producing the error. You should see the br_datamart_filter_id a few lines above the filter name.
+
+	select
+  	bdv.br_datamart_value_id
+  	,bdv.freetext_desc
+  	,sequence_order = value_seq
+  	,code_value = parent_entity_id
+  	,cv_display = uar_get_code_display(parent_entity_id)
+  	,bdv.br_datamart_filter_id
+  	,bdv.br_datamart_category_id
+  	,bdv.parent_entity_name
+  	;,bdv.*
+	from
+		br_datamart_value bdv
+	where
+		bdv.br_datamart_filter_id = [+<the_filter_id>+]
+
+Make a copy of the data before deleting it
+After running the delete statement cycle server 535 then update the filter
+
+	delete from br_datamart_value bdv where bdv.br_datamart_filter_id = [+<the_filter_id>+] go
+	commit go
+^
