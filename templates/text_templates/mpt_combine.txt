@@ -1,0 +1,23 @@
+select
+p.active_ind
+, p_active_status_disp = uar_get_code_display(p.active_status_cd)
+, p.active_status_dt_tm
+, p.active_status_prsnl_id
+, p.application_flag
+, p.cmb_dt_tm
+, p.cmb_updt_id
+, p_combine_action_disp = uar_get_code_display(p.combine_action_cd)
+, p.from_person_id
+, p.person_combine_id
+, p.prev_active_ind
+, p_prev_active_status_disp = uar_get_code_display(p.prev_active_status_cd)
+, p.to_person_id
+, p.transaction_type
+, p.ucb_dt_tm
+, p.updt_dt_tm
+, p.updt_id
+from
+person_combine p
+where p.to_person_id = [+person_id+];
+with nocounter, separator=" ", format
+ 
