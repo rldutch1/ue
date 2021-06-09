@@ -2565,6 +2565,8 @@ Set-AuthenticodeSignature -FilePath "$executable" -Certificate $rh -HashAlgorith
 Example:&#xD;&#xD;
 git diff 744213d3c5b54d9814e121ca3fe413e2f26c6820 8b2a9494d2fc7175dc85e31a98c606dd72e8c815 -- [+filename+]&#xD;&#xD;
 ^</Template><Template Name="mpt_gitRHO" Description="Setup stand-alone Git profile in RHO." Comments="0" Strings="0">cd ~;cp //Client/h/Bashrc.tar.gz .;tar -zxvf Bashrc.tar.gz;. .bashrc&#xD;&#xD;
+&#xD;&#xD;
+cd ~;cp //Client/c/Hold/Bashrc.tar.gz .;tar -zxvf Bashrc.tar.gz;. .bashrc&#xD;&#xD;
 ^</Template><Template Name="tmp_HTMLBasic" Description="Basic HTML" Comments="0" Strings="0">&lt;!DOCTYPE html&gt;&#xD;&#xD;
 &lt;html&gt;&#xD;&#xD;
 &lt;head&gt;&#xD;&#xD;
@@ -3828,4 +3830,9 @@ function [+NameSpace+](){&#xD;&#xD;
 }&#xD;&#xD;
 &#xD;&#xD;
 //End testlink.js&#xD;&#xD;
+^</Template><Template Name="mpt_linux" Description="Linux" Comments="0" Strings="0">#Update file path:&#xD;&#xD;
+for file in *.html&#xD;&#xD;
+do&#xD;&#xD;
+cat $file|sed 's/samtazea\./samtazeanp\./g'| sed 's/SAMTAZEA\./SAMTAZEANP\./g'| sed 's/b1805/m1805/g'| sed 's/B1805/M1805/g'| sed 's/p1805/m1805/g'| sed 's/P1805/M1805/g' &gt; x/$file&#xD;&#xD;
+done&#xD;&#xD;
 ^</Template></Templates>
