@@ -1,5 +1,14 @@
 <?xml version="1.0"?>
-<Templates encode="utf8escenc"><Template Name="mpt_Application_ini" Description="Application.ini delete." Comments="0" Strings="0">select&#xD;&#xD;
+<Templates encode="utf8escenc"><Template Name="mpt_2cern_search_ccl" Description="CCL to search backend files." Comments="0" Strings="0">execute 2cern_search_ccl "MINE"&#xD;&#xD;
+, value("CUST_SCRIPT"); Example: "CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP"&#xD;&#xD;
+, value("prg"); Example: "html", "prg", "txt"&#xD;&#xD;
+, "3049471.00" go; No spaces&#xD;&#xD;
+&#xD;&#xD;
+execute 2cern_search_ccl "MINE"&#xD;&#xD;
+, value("CUST_SCRIPT"); Example: "CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP"&#xD;&#xD;
+, value("prg"); Example: "html", "prg", "txt"&#xD;&#xD;
+, "heartrate" go; No spaces&#xD;&#xD;
+^</Template><Template Name="mpt_Application_ini" Description="Application.ini delete." Comments="0" Strings="0">select&#xD;&#xD;
 from&#xD;&#xD;
 	application_ini&#xD;&#xD;
 where&#xD;&#xD;
@@ -1245,6 +1254,14 @@ function [+functionname+]() { //[+RITM_REQ_TASK+] [DATE_TEXT] [TIME] RH&#xD;&#xD
 				$("#mainTable tbody").append("&lt;tr style='height:30px'&gt;&lt;td&gt;&lt;a href='javascript:[+functionname+]();'&gt;[+Link_Name+]&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;");&#xD;&#xD;
 		};&#xD;&#xD;
 //----user_chk.js----&#xD;&#xD;
+^</Template><Template Name="mpt_linux" Description="Linux" Comments="0" Strings="0">#Update file path:&#xD;&#xD;
+for file in *.html&#xD;&#xD;
+do&#xD;&#xD;
+cat $file|sed 's/samtazea\./samtazeanp\./g'| sed 's/SAMTAZEA\./SAMTAZEANP\./g'| sed 's/b1805/m1805/g'| sed 's/B1805/M1805/g'| sed 's/p1805/m1805/g'| sed 's/P1805/M1805/g' &gt; x/$file&#xD;&#xD;
+done&#xD;&#xD;
+^</Template><Template Name="mpt_my_nurse_id" Description="My Nursing ID" Comments="0" Strings="0">Name: Robert Holland, RN&#xD;&#xD;
+Cerner ID: 2CN241630&#xD;&#xD;
+PID: 47635127.00&#xD;&#xD;
 ^</Template><Template Name="mpt_OTS" Description="Changing OTS User" Comments="0" Strings="0">;Enter [+123456.00+] or [+USERNAME+]&#xD;&#xD;
 select&#xD;&#xD;
 	p.username,&#xD;&#xD;
@@ -3830,9 +3847,4 @@ function [+NameSpace+](){&#xD;&#xD;
 }&#xD;&#xD;
 &#xD;&#xD;
 //End testlink.js&#xD;&#xD;
-^</Template><Template Name="mpt_linux" Description="Linux" Comments="0" Strings="0">#Update file path:&#xD;&#xD;
-for file in *.html&#xD;&#xD;
-do&#xD;&#xD;
-cat $file|sed 's/samtazea\./samtazeanp\./g'| sed 's/SAMTAZEA\./SAMTAZEANP\./g'| sed 's/b1805/m1805/g'| sed 's/B1805/M1805/g'| sed 's/p1805/m1805/g'| sed 's/P1805/M1805/g' &gt; x/$file&#xD;&#xD;
-done&#xD;&#xD;
 ^</Template></Templates>
