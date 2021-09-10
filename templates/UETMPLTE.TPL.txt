@@ -2776,7 +2776,7 @@ select&#xD;&#xD;
 	nodename=build2(curnode)&#xD;&#xD;
 from duaf d&#xD;&#xD;
 where&#xD;&#xD;
-user_name in ("PRHOLLAND", "VENBANNER", "PCAUNTALAN", "PMXIE", "MXIE", "RSOLIMAN", "VENAALUKO", "KDEME")&#xD;&#xD;
+user_name in ("PRHOLLAND", "VENBANNER", "PCAUNTALAN", "PMXIE", "MXIE", "RSOLIMAN", "VENAALUKO", "KDEME", "[+USERNAME+]")&#xD;&#xD;
 order by d.user_name&#xD;&#xD;
 ^</Template><Template Name="mpt_ViewSource" Description="mPage View Source JSON" Comments="0" Strings="0">&lt;html&gt;&#xD;&#xD;
 &lt;head&gt;&#xD;&#xD;

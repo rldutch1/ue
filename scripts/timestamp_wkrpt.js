@@ -41,7 +41,17 @@ UltraEdit.activeDocument.write(
 			+ day + "/"
       + month+ "/"
       + now.getFullYear()
-      + " Weekly - Robert Holland \r\n"
+      + " Weekly Report - Robert Holland \r\n"
+
+			+ "Tab Name: "
+			+ lastWeek + "/"
+      + month+ "/"
+      + now.getFullYear()
+			+ " - "
+			+ day + "/"
+      + month+ "/"
+      + now.getFullYear()
+      + " Weekly Report \r\n"
 
 //			+ "Friday "
 			+ "Week: "
@@ -53,17 +63,7 @@ UltraEdit.activeDocument.write(
 			+ day + "/"
       + month+ "/"
       + now.getFullYear()
-      + " \r\n"
-
-			+ "Tab Name: \r\n"
-			+ lastWeek + "/"
-      + month+ "/"
-      + now.getFullYear()
-			+ " - "
-			+ day + "/"
-      + month+ "/"
-      + now.getFullYear()
-      + " Weekly Report \r\n");
+      + " \r\n");
 
 /* https://stackoverflow.com/questions/12805981/get-last-week-date-with-jquery-javascript
 function getLastWeek() {
