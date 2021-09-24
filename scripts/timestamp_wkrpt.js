@@ -63,7 +63,8 @@ UltraEdit.activeDocument.write(
 			+ day + "/"
       + month+ "/"
       + now.getFullYear()
-      + " \r\n");
+      + " \r\n"
+      + "\r\nTake a look at the time calculations in I:\\Winintel\\Static_Content\\custom_mpage_content\\mpages\\verge\\js\\verge.js \r\n");
 
 /* https://stackoverflow.com/questions/12805981/get-last-week-date-with-jquery-javascript
 function getLastWeek() {
