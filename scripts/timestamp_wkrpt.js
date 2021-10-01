@@ -36,48 +36,43 @@ var seconds = (now.getSeconds());
   }
 
 //Write the full military time to the document. Format is: YearMonthDayHourMinuteSecond.
+//UltraEdit.activeDocument.write(
+//			"\r\nSubject: "
+//			+ day + "/"
+//      + month+ "/"
+//      + now.getFullYear()
+//      + " Weekly Report - Robert Holland \r\n"
+//
+//			+ "Tab Name: "
+//			+ lastWeek + "/"
+//      + month+ "/"
+//      + now.getFullYear()
+//			+ " - "
+//			+ day + "/"
+//      + month+ "/"
+//      + now.getFullYear()
+//      + " Weekly Report \r\n"
+//
+////			+ "Friday "
+//			+ "Week: "
+//			+ lastWeek + "/"
+//      + month+ "/"
+//      + now.getFullYear()
+////      + " - Thursday "
+//			+ " - "
+//			+ day + "/"
+//      + month+ "/"
+//      + now.getFullYear()
+//      + " \r\n"
+//      + "\r\nTake a look at the time calculations in I:\\Winintel\\Static_Content\\custom_mpage_content\\mpages\\verge\\js\\verge.js \r\n");
+
+
+  var StartDT = new Date();
+  var lastWeek = new Date(StartDT.getTime() - 10080 * 60000);//Subtract 10080 minutes (1 week)
+  var lastWeek = lastWeek.toString();
+  var today = new Date(StartDT.getTime() + 0 * 60000);//
+  var today = today.toString();
+  //console.log("Week: " + lastWeek.substring(0, 16) + " - " + today.substring(0, 16));
 UltraEdit.activeDocument.write(
-			"\r\nSubject: "
-			+ day + "/"
-      + month+ "/"
-      + now.getFullYear()
-      + " Weekly Report - Robert Holland \r\n"
-
-			+ "Tab Name: "
-			+ lastWeek + "/"
-      + month+ "/"
-      + now.getFullYear()
-			+ " - "
-			+ day + "/"
-      + month+ "/"
-      + now.getFullYear()
-      + " Weekly Report \r\n"
-
-//			+ "Friday "
-			+ "Week: "
-			+ lastWeek + "/"
-      + month+ "/"
-      + now.getFullYear()
-//      + " - Thursday "
-			+ " - "
-			+ day + "/"
-      + month+ "/"
-      + now.getFullYear()
-      + " \r\n"
-      + "\r\nTake a look at the time calculations in I:\\Winintel\\Static_Content\\custom_mpage_content\\mpages\\verge\\js\\verge.js \r\n");
-
-/* https://stackoverflow.com/questions/12805981/get-last-week-date-with-jquery-javascript
-function getLastWeek() {
-  var now = new Date();
-  var lastWeek = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
-  return lastWeek;
-}
-
-var lastWeek = getLastWeek();
-var lastWeekMonth = lastWeek.getMonth() + 1;
-var lastWeekDay = lastWeek.getDate();
-var lastWeekYear = lastWeek.getFullYear();
-
-var lastWeekDisplay = lastWeekMonth + "/" + lastWeekDay + "/" + lastWeekYear;
-var lastWeekDisplayPadded = ("00" + lastWeekMonth.toString()).slice(-2) + "/" + ("00" + lastWeekDay.toString()).slice(-2) + "/" + ("0000" + lastWeekYear.toString()).slice(-4);
-*/
+  "Week: " + lastWeek.substring(0, 16) + " - " + today.substring(0, 16) + "\r\n"
+  );

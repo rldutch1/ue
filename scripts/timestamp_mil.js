@@ -28,13 +28,13 @@ var seconds = (now.getSeconds());
      seconds = "0" + seconds
   }
 
+var year = now.getFullYear();
 //Write the full military time to the document. Format is: YearMonthDayHourMinuteSecond.
 UltraEdit.activeDocument.write(
-				now.getFullYear()
-      + month
-      + day
+				year +""
+      + month +""
+      + day +""
 //      + "-"
-      + hours
-      + minutes
-      + seconds
-      + " ");
+      + hours +""
+      + minutes +""
+      + seconds+ " ");
