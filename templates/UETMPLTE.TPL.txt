@@ -3610,9 +3610,13 @@ where some_dt_tm &gt;= 'September 08, 2021%' and some_dt_tm &lt;= 'September 27,
 &#xD;&#xD;
 -- Show the size of the database:&#xD;&#xD;
 	exec sp_spaceused;&#xD;&#xD;
+	exec sp_spaceused @oneresultset = 1&#xD;&#xD;
 &#xD;&#xD;
 -- Show database size and owner information:&#xD;&#xD;
 	exec sp_helpdb;&#xD;&#xD;
+&#xD;&#xD;
+--View Connection information:&#xD;&#xD;
+	exec sp_who&#xD;&#xD;
 &#xD;&#xD;
 -- Show linked servers:&#xD;&#xD;
 	EXEC sys.sp_linkedservers &#xD;&#xD;
@@ -3636,9 +3640,6 @@ where some_dt_tm &gt;= 'September 08, 2021%' and some_dt_tm &lt;= 'September 27,
 &#xD;&#xD;
 --Drop the linked server and the created login users (adm/pwd)&#xD;&#xD;
 	exec sp_dropserver '10.10.0.10\MyDS', 'droplogins'; -- drops server and logins&#xD;&#xD;
-&#xD;&#xD;
---View Connection information:&#xD;&#xD;
-	exec sp_who&#xD;&#xD;
 &#xD;&#xD;
 --Rename column:&#xD;&#xD;
  This function checks if the table &#x2018;DimEmployee&#x2019; exists in the database AdventureWorksDW2017, if yes, it renames the column &#x2018;Title&#x2019; to &#x2018;Title Name&#x2019;&#xD;&#xD;
