@@ -3672,7 +3672,9 @@ replace(replace([Discern_Rule], char(10),''), char(13),'') discern_rule&#xD;&#xD
 -- Convert varchar(date) to datetime: This way you can use between on the dates.&#xD;&#xD;
 -- https://stackoverflow.com/questions/18568410/how-to-convert-date-to-a-format-mm-dd-yyyy&#xD;&#xD;
 -- https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-2017#date-and-time-styles&#xD;&#xD;
-	-- The varchar date cannot have "EST", "MST", "PST" timezones&#xD;&#xD;
+	-- The varchar date field must be time data only and cannot have "EST", "MST", "PST" timezones in the field or you will get the following error: &#xD;&#xD;
+	-- Msg 241, Level 16, State 1, Line 2&#xD;&#xD;
+	-- Conversion failed when converting date and/or time from character string.&#xD;&#xD;
 	convert(varchar(25), cast([BEGIN_DT_TM1] as datetime), 21) begin_dt_tm2&#xD;&#xD;
 		-- varchar(25) - covers the display of time with millsecconds&#xD;&#xD;
 		-- cast([BEGIN_DT_TM1] as datetime - Will cast the varchar datatype to datetime&#xD;&#xD;
