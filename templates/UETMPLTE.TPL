@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <Templates encode="utf8escenc"><Template Name="mpt_2cern_search_ccl" Description="CCL to search backend files." Comments="0" Strings="0">execute 2cern_search_ccl "MINE"&#xD;&#xD;
+, value("CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP") ;Separate folders by comma.&#xD;&#xD;
+, value("html", "prg", "js") ;Separate file extensions by comma.&#xD;&#xD;
+, "searchString" go&#xD;&#xD;
+&#xD;&#xD;
+execute 2cern_search_ccl "MINE"&#xD;&#xD;
 , value("CUST_SCRIPT"); Example: "CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP"&#xD;&#xD;
 , value("prg"); Example: "html", "prg", "txt"&#xD;&#xD;
 , "3049471.00" go; No spaces&#xD;&#xD;
