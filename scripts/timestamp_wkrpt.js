@@ -74,5 +74,5 @@ var seconds = (now.getSeconds());
   var today = today.toString();
   //console.log("Week: " + lastWeek.substring(0, 16) + " - " + today.substring(0, 16));
 UltraEdit.activeDocument.write(
-  "Week: " + lastWeek.substring(0, 16) + " - " + today.substring(0, 16) + "\r\n"
+  "Weekly Report: " + lastWeek.substring(0, 16) + "- " + today.substring(0, 16) + "\r\n"
   );
