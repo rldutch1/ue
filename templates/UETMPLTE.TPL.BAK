@@ -2463,6 +2463,15 @@ https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=b3929cd9dbe1c78
 &#xD;&#xD;
 Cerner Silent MTA (SMTA)&#xD;&#xD;
 https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=5d227510db4059d08dce4a2813961969&#xD;&#xD;
+&#xD;&#xD;
+Modify Discern Rule or Advisor&#xD;&#xD;
+https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=ab8fa8e0db4281181c32255c8a9619a3&#xD;&#xD;
+&#xD;&#xD;
+New Discern Rule or Advisor&#xD;&#xD;
+https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=04207c6cdbcac1548dce4a28139619a0&#xD;&#xD;
+&#xD;&#xD;
+Discern Notification&#xD;&#xD;
+https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=4e193498dbb1c5508dce4a281396192b&#xD;&#xD;
 ^&#xD;&#xD;
 </Template><Template Name="mpt_TempBedrock" Description="Bedrock mPage Template" Comments="0" Strings="0">;Program Author: [+Author+]&#xD;&#xD;
 ;Program Name: 1bh_mpage_[+NameSpace+].prg&#xD;&#xD;
