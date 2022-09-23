@@ -1,0 +1,82 @@
+select
+month_numeric = month(cnvtdatetime(curdate,curtime))
+,month_alphabet = substring(4,3,format(cnvtdatetime(curdate,curtime),"DD/MMM/YYYY;;q"))
+,month_full_name = trim(substring(4,9,format(cnvtdatetime("01-SEP-2020 23:59:59"),"DD/MMMMMMMMM/YYYY;;q")),3)
+,weekday = weekday(cnvtdatetime(curdate,curtime))
+,day = day(cnvtdatetime(curdate,curtime))
+,year = year(cnvtdatetime(curdate,curtime))
+,days = datetimediff(cnvtdatetime("01-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:35"),1) ;Returns difference in Days (Default)
+,Weeks = datetimediff(cnvtdatetime("7-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:35"),2) ;Returns difference in Weeks
+,Hours = datetimediff(cnvtdatetime("01-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:30"),3) ;Returns difference in Hours
+,Minutes= datetimediff(cnvtdatetime("01-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:30"),4) ;Returns difference in Minutes
+,Seconds = datetimediff(cnvtdatetime("01-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:30"),5) ;Returns difference in Seconds
+,Days_Diff = datetimecmp(cnvtdatetime("01-JAN-2020 11:30"), cnvtdatetime("31-DEC-2019 11:29")) ;Returns difference in  Days, ignores time part
+
+/*Truncate*/
+,trunc_date = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "DD"), ";;q") ;Truncates the time portion
+,trunc_date1 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "MI"), ";;q") ;Truncates the seconds portion
+,trunc_date2 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "HH"), ";;q") ;Truncates the minute and second portion
+,trunc_date3 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "J"), ";;q") ;Truncates the time portion
+,trunc_date4 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "DD"), ";;q") ;Truncates the time portion
+,trunc_date5 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "WW"), ";;q") ;Starting day of the week
+,trunc_date6 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "MM"), ";;q") ;Starting day of the month
+,trunc_date7 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "YY"), ";;q") ;Starting Date of the year
+,trunc_date8 = format(datetimetrunc(cnvtdatetime("02-DEC-2020 10:55:29"), "Q"), ";;q") ;Starting Date of the Quarter
+
+/*AGE*/
+,Get_Date_of_Birth = format(cnvtagedatetime(23,0,0,0),"DD/MMM/YYYY HH:MM:SS ;;q") ;YEAR,MONTH,WEEK,DAY; Use Zero in case of blanks
+;Commented the following line because of (p.):
+;;,age = cnvtage(p.birth_dt_tm) ;Current Age
+;Commented the following line because of (p.):
+;;,age_at_registration = cnvtage(p.birth_dt_tm, e.reg_dt_tm,0) ;Age at registration; can be replaced with any other event
+;Commented the following line because of (charge.):
+;;,add_to_date = datetimeadd(charge.service_dt_tm, 10) ;Adds ten days to service date time
+;Commented the following line because of (charge.):
+;;,add_to_date = datetimeadd(charge.service_dt_tm, -3) ;Adds minus three days to the service date time
+
+/*Beginning or end of a period
+The folloiwng can be used with
+"D" -Day
+,"W" -Week
+,"M" -Month
+,"Q" -Quarter
+,"Y" -Year
+,"C" -Century
+*/
+,begin_date = format(datetimefind(cnvtdatetime(curdate,0),"w","b","b"),"DD/MMM/YYYY HH:MM:SS ;;q") ;Begnning of the week, beginning of the time on that day
+,begin_date1 = format(datetimefind(cnvtdatetime(curdate,0),"w","b","e"),"DD/MMM/YYYY HH:MM:SS ;;q") ;Begnning of the week, end of the time on that day
+,end_date = format(datetimefind(cnvtdatetime(curdate,0),"w","e","b"),"DD/MMM/YYYY HH:MM:SS ;;q") ;End of the week, beginning of the time on that day
+,end_date1 = format(datetimefind(cnvtdatetime(curdate,0),"w","e","e"),"DD/MMM/YYYY HH:MM:SS ;;q") ;End of the week, end of the time on that day
+
+/*Date time part*/
+,Year = datetimepart(cnvtdatetime("02-DEC-2020 10:45:00"),1)
+,Year1 = year(cnvtdatetime("02-DEC-2020 10:45:00"))
+,Month = datetimepart(cnvtdatetime("02-DEC-2020 10:45:00"),2)
+,Month1 = month(cnvtdatetime("02-DEC-2020 10:45:00"))
+,Day = datetimepart(cnvtdatetime("02-DEC-2020 10:45:00"),3)
+,Day1 = day(cnvtdatetime("02-DEC-2020 10:45:00"))
+,Hour = datetimepart(cnvtdatetime("02-DEC-2020 10:45:00"),4)
+,Hour1 = hour(cnvtdatetime("02-DEC-2020 10:45:00"))
+,Minute = datetimepart(cnvtdatetime("02-DEC-2020 10:13:00"),5)
+,Minute1 = minute(cnvtdatetime("02-DEC-2020 10:13:00"))
+
+/*CNVTMIN - Returns number of minutes from 00:00:00*/
+,MIN1 = cnvtmin(0100,1)     ;Returns 60
+,MIN2 = cnvtmin(1018,1)     ;Returns 618
+;Commented the following line because of (ce.):
+;;,MIN3 = cnvtmin(ce.event_end_dt_tm,5)     ;if the event_end_dt_tm column is 01-JAN-1998 10:50:00, this will return 650
+
+/*CNVTLOOKAHEAD-CNVTLOOKBEHIND functions*/
+,Hour_Ahead = format(cnvtlookahead("1,H", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Day_Ahead = format(cnvtlookahead("1,D", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Week_Ahead = format(cnvtlookahead("1,W", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Month_Ahead = format(cnvtlookahead("1,M", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Year_Ahead = format(cnvtlookahead("1,Y", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Hour_Behind = format(cnvtlookbehind("1,H", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Day_Behind = format(cnvtlookbehind("1,D", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Week_Behind = format(cnvtlookbehind("1,W", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Month_Behind = format(cnvtlookbehind("1,M", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+,Year_Behind = format(cnvtlookbehind("1,Y", cnvtdatetime("02-DEC-2020 11:30")),";;q")
+from dummyt d1
+with time = 10
+^
