@@ -1,0 +1,8 @@
+#Purpose: Delete whitespace from around the specified delimiter.
+# Example delimiter is ~: 
+# 	cat rh_banner_orgs_and_locs.dat | sed 's/[[:space:]]*~[[:space:]]*/~/g' > rh_banner_orgs_and_locs1.dat
+
+#The delimiter is: [+delimiter+]
+sed 's/[[:space:]]*[+delimiter+][[:space:]]*/[+delimiter+]/g'
+^
+
