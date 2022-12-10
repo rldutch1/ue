@@ -15,5 +15,6 @@ UltraEdit.activeDocument.write("; Script Name: \r\n");
 UltraEdit.activeDocument.write("; Creation Date: " + myDate + "\r\n");
 UltraEdit.activeDocument.write("; Last Modified: \r\n");
 UltraEdit.activeDocument.write("; Copyright (c)" + copyrightyear + "\r\n");
+UltraEdit.activeDocument.write("; SNOW#: \r\n");
 UltraEdit.activeDocument.write("; Purpose: \r\n");
 UltraEdit.activeDocument.write(dashes + " \r\n");
