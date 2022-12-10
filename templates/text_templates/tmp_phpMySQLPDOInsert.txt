@@ -1,0 +1,26 @@
+// ----------------------------------------------------------------------------
+//Program Author: [+Author+]
+//Program Name: [+program+]
+//Creation Date: [DATE_TEXT] [TIME]
+//Last Modified:
+//Copyright [DATE_USER]yyyy[DATE_USER_END]
+//Purpose:
+//Request #:
+// ----------------------------------------------------------------------------
+
+<?php
+include('[+connect.php+]');
+
+$fname = htmlentities($_POST['firstname']);
+$mname = htmlentities($_POST['middlename']);
+$lname = htmlentities($_POST['lastname']);
+$bdate = htmlentities($_POST['birthdate']);
+
+$stmt = $handler->prepare("insert into test (firstname, middlename, lastname, birthdate) values (:firstname, :middlename, :lastname, :birthdate);");
+$stmt->bindParam(':firstname', $fname);
+$stmt->bindParam(':middlename', $mname);
+$stmt->bindParam(':lastname', $lname);
+$stmt->bindParam(':birthdate', $bdate);
+$stmt->execute();
+//header('Location: ../index.php');
+?>

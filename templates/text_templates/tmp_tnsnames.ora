@@ -1,0 +1,103 @@
+# Every line that begins with # is a comment line
+#
+# Create Oracle net service names, or aliases, for each database server
+# you need to connect to.
+#
+# TNSNames.ora sample entry
+#
+# alias =
+#  (DESCRIPTION =
+#    (ADDRESS = (PROTOCOL = TCP)(HOST = myserver.mycompany.com)(PORT = 1521))
+#    (CONNECT_DATA =
+#      (SERVER = DEDICATED)
+#      (SERVICE_NAME = orcl)
+#    )
+#  )
+#
+# You can modify the entry below for your own database.
+# <data source alias> = Name to use in the connection string Data Source
+# <hostname or IP> = name or IP of the database server machine
+# <port> = database server machine port to use
+# <database service name> = name of the database service on the server
+
+
+BUILD1.WORLD =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(Host = dcmd3vip.bdcp.bannerhealth.com)(Port = 1521))
+    )
+    (CONNECT_DATA =
+      (SID = build1)
+    )
+  )
+
+
+AZB1.bdcp.bannerhealth.com =
+  (DESCRIPTION =
+    (ADDRESS_LIST=(ADDRESS = (PROTOCOL = TCP)
+                (HOST = DCMD3VIP.bdcp.bannerhealth.com)(PORT = 1521)))
+    (CONNECT_DATA=(SID = AZB1))
+)
+
+
+
+AZBLD1.bdcp.bannerhealth.com =
+  (DESCRIPTION =
+    (ADDRESS_LIST=(ADDRESS = (PROTOCOL = TCP)
+                (HOST = DCMD3VIP.bdcp.bannerhealth.com)(PORT = 1521)))
+    (CONNECT_DATA=(SID = AZBLD1))
+)
+AZB1.world =
+(DESCRIPTION =
+  (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+    (Host=dcmd3vip.bdcp.bannerhealth.com)(Port=1521)))
+  (CONNECT_DATA=(SID=AZB1))
+)
+
+AZBLD1.world =
+(DESCRIPTION =
+  (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+    (Host=dcmd3vip.bdcp.bannerhealth.com)(Port=1521)))
+  (CONNECT_DATA=(SID=AZBLD1))
+)
+
+PROD1.world =
+(DESCRIPTION =
+  (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+    (Host=pcmd1vip.bdcm.bannerhealth.com)(Port=1521)))
+  (CONNECT_DATA=(SID=prod1))
+)
+STBY1.world =
+(DESCRIPTION =
+   (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+     (Host=pcmd3vip.bdcp.bannerhealth.com)(Port=1521)))
+   (CONNECT_DATA=(SID=sdcprod1))
+   )
+sdcprod1.world =
+(DESCRIPTION =
+   (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+     (Host=pcmd3vip.bdcp.bannerhealth.com)(Port=1521)))
+   (CONNECT_DATA=(SID=sdcprod1))
+   )
+sdcprod2.world =
+(DESCRIPTION =
+   (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+     (Host=pcmd4vip.bdcp.bannerhealth.com)(Port=1521)))
+   (CONNECT_DATA=(SID=sdcprod2))
+   )
+
+rhononprod.world =
+(DESCRIPTION =
+   (ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)
+     (Host=137.252.120.138)(Port=1521)))
+   (CONNECT_DATA=(SID=b18051))
+   )
+
+rhoprod.world =
+(DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 137.252.75.140)(PORT = 1521))
+    (LOAD_BALANCE = no)
+    (ENABLE = BROKEN)
+    (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = cust_rpt_p1805.world)  )
+)
+

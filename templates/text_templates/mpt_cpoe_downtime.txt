@@ -1,0 +1,23 @@
+;From Vincent McLang
+select
+	l_facility_accn_prefix_disp = uar_get_code_display(l.facility_accn_prefix_cd)
+	, l_location_disp = uar_get_code_display(l.location_cd)
+	, pc.description
+	, pc.display_description
+	, pc.active_ind
+from
+	pw_cat_flex p
+	, location l
+	, pathway_catalog pc
+plan p
+join l where l.location_cd = p.parent_entity_id
+join pc where pc.pathway_catalog_id = p.pathway_catalog_id
+and pc.active_ind = 1.00
+and pc.display_description != ""
+and not pc.description in ("*RSCH*", "*ONC*")
+
+order by
+l_location_disp , pc.description
+
+with nocounter, separator=" ", format, time = 30
+

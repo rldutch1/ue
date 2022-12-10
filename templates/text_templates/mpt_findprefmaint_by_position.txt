@@ -1,0 +1,72 @@
+
+;PrefMaint parameters by position display: [+position_cd+] or [+position name+]
+;Show position display name
+select code_value, display, code_set from code_value where code_set = 88 and active_ind = 1 and display = "[+position name+]" or code_value = [+position_cd+];
+
+;Show Tab names
+select
+Application = app.description
+, n.updt_dt_tm";;"
+;, v.updt_dt_tm
+;, n2.updt_dt_tm
+;, n3.updt_dt_tm
+;, dp.updt_dt_tm
+,v.position_cd
+, Position_Display = evaluate(
+  uar_get_code_display(v.position_cd)
+  , " ", "-GLOBAL-"
+  , uar_get_code_display(v.position_cd), uar_get_code_display(v.position_cd)
+  )
+, Tab_Name = n.pvc_value
+, v.frame_type
+, Report_Name = evaluate(
+  n3.pvc_value
+  , " ", "-Not Set-"
+  , n3.pvc_value, n3.pvc_value
+  )
+, n3.name_value_prefs_id
+, n2.name_value_prefs_id
+, Updated_By = p.name_full_formatted
+, Report_Param = evaluate(  ;;;;;;;;;;;;;;;;;;;;;;;;;  Parameter with detail
+  n2.pvc_value
+  , " ", "-Not Set-"
+  , n2.pvc_value, n2.pvc_value
+  )
+
+from
+name_value_prefs n
+, view_prefs v
+, code_value cv
+, application app
+, name_value_prefs n2
+, name_value_prefs n3
+, detail_prefs dp
+, person p
+plan n where n.pvc_name = outerjoin("VIEW_CAPTION")
+join v where n.parent_entity_id = v.view_prefs_id
+and v.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
+;and v.position_cd = [+position_cd+]
+and v.position_cd in (select x.code_value from code_value x where display in ("[+position name+]") and x.code_set = 88 and x.active_ind = 1)
+and  v.frame_type in ("CHART","ORG") ;Updated to show both. RH
+join app where v.application_number = app.application_number
+join cv where cv.code_value = v.position_cd
+	and (
+		(
+			cv.active_ind = 1
+			and cv.display_key != "ZZ*"
+		)
+			or cv.code_value = 0
+		)
+join dp where dp.application_number = v.application_number
+and dp.position_cd = v.position_cd
+and dp.view_name IN ( "DISCERNRPT" , "MCDISCERNRPT")
+and dp.view_seq = v.view_seq
+and dp.person_id = 0
+join n2 where n2.parent_entity_id = outerjoin(dp.detail_prefs_id)
+and n2.pvc_name = outerjoin("REPORT_PARAM")
+join n3 where n3.parent_entity_id = dp.detail_prefs_id
+and n3.pvc_value like "*driver*" ;Wildcard to show all drivers. RH
+and n3.pvc_name = "REPORT_NAME"
+join p where n3.updt_id = p.person_id
+order by n.pvc_value, v.view_name, Application, Position_Display
+with time = 90

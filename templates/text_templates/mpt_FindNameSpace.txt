@@ -1,0 +1,32 @@
+;Find mPages using a specific namespace
+;br_datamart_value.parent_entity_id is the code_value.
+select
+	mPage_name = bdc.category_name; mPage_name
+	, Component_Name = bdv.mpage_param_value; Component_Name
+	, Namespace = bdv.freetext_desc; banner.namespace
+	, View_Builder_Name = bdc.category_mean; view_builder_name
+	, bdv.br_datamart_filter_id
+	, bdv.br_datamart_value_id; plus 1 = component_name
+	, bdv.br_datamart_category_id
+from
+	BR_DATAMART_VALUE bdv;BR_DATAMART_VALUE_ID (PK)
+	, BR_DATAMART_CATEGORY   BDC
+plan bdv where bdv.freetext_desc like "banner.[+NameSpace+]"
+join bdc where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+order by mpage_name
+
+;Find mPages using a "banner." namespace
+select
+	mPage_name = bdc.category_name; mPage_name
+	, Component_Name = bdv.mpage_param_value; Component_Name
+	, Namespace = bdv.freetext_desc; banner.namespace
+	, View_Builder_Name = bdc.category_mean; view_builder_name
+	, bdv.br_datamart_filter_id
+	, bdv.br_datamart_value_id; plus 1 = component_name
+from
+	BR_DATAMART_VALUE bdv;BR_DATAMART_VALUE_ID (PK)
+	, BR_DATAMART_CATEGORY   BDC
+plan bdv where bdv.freetext_desc like "banner.*"
+join bdc where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+order by mpage_name
+^

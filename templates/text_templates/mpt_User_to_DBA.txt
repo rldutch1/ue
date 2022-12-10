@@ -1,0 +1,29 @@
+;Drop/Create User as DBA
+drop program user_to_dba go
+create program user_to_dba
+
+prompt "MINE" = "MINE"
+
+with outdev
+DROP CCLUSER [+USERNAME+]
+commit
+CREATE CCLUSER [+USERNAME+] TO DBA
+commit
+end go
+
+;Only a group0 can create or modify a group0
+;create ccluser [+USERNAME+] to GROUP0 go
+
+
+;Backend:
+DROP CCLUSER [+USERNAME+] go
+commit go
+CREATE CCLUSER [+USERNAME+] TO DBA go
+commit go
+
+select *
+from DUAF
+where
+user_name = "[+USERNAME+]"
+go
+^

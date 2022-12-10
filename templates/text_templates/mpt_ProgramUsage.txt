@@ -1,0 +1,25 @@
+;Program Usage Count/Display
+ select into 'nl:'
+             c.begin_dt_tm
+             , c.end_dt_tm
+             , c.object_name
+             , c.object_params
+             , c.output_device
+             , c.updt_dt_tm
+             , c.updt_id
+             , p.username
+             , p.name_full_formatted
+
+ from
+             ccl_report_audit   c
+             , prsnl   p
+
+ plan c
+ where cnvtupper(c.object_name) = '[+CCL PROGRAMNAME+]*' ;
+
+ and  c.updt_dt_tm > sysdate - 1
+
+ join p
+ where p.person_id = c.updt_id
+ ;and p.username = 'prholland'
+ with maxrec = 100

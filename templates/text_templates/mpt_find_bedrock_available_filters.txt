@@ -1,0 +1,35 @@
+;Find mPages with a specific filter listed in Bedrock (case-sensitive)
+[+Case-Sensitive Available Filters+]; eg: "PowerForms to chart vitals", "Heart rate results", "Vital Signs chart launch indicator"
+
+select  DISTINCT INTO "NL:"
+	mPage_Name=bdc.category_name,
+	mPage_Layout =
+if (bdc.layout_flag = 0 )	"Summary"
+elseif(bdc.layout_flag = 1)	"Workflow"
+elseif(bdc.layout_flag = 2)	"Smart Template"
+elseif(bdc.layout_flag = 3)	"Quick Orders and Charges"
+elseif(bdc.layout_flag = 4)	"Patient Organizer View"
+elseif(bdc.layout_flag = 5)	"Dashboard"
+elseif(bdc.layout_flag = 6)	"Organizer View - Provider"
+elseif(bdc.layout_flag = 7)	"Emergent Event"
+elseif(bdc.layout_flag = 8)	"SCM Purchase Order Organizer"
+elseif(bdc.layout_flag = 9)	"SCM Inventory Management Organizer" endif,
+	bdc.category_mean ,
+	bdv.mpage_param_value,
+	bdv.freetext_desc,
+	bdf.filter_mean ,
+	bdf.filter_display,
+	bdf.filter_seq,
+	bdc.layout_flag,
+	bdc.*,
+	bdv.*,
+	bdf.*
+from
+BR_DATAMART_CATEGORY BDC,
+br_datamart_value bdv,
+br_datamart_filter bdf
+where bdc.br_datamart_category_id = bdv.br_datamart_category_id
+and bdf.br_datamart_filter_id = bdv.br_datamart_filter_id
+and bdf.filter_display = "[+Case-Sensitive Available Filters+]"
+order by bdc.category_name, bdc.layout_flag
+^

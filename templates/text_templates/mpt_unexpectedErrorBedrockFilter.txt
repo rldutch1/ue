@@ -1,0 +1,22 @@
+; ----------------------------------------------------------------------------
+; Script Author: Robert Holland
+; Script Name:
+; Creation Date: Thu Jun 18 2020 15:58:21 GMT-0700 (US Mountain Standard Time)
+; Last Modified:
+; Copyright (c)2020
+; Purpose: Delete rows from br_datamart_value table that are causing the following error on component filters.
+; An unexpected error has occurred. Please contact your system administrator and provide the log file.
+; ----------------------------------------------------------------------------
+
+What is the [+filter_id+]
+To get the necessary information from the log file, run Bedrock with Control + Shift + I and reproduce the error.
+Open the log file and look for the name of the filter that is producing the error. You should see the br_datamart_filter_id a few lines above the filter name.
+
+	select * from br_datamart_value where br_datamart_filter_id = [+filter_id+] go
+
+Make a copy of the data before deleting it
+After running the delete statement cycle server 535 then update the filter
+
+	delete from br_datamart_value where br_datamart_filter_id = [+filter_id+] go
+	commit go
+^

@@ -1,0 +1,108 @@
+<html>
+ <head>
+ 	<meta charset="UTF-8">
+   <meta name="description" content="Default mPage Information">
+   <meta name="keywords" content="UE Studio mPageViewSource.mac">
+   <meta name="author" content="Robert Holland">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <p>This page requires data from three variables from the "View Source" of an mPage.<br />
+ The <b>"var m_viewpointJSON"</b>, the <b>var m_criterionJSON</b>, and the <b>"var m_mpageSettingsJSON"</b>.<br />
+ <hr />
+ </p>
+ <title>mPage JSON Testing</title>
+ <script language="javascript" src="./json2.js"></script>
+ <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+ </head>
+ <style>
+ 	table, th, td {border-collapse:collapse; border: 1px solid black; background-color: #FFFF00}
+
+ </style>
+ <body>
+ <div>
+ <p id="output"></p><hr />
+ </div>
+ <div>
+ 	<p id="output1"></p><hr />
+ </div>
+ <div>
+ 	<p id="output2"></p><hr />
+ </div>
+
+ <script>
+ //*********************************************Use mPageViewSource macro and paste JSON below here:*********************************************
+
+
+
+ //************************************************************Paste JSON above here:************************************************************
+
+ //JSON setup.
+ var VP = JSON.parse(m_viewpointJSON);
+ var viewpoint = VP.VP_INFO;
+ var CR = JSON.parse(m_criterionJSON);
+ var criterion = CR.CRITERION;
+ var MP = JSON.parse(m_mpageSettingsJSON);
+ var mpage = MP.MP_SETTINGS;
+
+ //alert(viewpoint.VIEWS.length);
+ //alert(viewpoint.VIEWS[0].VIEW_NAME);
+ var spc0='&nbsp;&nbsp;';
+ var spc1='&nbsp;&nbsp;&nbsp;&nbsp;';
+ var tempStr=[];
+ 	tempStr.push('<b>',viewpoint.VIEWPOINT_NAME,'</b><br />');
+ 	tempStr.push('mPages in ',viewpoint.VIEWPOINT_NAME, ' (',viewpoint.VIEWPOINT_NAME_KEY,')<br />');
+ for(var i=0,all_cnt=viewpoint.VIEWS.length;i<all_cnt;i++){
+ //alert(i);
+
+ 	tempStr.push(spc0,'View Name: <b>',viewpoint.VIEWS[i].VIEW_NAME,'</b> (',viewpoint.VIEWS[i].VIEW_CAT_MEAN,')<br />');
+ //	tempStr.push(spc1,'View Sequence: ',viewpoint.VIEWS[i].VIEW_SEQUENCE,'<br />');
+ //	tempStr.push(spc1,'View Cat Mean: ',viewpoint.VIEWS[i].VIEW_CAT_MEAN,'<br />');
+ //	tempStr.push(spc1,'View Cat ID: ',viewpoint.VIEWS[i].VIEW_CAT_ID,'<br />');
+ //	tempStr.push(spc1,'User Defined IND: ',viewpoint.VIEWS[i].USER_DEFINED_IND,'<br />');
+ //	tempStr.push(spc1,'Shown IND: ',viewpoint.VIEWS[i].SHOWN_IND,'<br />');
+ //	tempStr.push(spc1,'Menu Item: ',viewpoint.VIEWS[i].MENU_ITEM,'<br />');
+ //	tempStr.push(spc1,'View Type: ',viewpoint.VIEWS[i].VIEW_TYPE,'<br />');
+ //	tempStr.push(spc1,'View Type Mean: ',viewpoint.VIEWS[i].VIEW_TYPE_MEAN,'<br />');
+ //	tempStr.push(spc1,'Grouped View Viewpoint ID: ',viewpoint.VIEWS[i].GROUPED_VIEW_VIEWPOINT_ID,'<br /><br />');
+ //	tempStr.push();
+ //	tempStr.push(</ul>);
+
+ document.getElementById("output").innerHTML = tempStr.join("");
+ }
+
+
+ var tempStr=[];
+ //
+ 	tempStr.push('<b>Person NAME:</b> ',criterion.PERSON_INFO.PERSON_NAME,'<br />');
+ 	tempStr.push('<b>Person DOB:</b> ',criterion.PERSON_INFO.DOB,'<br />');
+ 	tempStr.push('<b>Person ID:</b> ',criterion.PERSON_ID,'<br />');
+ 	tempStr.push('<b>Encounter ID:</b> ',criterion.ENCNTRS[0].ENCNTR_ID,'<br />');
+ 	tempStr.push('<b>Username:</b> ',criterion.USERNAME,'<br />');
+ 	tempStr.push('<b>Personnel ID:</b> ',criterion.PRSNL_ID,' (select pr.name_full_formatted from prsnl pr where pr.person_id = ',criterion.PRSNL_ID,'.00)<br />');
+ 	tempStr.push('<b>Position Code:</b> ',criterion.POSITION_CD,' (select cv.display from code_value cv where cv.code_value = ',criterion.POSITION_CD,'.00)<br />');
+ 	tempStr.push('<b>Release Identifier:</b> ',criterion.RELEASE_IDENTIFIER,'<br />');
+ 	tempStr.push('<b>Release Version:</b> ',criterion.RELEASE_VERSION,'<br />');
+ //	for(var i=0,all_cnt=criterion.CRITERION.length;i<all_cnt;i++){
+ //
+ document.getElementById("output1").innerHTML = tempStr.join("");
+ //}
+
+ var tempStr=[];
+ //	tempStr.push('m_mpageSettingsJSON<br />');
+ for(var i=0,all_cnt=mpage.MPAGE.length;i<all_cnt;i++){
+ //	tempStr.push(mpage.MPAGE[i].SETTINGS.C_MN,'<br />');
+ 	tempStr.push('<b>',mpage.MPAGE[i].SETTINGS.BR_SET.LBL,' components:</b><br />');
+ //	tempStr.push(mpage.MPAGE[i].SETTINGS.BR_SET.CS.length,'<br />');
+ 	for(var j=0,all_cnt=mpage.MPAGE[i].SETTINGS.BR_SET.CS.length;j<all_cnt;j++){
+ 		tempStr.push(spc0,mpage.MPAGE[i].SETTINGS.BR_SET.CS[j].LBL,'<br />');
+ 	}
+ //	tempStr.push(mpage.MPAGE[i].SETTINGS.BR_SET.CS[i].LBL,'<br />');
+ //	tempStr.push();
+ //	tempStr.push();
+ document.getElementById("output2").innerHTML = tempStr.join("");
+ }
+
+ </script>
+ </body>
+ </html>

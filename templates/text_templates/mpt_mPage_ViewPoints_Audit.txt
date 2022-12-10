@@ -1,0 +1,13 @@
+select; into $outdev
+Bedrock_Viewpoint_Name = cnvtupper (m.viewpoint_name ) ,
+Bedrock_View_Name = cnvtupper (c.category_name )  ,
+Bedrock_Identifier_Name_on_5th_Line_of_Blackbird = c.category_mean,
+Bedrock_Mpage_Name = c.category_name; same as m.viewpoint_name
+from (mp_viewpoint m ) ,
+(mp_viewpoint_reltn r ) ,
+(br_datamart_category c )
+
+plan (m where (m.active_ind = 1 ) )
+and (r where (r.mp_viewpoint_id = m.mp_viewpoint_id ) )
+and (c where (c.br_datamart_category_id = r.br_datamart_category_id ) )
+order by Bedrock_Viewpoint_Name , Bedrock_View_Name

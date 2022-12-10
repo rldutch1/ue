@@ -1,0 +1,12 @@
+select
+	encntr_id
+	, alias
+	, alias_type=uar_get_code_display(encntr_alias_type_cd)
+from
+	encntr_alias ea
+where
+	encntr_id = [+encntr_id+]
+and
+	encntr_alias_type_cd in (1077.00, 1079.00)
+^
+

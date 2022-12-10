@@ -1,0 +1,80 @@
+
+select * from cust_samt.bhs_mp_data_seq
+select * from cust_samt.cust_hcc_documentation with maxrec = 100;
+select * from cust_samt.cust_hcc_preferences with maxrec = 100;
+select * from cust_samt.cust_mig_meds with maxrec = 100;
+select * from cust_samt.cust_mpage_utilization with maxrec = 100;
+select * from cust_samt.cust_mp_pref with maxrec = 100;
+select * from cust_samt.cust_prsnlauthpos with maxrec = 100;
+
+select * from dba_sequences where sequence_name = 'BHS_MP_DATA_SEQ';
+
+;cust_samt.cust_hcc_documentation table.
+declare mp_next_id = f8
+go
+  select into "nl:"
+    seq_id = seq(cust_hcc_documentation_seq,nextval)
+  from dual
+  detail
+    mp_next_id = seq_id
+  with nocounter
+go
+call echo(mp_next_id)
+go
+
+;cust_samt.cust_prsnlauthpos table
+declare bhmp_next_id = f8
+go
+select into "nl:"
+bhmp_next_id2 = seq(BHS_MP_DATA_SEQ,nextval)
+from dual
+detail
+bhmp_next_id = bhmp_next_id2
+with nocounter
+go
+call echo(bhmp_next_id)
+go
+
+create table custom.cust_prsnlauthpos
+(
+	bh_mp_pref_id number not null,
+	usr_person_id number not null,
+	position_cd number not null,
+	active_ind number DEFAULT 1 not null,
+	updt_applctx  number DEFAULT 0,
+	updt_cnt number DEFAULT 0,
+	updt_dt_tm  DATE DEFAULT SYSDATE,
+	updt_id number DEFAULT 1,
+	updt_task number DEFAULT 99999,
+	bh_mp_pref_id number not null,
+	beg_effective_dt_tm date default sysdate,
+	end_effective_dt_tm date default sysdate
+	constraint cust_pk_prsnlauthpos primary key(bh_mp_pref_id)
+);
+
+;Turn off HCC Prompt:
+update into cust_samt.cust_hcc_preferences
+	set preference_value = "0"; Turn off prompt
+	where preference_id = 67.00
+	go
+commit go
+
+Notes from Calvin Boswell (Cerner) 816-201-1162
+SQL+ - Backend command prompt.
+select * from dba_users go; Shows the table users. Should see the CUST_SAMT user.
+select * from dba_objects where owner = "CUST_SAMT" go; Shows all of the tables owned by CUST_SAMT.
+select * from v$database go; Shows database name/id, read/write status.
+select * from v$instance go; Shows instance name, host name, version, startup time, status.
+select * from dba_tables where table_name = "CUST*" go; DM = Data Management
+select * from dba_tab_privs where owner = 'CUST_SAMT'; Shows select, update, insert, and delete privileges.
+select last_analyzed";;", * from dba_tables where table_name = "CUST*" go
+reset; if you make a mistake while typing on the backend.
+;The following method does not understand "=" so you have to use "like" and "%" for the wildcard.
+rdb
+	select * from dba_tables where table_name like "CUST%" go; Shows the same information as the select with asterisk.
+
+
+ORAGEN3 - SCHEMA is stored in the CCL dic.dat. Refresh (CCLDIR1 and CCLDIR2 directories), There is a third logical CCLDIR that controls which CCLDIR1 or CCLDIR2 that is being used.
+When the server starts up it uses CCLDIR
+Users CCLDIRACCESS - Shows the number at the beginning, has Read or Write display, and numbers at the end which shows how many time the CCLDIR has been toggled.
+^

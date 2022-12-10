@@ -1,0 +1,14 @@
+Find What:
+  %[t ]++[rn]+
+
+Replace With:
+ "" (without the quotes)
+
+Check "Regular Expressions"
+Select "UltraEdit" regex type.
+
+Put cursor at top of file and run.
+Note: For Mac formatted-files not converted to DOS on load
+the UltraEdit regular expression find string must
+be "r[t ]++r" and the replace string "r"
+(both without the quotes).

@@ -1,0 +1,58 @@
+Windows PowerShell Code Signing Notes.
+Assign certificate thumbprint to a variable:
+	$rh=Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+	or
+	$rh=get-childitem Cert:\CurrentUser\My\68ab9c93ba926ca52fa7002b7d1f9f6c9a401ca7
+
+Use the $rh variable to sign a file:
+	Set-AuthenticodeSignature -Certificate $rh -FilePath .\TheFileName.exe
+	or sign all executables (.vbs, .ps1, .cmd, .bat)
+	Set-AuthenticodeSignature -Certificate $rh -FilePath .\*.exe
+
+Dump your certificate information:
+	certutil -dump
+
+RH.PS1 File -----Begin
+	#Get user input filename and assign to $executable.
+	#param(
+	   [string]$executable = $( Read-Host "Input executable that needs to be signed")
+	#    )
+
+	#Get code signing certificate and assign to $rh the run the signing process.
+	$rh=Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+	Set-AuthenticodeSignature -FilePath "$executable" -Certificate $rh -HashAlgorithm SHA256 -TimeStampServer http://timestamp.globalsign.com/scripts/timestamp.dll
+RH.PS1 File -----End
+
+Batch files do not need to be signed unless they access protected applications.
+
+signtool sign /debug /n $rh /fd sha256 tr http://timestamp.globalsign.com/scripts/timestamp.dll /td sha256 /fd sha256 "SOUTHBUMCS.exe"
+
+********************
+Windows PowerShell Code Signing Notes.
+Assign certificate thumbprint to a variable:
+	$rh=Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+	or
+	$rh=get-childitem Cert:\CurrentUser\My\68ab9c93ba926ca52fa7002b7d1f9f6c9a401ca7
+
+Use the $rh variable to sign a file:
+	Set-AuthenticodeSignature -Certificate $rh -FilePath .\TheFileName.exe
+	or sign all executables (.vbs, .ps1, .cmd, .bat)
+	Set-AuthenticodeSignature -Certificate $rh -FilePath .\*.exe
+
+Dump your certificate information:
+	certutil -dump
+
+RH.PS1 File -----Begin
+	#Get user input filename and assign to $executable.
+	#param(
+	   [string]$executable = $( Read-Host "Input executable that needs to be signed")
+	#    )
+
+	#Get code signing certificate and assign to $rh the run the signing process.
+	$rh=Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+	Set-AuthenticodeSignature -FilePath "$executable" -Certificate $rh -HashAlgorithm SHA256 -TimeStampServer http://timestamp.globalsign.com/scripts/timestamp.dll
+RH.PS1 File -----End
+
+Batch files do not need to be signed unless they access protected applications.
+
+signtool sign /debug /n $rh /fd sha256 tr http://timestamp.globalsign.com/scripts/timestamp.dll /td sha256 /fd sha256 "SOUTHBUMCS.exe"

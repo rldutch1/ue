@@ -1,0 +1,27 @@
+# ----------------------------------------------------------------------------
+#Program Author: Robert Holland
+#Program Name: [+Program+]
+#Creation Date: [DATE_TEXT] [TIME]
+#Last Modified:
+#Copyright (c)[DATE_USER]yyyy[DATE_USER_END]
+#Purpose:
+#Request #:
+# Usage: .\[+Program+]
+# List keys: Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+# Show non-expired keys: Get-ChildItem Cert:\CurrentUser\My -CodeSigningCert |where{ $_.NotAfter -gt [datetime]::Now}
+# Verify signature: signtool verify /pa /v <thefilename>
+# List of free timestamp servers: https://gist.github.com/Manouchehri/fd754e402d98430243455713efada710
+# ----------------------------------------------------------------------------
+
+#param(
+   [string]$executable = $( Read-Host "Input executable that needs to be signed")
+#    )
+
+#If you only have one code-signing key use this:
+#$rh=Get-ChildItem Cert:\CurrentUser\My\ -CodeSigningCert
+
+#If you have multiple code-signing keys you will have to specify which one to use:
+$rh=Get-ChildItem Cert:\CurrentUser\My\df59daf1e9e8f9d7fd5803ce428550e64714f366
+
+#Set-AuthenticodeSignature -FilePath "$executable" -Certificate $rh -HashAlgorithm SHA256 -TimeStampServer <If the timestamp server is unavailable you will get errors when signing>
+Set-AuthenticodeSignature -FilePath "$executable" -Certificate $rh -HashAlgorithm SHA256 -TimeStampServer http://timestamp.digicert.com

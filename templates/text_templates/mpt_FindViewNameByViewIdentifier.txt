@@ -1,0 +1,24 @@
+;Find view name by view identifier in Blackbird output.
+select
+	viewpoint_name = cnvtupper (m.viewpoint_name ) ,
+	view_name = cnvtupper (c.category_name ),
+	Identifier = c.category_mean
+from
+	mp_viewpoint m,
+	mp_viewpoint_reltn r,
+	br_datamart_category c
+plan m
+where
+	m.active_ind = 1
+join r
+where
+	r.mp_viewpoint_id = m.mp_viewpoint_id
+join c
+where
+	c.br_datamart_category_id = r.br_datamart_category_id
+and
+	c.category_mean = "[+VB_xxxxxxx+]"
+order by
+	viewpoint_name ,
+	view_name
+^

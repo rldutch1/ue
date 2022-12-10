@@ -1,0 +1,45 @@
+;Create table using CCL program:
+drop program 1bh_mp_aos_cust_tables:dba go
+create program 1bh_mp_aos_cust_tables:dba
+ 
+if (checkdic("CUST_ALLOFUS_MEMBER", "T", 0) = 0)
+  call echo("Creating CUST_ALLOFUS_MEMBER Table")
+  select into table CUST_ALLOFUS_MEMBER
+      ,member_id = type("F8")
+      ,person_id = type("F8")
+      ,encntr_id = type("F8")
+      ,loc_facility_cd = type("F8")
+      ,member_status_flag = type("I2")
+      ,member_status = type("C60")
+      ,active_ind = type("I2")
+      ,create_dt_tm = type("DQ8")
+      ,beg_effective_dt_tm = type("DQ8")
+      ,end_effective_dt_tm = type("DQ8")
+      ,updt_id = type("F8")
+      ,updt_dt_tm = type("DQ8")
+      ,updt_cnt   = type("I2")
+  with organization="P", indexunique(member_id), index(person_id),index(encntr_id),index(loc_facility_cd),
+    index(active_ind),index(end_effective_dt_tm, loc_facility_cd),index(member_status_flag, end_effective_dt_tm),
+    index(person_id, end_effective_dt_tm), index(person_id, member_status_flag),owner="V500",synonym="CUST_ALLOFUS_MEMBER"
+  execute oragen3 "CUST_ALLOFUS_MEMBER"
+else
+  call echo("CUST_ALLOFUS_MEMBER Table already exists")
+endif
+ 
+ 
+/*****************************************************
+;create the sequences for the tables
+*****************************************************/
+ 
+select into "NL:" from all_sequences where sequence_name="ALLOFUS_SEQ"
+if (curqual = 0)
+    call echo("Creating Sequence ALLOFUS_SEQ")
+    call parser("rdb CREATE SEQUENCE ALLOFUS_SEQ START WITH 1000")
+endif
+ 
+ 
+ 
+commit
+end go
+ 
+ 
