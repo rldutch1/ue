@@ -4704,7 +4704,7 @@ Even or Odd:&#xD;&#xD;
 					var medRow = 'coloredMedRow';&#xD;&#xD;
 		   }&#xD;&#xD;
 		   &#xD;&#xD;
-^</Template><Template Name="tmp_linux" Description="Linux">#!/bin/bash&#xD;&#xD;
+^</Template><Template Name="tmp_linux" Description="Linux" Comments="0" Strings="0">#!/bin/bash&#xD;&#xD;
 #!/bin/ksh&#xD;&#xD;
 &#xD;&#xD;
 #Change Shell:&#xD;&#xD;
@@ -5062,7 +5062,11 @@ where some_dt_tm &gt;= 'September 08, 2021%' and some_dt_tm &lt;= 'September 27,
 https://stackoverflow.com/questions/5125076/sql-query-to-select-dates-between-two-dates&#xD;&#xD;
 and begin_dt_tm between '2011/02/25' and '2011/02/27'&#xD;&#xD;
 ^&#xD;&#xD;
-</Template><Template Name="tmp_MSSQL_common" Description="SQL Common">-- Show table information.&#xD;&#xD;
+</Template><Template Name="tmp_MSSQL_common" Description="SQL Common" Comments="0" Strings="0">-- Show top number of rows.&#xD;&#xD;
+	select top (100) * from TheTableName;&#xD;&#xD;
+	select top (100) [column1], [column2] from TheTableName;&#xD;&#xD;
+	&#xD;&#xD;
+-- Show table information.&#xD;&#xD;
 	exec sp_help thetablename&#xD;&#xD;
 &#xD;&#xD;
 -- Show the size of the database:&#xD;&#xD;
@@ -7376,4 +7380,7 @@ function [+NameSpace+](){&#xD;&#xD;
 }&#xD;&#xD;
 &#xD;&#xD;
 //End testlink.js&#xD;&#xD;
-^</Template></Templates>
+^</Template><Template Name="tmp_MSSQL_top" Description="Select top number of rows from a table." Comments="0" Strings="0">-- Show top number of rows.&#xD;&#xD;
+	select top (100) * from TheTableName;&#xD;&#xD;
+	select top (100) [column1], [column2] from TheTableName;&#xD;&#xD;
+</Template></Templates>
