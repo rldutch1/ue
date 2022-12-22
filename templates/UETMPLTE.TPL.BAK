@@ -5037,6 +5037,7 @@ sed "s#[[:space:]]*$DELIMETER[[:space:]]*#$DELIMETER#g" $FILECHECK &gt; $1.delim
 echo $1.delimited has been created.&#xD;&#xD;
 fi&#xD;&#xD;
 &#xD;&#xD;
+find / -iname 'filename*.txt'&#xD;&#xD;
 ^</Template><Template Name="tmp_linux_remove_whitespace" Description="Remove whitespace from around a delimiter.">#Purpose: Delete whitespace from around the specified delimiter.&#xD;&#xD;
 # Example delimiter is ~: &#xD;&#xD;
 # 	cat rh_banner_orgs_and_locs.dat | sed 's/[[:space:]]*~[[:space:]]*/~/g' &gt; rh_banner_orgs_and_locs1.dat&#xD;&#xD;
