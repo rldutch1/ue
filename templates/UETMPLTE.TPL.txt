@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Templates encode="utf8escenc"><Template Name="mpt_2cern_search_ccl" Description="CCL to search backend files.">execute 2cern_search_ccl "MINE"&#xD;&#xD;
+<Templates encode="utf8escenc"><Template Name="mpt_2cern_search_ccl" Description="CCL to search backend files." Comments="0" Strings="0">execute 2cern_search_ccl "MINE"&#xD;&#xD;
 , value("CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP") ;Separate folders by comma.&#xD;&#xD;
 , value("html", "prg", "js") ;Separate file extensions by comma.&#xD;&#xD;
 , "searchString" go&#xD;&#xD;
@@ -3097,7 +3097,7 @@ order by&#xD;&#xD;
 	, lo_location_disp&#xD;&#xD;
  &#xD;&#xD;
 with nocounter, format, time=30&#xD;&#xD;
-^</Template><Template Name="mpt_sNow" Description="SNOW requests">Saved Cycle Templates:&#xD;&#xD;
+^</Template><Template Name="mpt_sNow" Description="SNOW requests" Comments="0" Strings="0">Saved Cycle Templates:&#xD;&#xD;
 	https://svcnowprod.service-now.com/sp/?id=catalog_saved_templates&amp;favorites=true	&#xD;&#xD;
 Current: IT Clinical: CCP/CDS/mPages Request:&#xD;&#xD;
 	https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=d6697f5ddb317c148dce4a28139619e6&#xD;&#xD;
@@ -3119,6 +3119,8 @@ IT Clinical: Cerner Discern Rules New Discern Rule or Advisor&#xD;&#xD;
 	https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=04207c6cdbcac1548dce4a28139619a0&#xD;&#xD;
 Discern Notification&#xD;&#xD;
 	https://svcnowprod.service-now.com/sp/?id=sc_cat_item&amp;sys_id=4e193498dbb1c5508dce4a281396192b&#xD;&#xD;
+Discern Rule or Advisor:&#xD;&#xD;
+	https://svcnowprod.service-now.com/nav_to.do?uri=%2Fcatalog_find.do%3Fsysparm_parent%3D%26sysparm_catalog%3De0d08b13c3330100c8b837659bba8fb4%26sysparm_catalog_view%3Dcatalog_default%26sysparm_processing_hint%3Dsetfield%253Arequest.parent%2526%252361%253B39c19a60975465d8508fbdb0f053af37%26sysparm_tsgroups%3D%26sysparm_view%3Dtext_search%26sysparm_parent_sys_id%3D%26sysparm_parent_table%3D%26sysparm_view%3Dtext_search%26sysparm_collection%3D%26sysparm_collectionID%3D%26sysparm_collection_key%3D%26sysparm_search%3DNew%2BDiscern%2BRule%2Bor%2BAdvisor&#xD;&#xD;
 Cycle Request Templates:&#xD;&#xD;
 	https://svcnowprod.service-now.com/sp/?id=catalog_saved_templates&amp;favorites=true&#xD;&#xD;
 &#xD;&#xD;
@@ -7499,4 +7501,8 @@ function [+NameSpace+](){&#xD;&#xD;
 }&#xD;&#xD;
 &#xD;&#xD;
 //End testlink.js&#xD;&#xD;
-^</Template></Templates>
+^</Template><Template Name="tmp_appData" Description="Path to appData folder." Comments="0" Strings="0">#Hidden appData folder.&#xD;&#xD;
+"%userprofile%\AppData"&#xD;&#xD;
+"%userprofile%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\"&#xD;&#xD;
+cd "%userprofile%\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\"&#xD;&#xD;
+</Template></Templates>
