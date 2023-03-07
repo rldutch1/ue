@@ -1,0 +1,1 @@
+cat UETMPLTE.TPL.txt |sed -e 's/&#xD;&#xD;/\&#xD;/g' > UETMPLTE.TPL.test
