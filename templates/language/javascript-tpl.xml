@@ -1,2 +1,42 @@
 <?xml version="1.0"?>
-<Templates encode="utf8escenc"><Template Name="alert" Description="" Comments="0" Strings="0">alert("[+Alert text+]");</Template><Template Name="else" Description="" Comments="0" Strings="0">else { 	^ }</Template><Template Name="elseif" Description="" Comments="0" Strings="0">else if ([+evaluation+])  	^ }</Template><Template Name="finally" Description="" Comments="0" Strings="0">finally { 	^ }</Template><Template Name="for" Description="" Comments="0" Strings="0">for ([+i+] = [+X+]; [+i+] &lt; [+Y+]; [+i+]++) { 	^ // code to be executed }</Template><Template Name="function" Description="" Comments="0" Strings="0">function [+funcName+] ([+params+]) { 	^ }</Template><Template Name="if" Description="" Comments="0" Strings="0">if ([+evaluation+]) { 	^ }</Template><Template Name="isEven" Description="" Comments="0" Strings="0">  function isEven(n) {      return n % 2 == 0;   } </Template><Template Name="isOdd" Description="" Comments="0" Strings="0">  function isOdd(n) {      return Math.abs(n % 2) == 1;   }</Template><Template Name="switch" Description="" Comments="0" Strings="0">switch ([+expression+]) { 	case [+value+]: 		^ // statements 	break; 	default: 		// default statements }</Template><Template Name="try" Description="" Comments="0" Strings="0">try { 	^ // code to try } catch (e) { 	// handle errors here }</Template><Template Name="while" Description="" Comments="0" Strings="0">while ([+evaluation+]) { 	^ // code to be executed }</Template></Templates>
+<Templates encode="utf8escenc"><Template Name="alert" Description="" Comments="0" Strings="0">alert("[+Alert text+]");</Template><Template Name="else" Description="" Comments="0" Strings="0">else { &#xD;&#xD;
+	[+X+]; &#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="elseif" Description="" Comments="0" Strings="0">else if ([+evaluation+]) {&#xD;&#xD;
+ 	[+Do some work+]; &#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="finally" Description="" Comments="0" Strings="0">finally { 	^ }</Template><Template Name="for" Description="" Comments="0" Strings="0">for ([+i+]=[+X+]; [+i+]&lt;[+Y+]; [+i+]++) {&#xD;&#xD;
+ 	[+code to be executed+];&#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="function" Description="" Comments="0" Strings="0">function [+TheFunction+] ([+parameters+]) {&#xD;&#xD;
+	[+Do some work+];&#xD;&#xD;
+	}&#xD;&#xD;
+^</Template><Template Name="if" Description="" Comments="0" Strings="0">if ([+evaluation+]) {&#xD;&#xD;
+ 	[+Do some work+]; &#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="isEven" Description="" Comments="0" Strings="0">  function isEven(n) {&#xD;&#xD;
+      return n % 2 == 0;&#xD;&#xD;
+  }&#xD;&#xD;
+^ </Template><Template Name="isOdd" Description="" Comments="0" Strings="0">  function isOdd(n) {&#xD;&#xD;
+      return Math.abs(n % 2) == 1;&#xD;&#xD;
+  }&#xD;&#xD;
+^</Template><Template Name="switch" Description="" Comments="0" Strings="0">switch([+expression+]) {&#xD;&#xD;
+  case [+x+]:&#xD;&#xD;
+    // code to be executed;&#xD;&#xD;
+    break;&#xD;&#xD;
+  case [+y+]:&#xD;&#xD;
+    // code to be executed;&#xD;&#xD;
+    break;&#xD;&#xD;
+  default:&#xD;&#xD;
+    // code to be executed;&#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="try" Description="" Comments="0" Strings="0">try {&#xD;&#xD;
+  Some code;&#xD;&#xD;
+}&#xD;&#xD;
+catch(err) {&#xD;&#xD;
+  document.getElementById("demo").innerHTML = err.message;&#xD;&#xD;
+}&#xD;&#xD;
+^</Template><Template Name="while" Description="" Comments="0" Strings="0">while ([+evaluation+]) {&#xD;&#xD;
+ 	[+Code to be executed+];&#xD;&#xD;
+ }&#xD;&#xD;
+^</Template></Templates>
