@@ -16,3 +16,6 @@ Keyboard Shortcuts:
 
 Regular Expressions:
     https://www.ultraedit.com/support/tutorials-power-tips/ultraedit/regular-expressions.html
+
+Note on corrupted templates: I used UE to remove/replace the extra carriage returns in the TPL file.
+
