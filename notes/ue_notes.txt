@@ -19,3 +19,5 @@ Regular Expressions:
 
 Note on corrupted templates: I used UE to remove/replace the extra carriage returns in the TPL file.
 
+Pull "workpush" and push to "github". The workpush repo should be the most recent/primary.
+ 
