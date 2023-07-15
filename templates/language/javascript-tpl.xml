@@ -151,7 +151,7 @@ function formatTheDate(date, format, utc){&#xD;&#xD;
 ^</Template><Template Name="function" Description="">function [+TheFunction+] ([+parameters+]) {&#xD;&#xD;
 	[+Do some work+];&#xD;&#xD;
 	}&#xD;&#xD;
-^</Template><Template Name="getElementsByClassName" Description="The getElementsByClassName() Method">&#xD;&#xD;
+^</Template><Template Name="getElementsByClassName" Description="The getElementsByClassName() Method" Comments="0" Strings="0">&#xD;&#xD;
 &lt;script&gt;&#xD;&#xD;
 //source="https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_document_getelementsbyclassname2"&#xD;&#xD;
 //source1="https://www.javascripttutorial.net/javascript-dom/javascript-getelementsbyclassname/"&#xD;&#xD;
