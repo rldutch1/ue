@@ -4,7 +4,7 @@
 *Program Name: [+Program+]
 *Creation Date: [DATE_TEXT] [TIME]
 *Last Modified:
-*Copyright [DATE_USER]yyyy[DATE_USER_END]
+*Copyright (c)[DATE_USER]yyyy[DATE_USER_END]
 *Purpose:
 *Request #:
 */
@@ -12,7 +12,7 @@
 $serverName = "MSSQL_ServerFQDN";
 
 try {
-	$handler = new PDO("sqlsrv:server=$serverName; Database=databasename", "username", "password");
+	$handler = new PDO("sqlsrv:server=$serverName; Database=[+databasename+]", "[+username+]", "[+password+]");
 	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); //Setting the attributes for the handler that we want to see if exception error.
 }
 
@@ -22,7 +22,7 @@ catch(PDOException $e) { //Return the PDO exception and naming it $e.
 	echo $e->getMessage(); //Show specific error message. Development.
 }
 
-$query0 = $handler->query('select * from databasename');
+$query0 = $handler->query('select * from tablename');
 //ONE: Output each column as row of data.
 //	while($r = $query0->fetch()) {
 //		echo $r[1]
@@ -59,9 +59,9 @@ $query0 = $handler->query('select * from databasename');
 //
 //	}
 
-//FOUR: Not sure what I was doing here.
-//	foreach($query0 as $key => $r){
-//		$out = array_values($r);
+//FOUR: Key value.
+//	foreach($query0 as $key => $value){
+//		$out = array_values($value);
 //		echo json_encode($out);
 //}
 

@@ -3,7 +3,7 @@
 //Program Name: [+program+]
 //Creation Date: [DATE_TEXT] [TIME]
 //Last Modified:
-//Copyright [DATE_USER]yyyy[DATE_USER_END]
+//Copyright (c)[DATE_USER]yyyy[DATE_USER_END]
 //Purpose:
 //Request #:
 // ----------------------------------------------------------------------------

@@ -1,12 +1,13 @@
 <?php
-//Program Author: [+Author +]
+//Program Author: [+Author+]
 //Program Name: [+connect.php+]
 //Creation Date: [DATE_TEXT] [TIME]
 //Last Modified:
 //Purpose:
 //Request #:
 //----------------------------------------------------------------------------
-//PDO connect try {
+//PDO connect
+try {
  	$handler = new PDO('mysql:host=[+servername_or_ip+]; dbname=[+databasename+]', '[+dbusername+]', '[+dbpassword+]');
  	$handler->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  }
