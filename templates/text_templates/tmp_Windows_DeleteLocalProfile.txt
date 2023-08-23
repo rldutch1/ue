@@ -1,0 +1,7 @@
+The easiest way of deleting a user profile is deleting it from System Properties, please follow the instructions below:
+
+Press Windows + R together on your keyboard to open the Run box.
+Type "SystemPropertiesAdvanced" into the text area and hit Enter.
+In the System properties dialog box, under the User profile section, click on Settings button.
+In the User profiles window, select the user profile you want to delete and click Delete button.
+Confirm the request by clicking on Yes option and your profile will be deleted.

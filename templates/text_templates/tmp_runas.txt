@@ -1,0 +1,2 @@
+runas /noprofile /user:BHS\a-rlholland "[+CommandToRun.exe+]"
+^

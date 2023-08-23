@@ -1,0 +1,125 @@
+<?php
+//AZURE Connection and regular MS database connection.
+
+//$FQDN_DB = "tcp:robertholland.database.windows.net,1433";
+//$database = "RobertHolland";
+//$username = "robertholland";
+//$password = "";
+//
+//// SQL Server Extension Sample Code:
+//$connectionInfo = array("UID" => $username, "pwd" => $password, "Database" => $database, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+//$serverName = $FQDN_DB;
+//$conn = sqlsrv_connect($serverName, $connectionInfo);
+////Everything above works.
+//
+//if ($conn){
+//    //echo "connected";
+//    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+//        while( $obj = sqlsrv_fetch_object( $result )) {
+//              //Example: echo $obj->colName.'<br />';
+//              //Example: echo $x=json_encode($obj);
+//              echo $obj->lastname . ", " . $obj->firstname . " : ";
+//        }
+//    }
+//}else{
+//    die(print_r(sqlsrv_errors(), true));
+//}
+?>
+
+<?php
+//$FQDN_DB = "tcp:phx04134.bhs.bannerhealth.com,1433";
+$FQDN_DB = "tcp:phx07555.bhs.bannerhealth.com,1433";
+$database = "[+Canned_mPage+]";
+$username = "[+db_username+]";
+$password = "[+db_userpassword+]";
+
+// SQL Server Extension Sample Code:
+$connectionInfo = array("UID" => $username, "pwd" => $password, "Database" => $database, "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 1);
+$serverName = $FQDN_DB;
+$conn = sqlsrv_connect($serverName, $connectionInfo);
+
+////Method 1:
+//if ($conn){
+//    //echo "connected";
+//    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+//        while( $obj = sqlsrv_fetch_object( $result )) {
+//          //Example: echo $obj->colName.'<br />';
+//          //Example: echo $x=json_encode($obj);
+//              echo
+//              	//Pad zero using "str_pad".
+//                str_pad($obj->id,2,'0',STR_PAD_LEFT) . ": " .
+//                $obj->data1 . ", " .
+//                $obj->data2 . ", " .
+//                //Convert date to string using "format('')"
+//                $obj->some_dt_tm->format('Y-m-d H:i:s') . ", " .
+//                $obj->the_dt_tm->format('Y-m-d H:i:s') . "\r\n";
+//        }
+//    }
+//}else{
+//    die(print_r(sqlsrv_errors(), true));
+//}
+
+////Method 2:
+//if ($conn){
+//    //echo "connected";
+//    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+//			while( $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC) ) {
+//    		echo $row['data1'].", ".$row['data2']."\r\n";
+//			}
+//		}
+//else{
+//    die(print_r(sqlsrv_errors(), true));
+//	}
+//}
+
+//Method 3:
+//if ($conn){
+//    //echo "connected";
+//    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+//			while( $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_BOTH) ) {
+//    		echo $row[0].", ".
+//    		$row['data1'].", ".
+//    		$row[2].", ".
+//    		$row['some_dt_tm']->format('Y-m-d H:i:s').", ".
+//    		$row[4]->format('Y-m-d H:i:s')."\r\n";
+//    		//echo json_encode($row);
+//			}
+//		}
+//else{
+//    die(print_r(sqlsrv_errors(), true));
+//	}
+//}
+
+//Method 4:
+if ($conn){
+    //echo "connected";
+    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+			while( $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_NUMERIC) ) {
+    		echo $row[0].", ".
+    		$row[1].", ".
+    		$row[2].", ".
+    		$row[3]->format('Y-m-d H:i:s').", ".
+    		$row[4]->format('Y-m-d H:i:s')."\r\n";
+    		//echo json_encode($row);
+			}
+		}
+else{
+    die(print_r(sqlsrv_errors(), true));
+	}
+}
+
+////Method JSON:
+//if ($conn){
+//    //echo "connected";
+//    if(($result = sqlsrv_query($conn,"SELECT * FROM test")) !== false){
+//			while( $row = sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC) ) {
+//    		echo json_encode($row);
+//			}
+//		}
+//else{
+//    die(print_r(sqlsrv_errors(), true));
+//	}
+//}
+
+?>
+^
