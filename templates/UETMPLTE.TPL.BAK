@@ -9085,7 +9085,7 @@ Remember to Flush and Register the computer in DNS.&#xD;&#xD;
 Tucson DNS 10.109.0.202 (TUSNS01) and 10.109.64.202 (TUSNS02) are the ones to use.&#xD;&#xD;
 	runas /noprofile /user:BHS\a-rlholland "ipconfig /flushdns"&#xD;&#xD;
 	runas /noprofile /user:BHS\a-rlholland "ipconfig /registerdns"&#xD;&#xD;
-^</Template><Template Name="tmp_ssh" Description="SSH Keys">ssh-keygen -t rsa&#xD;&#xD;
+^</Template><Template Name="tmp_ssh" Description="SSH Keys" Comments="0" Strings="0">ssh-keygen -t rsa&#xD;&#xD;
 ssh-keygen -t rsa -b 4096&#xD;&#xD;
 (Copy id_rsa.pub to the target server .ssh/authorized_keys file.)&#xD;&#xD;
 &#xD;&#xD;

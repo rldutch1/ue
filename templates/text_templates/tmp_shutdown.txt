@@ -1,18 +1,41 @@
 [+TargetComputer+] [+incident+]
 Old School:
-shutdown -m \\[+TargetComputer+] -r -t 0 -f & ping [+TargetComputer+] -t
- or
-runas /noprofile /user:BHS\a-rlholland "shutdown -m \\[+TargetComputer+] -r -t 0 -f" & ping [+TargetComputer+] -t
+	shutdown -m \\[+TargetComputer+] -r -t 0 -f & ping [+TargetComputer+] -t
+	 or
+	runas /noprofile /user:BHS\a-rlholland "shutdown -m \\[+TargetComputer+] -r -t 0 -f" & ping [+TargetComputer+] -t
 
 New School:
 Event Viewer Data for shutdown:
-	Level=Information; Event ID=1074; Source=User32
-shutdown /m \\[+TargetComputer+] /c "[+incident+]" /d p:4:1 /r /t 0 /f & ping [+TargetComputer+] -t
- or
-runas /noprofile /user:BHS\a-rlholland "shutdown /m \\[+TargetComputer+] /c \"[+incident+]\" /d p:4:1 /r /t 0 /f" & ping [+TargetComputer+] -t
+Level=Information; Event ID=1074; Source=User32
+	shutdown /m \\[+TargetComputer+] /c "[+incident+]" /d p:4:1 /r /t 0 /f & ping [+TargetComputer+] -t
+	 or
+	runas /noprofile /user:BHS\a-rlholland "shutdown /m \\[+TargetComputer+] /c \"[+incident+]\" /d p:4:1 /r /t 0 /f" & ping [+TargetComputer+] -t
 
 From Administrator Command Prompt:
-net use A: \\[+TargetComputer+]\c$
+	net use A: \\[+TargetComputer+]\c$
 
-runas /noprofile /user:BHS\a-rlholland "ipconfig /registerdns"
+Remember to Flush and Register the computer in DNS.
+Tucson DNS 10.109.0.202 (TUSNS01) and 10.109.64.202 (TUSNS02) are the ones to use.
+	runas /noprofile /user:BHS\a-rlholland "ipconfig /flushdns"
+	runas /noprofile /user:BHS\a-rlholland "ipconfig /registerdns"
+^[+TargetComputer+] [+incident+]
+Old School:
+	shutdown -m \\[+TargetComputer+] -r -t 0 -f & ping [+TargetComputer+] -t
+	 or
+	runas /noprofile /user:BHS\a-rlholland "shutdown -m \\[+TargetComputer+] -r -t 0 -f" & ping [+TargetComputer+] -t
+
+New School:
+Event Viewer Data for shutdown:
+Level=Information; Event ID=1074; Source=User32
+	shutdown /m \\[+TargetComputer+] /c "[+incident+]" /d p:4:1 /r /t 0 /f & ping [+TargetComputer+] -t
+	 or
+	runas /noprofile /user:BHS\a-rlholland "shutdown /m \\[+TargetComputer+] /c \"[+incident+]\" /d p:4:1 /r /t 0 /f" & ping [+TargetComputer+] -t
+
+From Administrator Command Prompt:
+	net use A: \\[+TargetComputer+]\c$
+
+Remember to Flush and Register the computer in DNS.
+Tucson DNS 10.109.0.202 (TUSNS01) and 10.109.64.202 (TUSNS02) are the ones to use.
+	runas /noprofile /user:BHS\a-rlholland "ipconfig /flushdns"
+	runas /noprofile /user:BHS\a-rlholland "ipconfig /registerdns"
 ^
