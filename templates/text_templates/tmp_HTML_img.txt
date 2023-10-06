@@ -1,0 +1,9 @@
+<img src='data:image/png;base64,
+{base64 data goes here without the braces}' />
+<br />
+
+<!-- PDF Documents in iframe. -->
+<iframe src="data:application/pdf;base64,
+...B64 PDF Data Here...
+" height="600px" width="100%">
+^
