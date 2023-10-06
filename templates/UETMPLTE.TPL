@@ -9643,4 +9643,12 @@ where cv.code_value in (&#xD;&#xD;
 	,1018224278.00;	Home Health&#xD;&#xD;
 	,1793360133.00;	Outpatient Therapy/Orders&#xD;&#xD;
 )&#xD;&#xD;
+^</Template><Template Name="tmp_html_img" Description="HTML Image template" Comments="0" Strings="0">&lt;img src='data:image/png;base64,&#xD;&#xD;
+{base64 data goes here without the braces}' /&gt;&#xD;&#xD;
+&lt;br /&gt;&#xD;&#xD;
+&#xD;&#xD;
+&lt;!-- PDF Documents in iframe. --&gt;&#xD;&#xD;
+&lt;iframe src="data:application/pdf;base64,&#xD;&#xD;
+...B64 PDF Data Here...&#xD;&#xD;
+" height="600px" width="100%"&gt;&#xD;&#xD;
 ^</Template></Templates>
