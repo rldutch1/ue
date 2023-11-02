@@ -1,0 +1,25 @@
+UE Command Palette: Control + Shift + P
+ 	01. Can just type what you are looking for.
+ 	02. Type : to access Goto options.
+ 	03. Use backslash to search through previously open files.
+
+  Keyboard Shortcuts:
+ 	01. Control + Up or Down arrow to move the entire page up or down.
+ 	02. Wordwrap - Control + w
+ 	03. Control . highlights all words under the file.
+ 	04. Control ; select all words under the caret.
+ 	05. Control , select all words under the caret so you can edit them.
+ 	06. Alt + -
+ 	07. Alt + F3 Find dialogue
+ 	08. Alt + C enter column mode.
+ 	09. control + H Toggle HEX Mode.
+
+  Regular Expressions:
+     https://www.ultraedit.com/support/tutorials-power-tips/ultraedit/regular-expressions.html
+
+Note on cleaning up double-spaced templates.
+  Open UETMPLTE.TPL then do a find/replace:
+    Find: &#xD;&#xD;&#xD;
+    Replace with: &#xD;&#xD;
+
+^

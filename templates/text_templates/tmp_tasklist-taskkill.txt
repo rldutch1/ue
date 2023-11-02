@@ -1,0 +1,69 @@
+Source: https://4sysops.com/archives/query-and-kill-a-process-on-a-remote-computer-using-powershell-and-wmi/
+PowerShell:
+Get-Process -ComputerName [+ComputerName+] -Name [+ProgramName.exe+]*
+
+Command Prompt:
+tasklist /s [+ComputerName+] |find /I "[+ProgramName.exe+]"
+taskkill /s [+ComputerName+] /F /IM [+ProgramName.exe+] /T
+TASKKILL /PID [+PID+] /PID [+PID1+] /PID [+PID2+] /T
+
+Examples:
+    TASKKILL /IM [+ProgramName.exe+]
+    TASKKILL /PID 1230 /PID 1241 /PID 1253 /T
+    TASKKILL /F /IM [+ProgramName.exe+] /T
+    TASKKILL /F /FI "PID ge 1000" /FI "WINDOWTITLE ne untitle*"
+    TASKKILL /F /FI "USERNAME eq NT AUTHORITY\SYSTEM" /IM [+ProgramName.exe+]
+    TASKKILL /S system /U domain\username /FI "USERNAME ne NT*" /IM *
+    TASKKILL /S system /U username /P password /FI "IMAGENAME eq [+ProgramName.exe+]*"
+    taskkill /s [+ComputerName+] /F /IM [+ProgramName.exe+]* /T
+    Do Not Use a wildcard "*" on find:
+    runas /noprofile /user:BHS\a-rlholland "taskkill /s [+ComputerName+] /F /IM [+ProgramName.exe+]* /T" & tasklist /s [+ComputerName+] |find /I "[+ProgramName.exe+]"
+
+    wmic /node:[+ComputerName+] process where name="[+ProgramName.exe+]" call terminate
+    wmic /node:[+ComputerName+] process where name="[+ProgramName.exe+]" call terminate
+
+LOCAL TASKKILL: Observation Tracking Board:
+    tasklist /V > tasktest.txt
+    tasklist /FI "IMAGENAME eq msedge.exe" /FI "WINDOWTITLE eq Observation Tracking Board*"
+    taskkill /F /FI "IMAGENAME eq msedge.exe" /FI "WINDOWTITLE eq Observation Tracking Board*"
+
+REMOTE TASKKILL:
+    taskkill /s [+ComputerName+] /u bhs\a-rlholland /F /FI "IMAGENAME eq msedge.exe" /FI "WINDOWTITLE eq Observation Tracking Board*"
+
+Query all computers in an AD domain for list of running processes:
+Get-ADComputer | ForEach-Object {Get-WmiObject -Class Win32_Process -Computer $_.Name}
+
+
+This manual describes actions to create a list of running processes.
+Source: https://www.action1.com/kb/list_of_running_processes_on_remote_computer.html
+
+Manually:
+1. Execute WMI Query in ROOT\CIMV2 Namespace:
+
+   - Launch WMI Explorer or any other tool which can run WMI queries.
+   - Run WMI query: SELECT * FROM Win32_Process
+2. Open WMIC Command-line Interface:
+
+   - Press WIN+R
+   - Type "wmic", press Enter
+   - In wmic command line tool type: /node:RemoteComputerName process
+3. Run This Simple Windows Powershell Script:
+
+   - thru WMI object: Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer RemoteComputerName
+4. Use Following Code to Select Specific Columns:
+
+   - execute: Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer RemoteComputerName | Select-Object Name, ProcessId, PSComputerName
+5. Sort the Results Using the Line Below:
+
+   - invoke command: Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer RemoteComputerName | Select-Object Name, ProcessId, PSComputerName | Sort-Object Name
+6. The Next Code Helps to Filter Results:
+
+   - use it: Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer RemoteComputerName | Select-Object Name, ProcessId, PSComputerName | Where-Object -FilterScript {$_.Name -like "putty.exe"}
+7. Save Results to CSV File:
+
+   - run: Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer RemoteComputerName | Select-Object Name, ProcessId, PSComputerName | Export-CSV "c:\file.csv" -Append -NoTypeInformation
+8. The Next Step Is to Query Multiple Computers:
+
+   - computers from a text file: Get-Content -Path c:\computers.txt | ForEach-Object {Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer $_}
+   - computers from AD domain: Get-ADComputer -Filter {OperatingSystem -Like 'Windows 10*'} | ForEach-Object {Get-WmiObject -Namespace ROOT\CIMV2 -Class Win32_Process -Computer $_.Name}
+^

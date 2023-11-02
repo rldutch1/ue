@@ -1,0 +1,11 @@
+Using SSH-Keygen:
+ssh-keygen -t rsa
+ssh-keygen -t rsa -b 4096
+(Copy id_rsa.pub to the target server .ssh/authorized_keys file.)
+
+Using OpenSSL:
+openssl genrsa -out myprivkey.pem 4096
+openssl rsa -in myprivkey.pem -pubout > mypubkey.pub
+
+#Port redirect:
+ssh -f username@servername -L:6868:remotecomputerIP:80 -N

@@ -1,0 +1,39 @@
+New program: 1bh_mpage_script_search.prg
+Usage:
+   execute 2cern_search_ccl "MINE"
+ 	, value("CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP")
+ 	, value("html", "prg", "ekm")
+ 	, "heartrate" go
+
+;Example searching .prg files for the term "heartrate" in the CUST_SCRIPT directory:
+execute 2cern_search_ccl "MINE" , value("CUST_SCRIPT")
+ 	, value("prg")
+ 	, "heartrate" go
+
+;Example searching .html files for "IE8" in the CUST_HTML directory:
+execute 2cern_search_ccl "MINE" , value("CUST_HTML")
+ 	, value("html")
+ 	, "IE8" go
+
+;Example searching (rules) .ekm files for "COVID" in the CCLUSERDIR directory:
+execute 2cern_search_ccl "MINE" , value("CCLUSERDIR")
+ 	, value("ekm") 	, "COVID" go
+
+;-------------NEW MODIFICATION ALLOWS SPACES---------------
+execute 1bh_mpage_script_search "MINE" ;param #1 as "MINE"
+         , value("CUST_SCRIPT") ;param #2 as logical/path, e.g. "CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP"
+         , value("prg") ;param #3 as program file extension, e.g. "html", "prg", "js"
+         , value( ;param #4 as search expression. Limit 289/- in text size. Allow wildcard ".*", white-space and multi-expression.
+            "1bh_mpage_"; search expression 1
+            ,"1samt_az_"; search expression 2
+           )         go
+
+execute 1bh_mpage_script_search "MINE" ;param #1 as "MINE"
+         , value("CUST_HTML") ;param #2 as logical/path, e.g. "CCLUSERDIR","CCLSOURCE","CUST_SCRIPT","CER_SCRIPT","CUST_HTML","CER_TEMP"
+         , value("html") ;param #3 as program file extension, e.g. "html", "prg", "js"
+         , value( ;param #4 as search expression. Limit 289/- in text size. Allow wildcard ".*", white-space and multi-expression.
+            "1bh_mpage_"; search expression 1
+            ,"1samt_az_"; search expression 2
+           )
+         go
+^

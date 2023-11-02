@@ -4,22 +4,22 @@
 *Program Name: [+program_name+]
 *Creation Date: [DATE_TEXT] [TIME]
 *Last Modified:
-*Copyright [DATE_USER]yyyy[DATE_USER_END]
+*Copyright (c)[DATE_USER]yyyy[DATE_USER_END]
 *Purpose:
 *Request #:
 */
 //----------------------------------------------------------------------------
-//database server  define('db_server', 'database_servername');
+//database server
+define('db_server', 'db_servername_or_ip');
+
 //user, password, and database variables
-
-$db_user = '[+database_user+]';
-$db_password = '[+database_user_password+]';
-$db_dbname = 'database_name';
-
+$db_user = '[+db_username+]';
+$db_password = '[+db_userpassword+]';
+$db_dbname = '[+db_name+]';
 //echo $q;
 $con = mysql_connect($db_server, $db_user, $db_password);
-if (!$con)    {
-	die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db($db_dbname, $con);
+if (!$con)
+    {
+     	die('Could not connect: ' . mysql_error());
+     	}   	mysql_select_db($db_dbname, $con);
 ?>

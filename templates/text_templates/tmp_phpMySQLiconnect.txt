@@ -6,7 +6,7 @@
 //----------------------------------------------------------------------------
 //MySQLi Connect
 $db_server = '[+database_servername+]';
-$db_user = '[+database_username'+];
+$db_user = '[+database_username+]';
 $db_password = '[+database_userpassword+]';
 $db_dbname = '[+database_name+]';
 
