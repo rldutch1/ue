@@ -1,0 +1,145 @@
+#::#In-Clause String:
+InsertMode
+ColumnModeOff
+HexOff
+GotoLine 1 1
+"
+"
+GotoLine 1 1
+TrimLeadingSpaces
+TrimTrailingSpaces
+UltraEditReOn
+Find "^p"
+Replace All "\"^p,\""
+GotoLine 1 1
+DeleteLine
+StartSelect
+GotoLine 1 2
+Delete
+
+#::#In-Clause Integer:
+InsertMode
+ColumnModeOff
+HexOff
+GotoLine 1 1
+TrimLeadingSpaces
+TrimTrailingSpaces
+Key END
+UltraEditReOn
+Find "^p"
+Replace All "^p,"
+
+#::#Insert Statement CCL:
+InsertMode
+ColumnModeOff
+HexOff
+GotoLine 1 1
+"
+"
+GotoLine 1 1
+TrimLeadingSpaces
+TrimTrailingSpaces
+UltraEditReOn
+Find "^p"
+Replace All "\"),^p(\""
+GotoLine 1 1
+DeleteLine
+StartSelect
+GotoLine 1 1
+"insert into XXXXXXXXX (item) values
+"
+
+#::#Insert Statement MySQL_MariaDB:
+InsertMode
+ColumnModeOff
+HexOff
+GotoLine 1 1
+"
+"
+GotoLine 1 1
+TrimLeadingSpaces
+TrimTrailingSpaces
+UltraEditReOn
+Find "^p"
+Replace All "'),^p('"
+GotoLine 1 1
+DeleteLine
+StartSelect
+GotoLine 1 1
+"insert into searchlist (item) values
+"
+
+#::#php_echo.mac - Convert PHP code so that it displays.
+InsertMode
+ColumnModeOff
+UltraEditReOn
+Find "<"
+Replace All "&lt;"
+UltraEditReOn
+Find ">"
+Replace All "&gt;"
+UltraEditReOn
+Find "$"
+Replace All "&#36;"
+UltraEditReOn
+Find "\""
+Replace All "&#039;"
+Find "^P"
+Replace All "<br />^P"
+TrimTrailingSpaces
+
+#::#RMDoubleCR.mac - Remove Double Carriage Returns
+InsertMode
+ColumnModeOff
+HexOff
+GotoLine 1 1
+TrimTrailingSpaces
+UltraEditReOn
+Find "^p^p"
+Replace All "^p"
+
+#::#CopyRename.mac - Rename prepend filenames (Loop 10 means run 10 times)
+InsertMode
+ColumnModeOff
+HexOff
+Loop 10
+StartSelect
+Key END
+Copy
+EndSelect
+Key END
+" 20101021."
+Paste
+Key HOME
+Key DOWN ARROW
+EndLoop
+
+#::#TapeBackupFiles5.mac - Parse the bakbone log files and create SQL insert statements.
+InsertMode
+ColumnModeOff
+HexOff
+UltraEditReOn
+Find "\\"
+Replace All "\\\\"
+UltraEditReOn
+Find "'"
+Replace All "\'"
+Copy
+UltraEditReOn
+Find "o,C:"
+Replace All "insert into backups1x1 (tape_id, log_id, path) values (x*x,y*y,'C:"
+UltraEditReOn
+Find "o,E:"
+Replace All "insert into backups1x1 (tape_id, log_id, path) values (x*x,y*y,'E:"
+UltraEditReOn
+Find "o,D:"
+Replace All "insert into backups1x1 (tape_id, log_id, path) values (x*x,y*y,'D:"
+UltraEditReOn
+Find "o,G:"
+Replace All "insert into backups1x1 (tape_id, log_id, path) values (x*x,y*y,'G:"
+UltraEditReOn
+TrimTrailingSpaces
+UltraEditReOn
+Find "^p"
+Replace All "');^p"
+
