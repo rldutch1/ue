@@ -143,3 +143,11 @@ UltraEditReOn
 Find "^p"
 Replace All "');^p"
 
+#::#Rm_blank_lines.mac - Remove all blank lines in a file.
+InsertMode
+ColumnModeOff
+Top
+PerlReOn
+Find MatchCase RegExp "^(?:[\t ]*(?:\r?\n|\r))+"
+Replace All ""
+
