@@ -1,0 +1,3 @@
+To turn on Bedrock Logging:
+shift+control+i in Bedrock to turn on logging.
+You can then download the log file and search through it.

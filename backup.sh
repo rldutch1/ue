@@ -6,4 +6,4 @@ for file in UETMPLTE.TPL.*
 	done
 	tar -zcvf UETMPLTE_Backup.tar.gz UETMPLTE.TPL UETMPLTE.TPL.txt UETMPLTE.TPL.bak
 cd ../
-git commit -am "Adding modified files/templates."
+#git commit -am "Adding modified files/templates."
