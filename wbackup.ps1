@@ -22,11 +22,11 @@ foreach ($file in get-childitem -path \Users\Rob\Downloads\Github\ue\templates\U
 }
 
  #Create a tar backup of the UETMPLTE.TPL* files:
-##tar -zcvf UETMPLTE_Backup.tar.gz C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL UETMPLTE.TPL.txt UETMPLTE.TPL.bak
+tar -zcvf UETMPLTE_Backup.tar.gz C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL .\UETMPLTE.DAT .\UETMPLTE.TPL .\UETMPLTE.TPL.txt .\UETMPLTE.TPL.bak
 cd ../
 
 #Commit the updated files:
-##git commit -am "wbackup.ps1: Adding modified files/templates."
+git commit -am "wbackup.ps1: Adding modified files/templates."
 
 
 ###foreach ($file in get-childitem "\Users\Rob\Downloads\Github\ue\templates" | where {$_.extension -eq ".BAK"} | % {
