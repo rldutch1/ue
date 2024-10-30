@@ -14,11 +14,11 @@
 #get-childitem -path \Users\Rob\Downloads\Github\ue\templates\UETMPLTE.TPL.* -name
 cd templates/
 #Find the backup files to be updated:
-foreach ($file in get-childitem -path \Users\Rob\Downloads\Github\ue\templates\UETMPLTE.TPL.* -name)
+foreach ($file in get-childitem -path \Users\Rob\Downloads\Github\ue\templates\UETMPLTE.* -name)
 {
-  Write-Host '\Users\Rob\Downloads\Github\ue\templates\' $file
+  #Write-Host "\Users\Rob\Downloads\Github\ue\templates\$file"
   #Write the content of UETMPLTE.TPL to the backup files:
-  ##type C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL > $file
+  type C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL > "\Users\Rob\Downloads\Github\ue\templates\$file"
 }
 
  #Create a tar backup of the UETMPLTE.TPL* files:
@@ -26,7 +26,7 @@ foreach ($file in get-childitem -path \Users\Rob\Downloads\Github\ue\templates\U
 cd ../
 
 #Commit the updated files:
-git commit -am "wbackup.ps1: Adding modified files/templates."
+##git commit -am "wbackup.ps1: Adding modified files/templates."
 
 
 ###foreach ($file in get-childitem "\Users\Rob\Downloads\Github\ue\templates" | where {$_.extension -eq ".BAK"} | % {
