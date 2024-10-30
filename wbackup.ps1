@@ -30,5 +30,5 @@ tar -zcvf UETMPLTE_Backup.tar.gz C:\Users\$myuser\AppData\Roaming\IDMComp\UEStud
 cd ../
 
 #Commit the updated files:
-git commit -m "wbackup.ps1 backup script: Adding template backups." "templates\UETMPLTE.TPL" "templates\UETMPLTE.DAT" "templates\UETMPLTE.TPL" "templates\UETMPLTE.TPL.txt" "templates\UETMPLTE.TPL.BAK" "wbackup.ps1"
+git commit -m "wbackup.ps1 backup script: Adding template backups." "templates\UETMPLTE.TPL" "templates\UETMPLTE.DAT" "templates\UETMPLTE.TPL" "templates\UETMPLTE.TPL.txt" "templates\UETMPLTE.TPL.BAK" "templates/UETMPLTE_Backup.tar.gz" "wbackup.ps1"
 
