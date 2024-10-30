@@ -10,24 +10,25 @@
 #https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_foreach?view=powershell-7.4
 #https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem?view=powershell-7.4
 
-#List all UETMPLTE.TPL.* files:
-#get-childitem -path \Users\Rob\Downloads\Github\ue\templates\UETMPLTE.TPL.* -name
+#Get the current username.
+$myuser = $env:USERNAME 
+	#Write-Host $myuser
+
+#List all UETMPLTE.* files:
+#get-childitem -path \Users\$myuser\Downloads\Github\ue\templates\UETMPLTE.TPL.* -name
 cd templates/
 #Find the backup files to be updated:
-foreach ($file in get-childitem -path \Users\Rob\Downloads\Github\ue\templates\UETMPLTE.* -name)
+foreach ($file in get-childitem -path \Users\$myuser\Downloads\Github\ue\templates\UETMPLTE.* -name)
 {
-  #Write-Host "\Users\Rob\Downloads\Github\ue\templates\$file"
+  #Write-Host "\Users\$myuser\Downloads\Github\ue\templates\$file"
   #Write the content of UETMPLTE.TPL to the backup files:
-  type C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL > "\Users\Rob\Downloads\Github\ue\templates\$file"
+  type C:\Users\$myuser\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL > "\Users\$myuser\Downloads\Github\ue\templates\$file"
 }
 
  #Create a tar backup of the UETMPLTE.TPL* files:
-tar -zcvf UETMPLTE_Backup.tar.gz C:\Users\Rob\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL .\UETMPLTE.DAT .\UETMPLTE.TPL .\UETMPLTE.TPL.txt .\UETMPLTE.TPL.bak
+tar -zcvf UETMPLTE_Backup.tar.gz C:\Users\$myuser\AppData\Roaming\IDMComp\UEStudio\templates\UETMPLTE.TPL .\UETMPLTE.DAT .\UETMPLTE.TPL .\UETMPLTE.TPL.txt .\UETMPLTE.TPL.BAK
 cd ../
 
 #Commit the updated files:
-git commit -am "wbackup.ps1: Adding modified files/templates."
+git commit -m "wbackup.ps1 backup script: Adding template backups." "templates\UETMPLTE.TPL" "templates\UETMPLTE.DAT" "templates\UETMPLTE.TPL" "templates\UETMPLTE.TPL.txt" "templates\UETMPLTE.TPL.BAK" "wbackup.ps1"
 
-
-###foreach ($file in get-childitem "\Users\Rob\Downloads\Github\ue\templates" | where {$_.extension -eq ".BAK"} | % {
-###     Write-Host $_.FullName})
